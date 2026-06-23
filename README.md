@@ -83,6 +83,22 @@ inspect, review, and trust.
 
 ![Loop Factory delivery loop](assets/loop-factory-agent-loop-v2.svg)
 
+## Use Cases
+
+Loop Factory is for developers who want AI agents to help with serious software
+work without losing control of the codebase.
+
+Use it when you need to:
+
+- coordinate coding agents across product, architecture, implementation,
+  review, testing, verification, and release roles,
+- move complex feature work from requirement to GitHub issue, branch, reviewed
+  pull request, and verification evidence,
+- run Codex or Claude Code on a repo without burying task state in chat,
+- keep AI code review, test automation, and PR evidence close to the work,
+- use Git worktrees so parallel agents can work without stepping on each other,
+- make agent output auditable before a developer decides to merge or deploy.
+
 ## Quickstart
 
 From the project you want to enable:
@@ -106,7 +122,7 @@ codex plugin add loop-factory@loop-factory-local
 claude --plugin-dir ~/.loop-factory
 ```
 
-Then talk to Codex or Claude Code normally:
+Then give Codex or Claude Code real software work:
 
 ```text
 Fix checkout retry behavior and open a draft PR.
