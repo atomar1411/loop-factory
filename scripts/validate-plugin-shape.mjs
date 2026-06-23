@@ -6,6 +6,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const requiredFiles = [
   ".codex-plugin/plugin.json",
   ".claude-plugin/plugin.json",
+  "marketplace.json",
   "agents/loop-architecture-reviewer.md",
   "agents/loop-coder.md",
   "agents/loop-docs-steward.md",
@@ -60,6 +61,17 @@ for (const manifest of [".codex-plugin/plugin.json", ".claude-plugin/plugin.json
   if (!parsed.description) {
     errors.push(`${manifest} missing description`);
   }
+}
+
+const marketplace = JSON.parse(readFileSync(path.join(root, "marketplace.json"), "utf8"));
+if (marketplace.name !== "loop-factory-local") {
+  errors.push("marketplace.json must use name loop-factory-local");
+}
+const loopFactoryEntry = marketplace.plugins?.find((plugin) => plugin.name === "loop-factory");
+if (!loopFactoryEntry) {
+  errors.push("marketplace.json must expose loop-factory");
+} else if (loopFactoryEntry.source?.path !== ".") {
+  errors.push('marketplace.json loop-factory source path must be "."');
 }
 
 if (errors.length) {

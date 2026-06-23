@@ -50,6 +50,9 @@ npx loop-factory intake "Add retry-safe payment watcher handling"
 The CLI is intentionally thin. The primary runtime is still your agent surface:
 Codex, Claude Code, GitHub, tests, and the target repo.
 
+See [Installation And Setup](docs/installation.md) for Codex plugin install,
+Claude Code plugin install, target-repo bootstrap, and smoke checks.
+
 ## Repository Layout
 
 ```text
