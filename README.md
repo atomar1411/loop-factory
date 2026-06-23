@@ -35,6 +35,8 @@ Codex, Claude Code, and human teammates one shared way to work.
 Loop Factory ships three layers:
 
 - Plugin skills for Codex and Claude Code.
+- Claude Code plugin agents for orchestration, coding, product, architecture,
+  review, security, gatekeeping, testing, and release roles.
 - Repo templates for `AGENTS.md`, `CLAUDE.md`, `docs/agents/*`, issue forms,
   PR templates, and truth docs.
 - A small CLI for bootstrapping and checking a target repository.
@@ -62,8 +64,26 @@ templates/              Files copied into target repos
 examples/               Minimal target repo examples
 ```
 
+## Agent Roster
+
+The first-class roster includes:
+
+- `loop-orchestrator`
+- `loop-issue-triager`
+- `loop-product-prd`
+- `loop-architecture-reviewer`
+- `loop-docs-steward`
+- `loop-coder`
+- `loop-implementer`
+- `loop-reviewer`
+- `loop-security-reviewer`
+- `loop-verifier`
+- `loop-test-engineer`
+- `loop-tester`
+- `loop-gatekeeper`
+- `loop-release-manager`
+
 ## Status
 
 This repository is in foundation stage. The current version defines the
 architecture, installable plugin structure, core skills, and bootstrap CLI.
-

@@ -6,6 +6,21 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const requiredFiles = [
   ".codex-plugin/plugin.json",
   ".claude-plugin/plugin.json",
+  "agents/loop-architecture-reviewer.md",
+  "agents/loop-coder.md",
+  "agents/loop-docs-steward.md",
+  "agents/loop-gatekeeper.md",
+  "agents/loop-implementer.md",
+  "agents/loop-issue-triager.md",
+  "agents/loop-orchestrator.md",
+  "agents/loop-product-prd.md",
+  "agents/loop-release-manager.md",
+  "agents/loop-reviewer.md",
+  "agents/loop-security-reviewer.md",
+  "agents/loop-test-engineer.md",
+  "agents/loop-tester.md",
+  "agents/loop-verifier.md",
+  "docs/agent-roster.md",
   "skills/loop-factory/SKILL.md",
   "skills/requirement-intake/SKILL.md",
   "skills/autonomous-pr-loop/SKILL.md",
@@ -56,4 +71,3 @@ if (errors.length) {
 }
 
 console.log("Loop Factory shape validation passed.");
-

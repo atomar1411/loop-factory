@@ -23,10 +23,12 @@ Human requirement
   -> Requirement Intake Skill
   -> GitHub issue or local task packet
   -> Orchestrator Skill
+  -> Product, architecture, or triage role when needed
   -> Worktree manager
-  -> Implementer agent
-  -> Reviewer agent
-  -> Verifier or Tester agent
+  -> Coder or implementer agent
+  -> Reviewer, architecture reviewer, or security reviewer
+  -> Verifier, test engineer, or tester
+  -> Gatekeeper
   -> PR evidence
   -> Merge/deploy gate
 ```
@@ -51,8 +53,10 @@ The loop stores state in artifacts that other agents and humans can inspect:
 - Task packet.
 - Branch and worktree.
 - Commits.
+- Product or architecture review notes.
 - Review report.
 - Verification report.
+- Gatekeeper report.
 - PR checklist.
 - Decision log when a human or maintainer changes semantics.
 
@@ -92,4 +96,3 @@ posts a decision request with options, recommendation, and risk if wrong.
 
 The command must not overwrite project-specific files without backup or explicit
 `--force`.
-

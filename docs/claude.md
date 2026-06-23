@@ -38,5 +38,21 @@ Then invoke:
 /loop-factory:verifier-loop
 ```
 
-For shared use, publish through a Claude Code plugin marketplace.
+Claude Code plugin agents should appear in `/agents` when the plugin is loaded:
 
+- `loop-orchestrator`
+- `loop-issue-triager`
+- `loop-product-prd`
+- `loop-architecture-reviewer`
+- `loop-docs-steward`
+- `loop-coder`
+- `loop-implementer`
+- `loop-reviewer`
+- `loop-security-reviewer`
+- `loop-verifier`
+- `loop-test-engineer`
+- `loop-tester`
+- `loop-gatekeeper`
+- `loop-release-manager`
+
+For shared use, publish through a Claude Code plugin marketplace.

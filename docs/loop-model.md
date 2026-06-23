@@ -47,6 +47,7 @@ approved diff
   -> verifier/tester selects gates
   -> commands run
   -> logs, DB, browser, or Docker checks are captured when required
+  -> gatekeeper checks autonomy and evidence
   -> evidence is posted to PR
 ```
 
@@ -60,6 +61,7 @@ verified branch
   -> checklist
   -> CI
   -> agent review and fixes
+  -> gatekeeper pass
   -> maintainer merge or auto-merge policy
 ```
 
@@ -98,4 +100,3 @@ Recommendation:
 Risk if wrong:
 Files or systems affected:
 ```
-
