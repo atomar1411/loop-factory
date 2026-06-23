@@ -111,11 +111,10 @@ Install Loop Factory once on your machine:
 npx --yes github:atomar1411/loop-factory install
 ```
 
-Then open the project you want to enable and run the matching public command:
+Then open the project you want to enable in Codex or Claude Code and run:
 
 ```text
-Codex: /loop-factory
-Claude Code plugin: /loop-factory:loop-factory
+/loop-factory
 ```
 
 After npm publication:
@@ -127,8 +126,7 @@ npx loop-factory install
 Verify a project when needed:
 
 ```text
-Codex: /loop-factory doctor
-Claude Code plugin: /loop-factory:loop-factory doctor
+/loop-factory doctor
 ```
 
 After that, give Codex or Claude Code real software work:
@@ -143,6 +141,10 @@ The public command is for enabling and checking a repo. Normal feature, bug,
 review, product, architecture, and cleanup work should flow from the request
 itself. Internal workflows such as intake, review, and verification should not
 appear as separate commands.
+
+Loop Factory intentionally keeps the plugin name and public skill name the same.
+That keeps the human interface simple across Codex and Claude Code:
+`/loop-factory`.
 
 ## Why This Exists
 

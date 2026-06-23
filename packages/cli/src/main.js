@@ -106,11 +106,9 @@ function install(options) {
   console.log("Next:");
   console.log("1. Open Codex or Claude Code in the project you want to enable.");
   console.log("2. Run:");
-  console.log("   Codex: /loop-factory");
-  console.log("   Claude Code plugin: /loop-factory:loop-factory");
+  console.log("   /loop-factory");
   console.log("3. Verify when needed:");
-  console.log("   Codex: /loop-factory doctor");
-  console.log("   Claude Code plugin: /loop-factory:loop-factory doctor");
+  console.log("   /loop-factory doctor");
 }
 
 function setup(options) {
@@ -130,8 +128,7 @@ function setup(options) {
   console.log('   "Create PRDs for onboarding before implementation."');
   console.log('   "Review PR #42, address comments, and verify the branch."');
   console.log("4. Verify from the agent UI when needed:");
-  console.log("   Codex: /loop-factory doctor");
-  console.log("   Claude Code plugin: /loop-factory:loop-factory doctor");
+  console.log("   /loop-factory doctor");
 }
 
 function init(options) {
@@ -465,10 +462,8 @@ Machine install:
 
 Normal developer UX:
   Open Codex or Claude Code in the target repo, then run:
-  Codex: /loop-factory
-  Codex: /loop-factory doctor
-  Claude Code plugin: /loop-factory:loop-factory
-  Claude Code plugin: /loop-factory:loop-factory doctor
+  /loop-factory
+  /loop-factory doctor
 
 After setup:
   Describe the software work normally.

@@ -14,11 +14,10 @@ Install Loop Factory once on your machine:
 npx --yes github:atomar1411/loop-factory install
 ```
 
-Then open the project you want to enable and run the matching public command:
+Then open the project you want to enable in Codex or Claude Code and run:
 
 ```text
-Codex: /loop-factory
-Claude Code plugin: /loop-factory:loop-factory
+/loop-factory
 ```
 
 After npm publication:
@@ -31,8 +30,7 @@ When the target project has a GitHub remote and you want to verify setup and
 issue/PR access:
 
 ```text
-Codex: /loop-factory doctor
-Claude Code plugin: /loop-factory:loop-factory doctor
+/loop-factory doctor
 ```
 
 ## Machine Install
@@ -106,11 +104,12 @@ machine checkout for a session:
 claude --plugin-dir ~/.loop-factory
 ```
 
-In that session, open the target repo and run `/loop-factory:loop-factory` to
-enable it. Use `/loop-factory:loop-factory doctor` to verify setup. Claude Code
-plugin skills are namespaced by plugin, so this is the standard plugin command
-shape. The plugin skills and agent profiles are then used internally when the
-request looks like a requirement, bug, review, product/PRD task,
+In that session, open the target repo and run `/loop-factory` to enable it. Use
+`/loop-factory doctor` to verify setup. Loop Factory keeps its plugin name and
+public skill name aligned so the public shortcut remains `/loop-factory` instead
+of exposing internal component names. The plugin skills and agent profiles are
+then used internally when the request looks like a requirement, bug, review,
+product/PRD task,
 architecture/design task, cleanup, or implementation request.
 
 Claude Code agent profiles should also be available to the runtime:
@@ -138,8 +137,7 @@ release exists.
 Inside a target repository, use:
 
 ```text
-Codex: /loop-factory doctor
-Claude Code plugin: /loop-factory:loop-factory doctor
+/loop-factory doctor
 ```
 
 For CI, scripting, or framework debugging, the CLI backstop is:

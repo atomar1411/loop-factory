@@ -1,6 +1,6 @@
 ---
 name: loop-factory
-description: Public Loop Factory interface. Use when the user invokes /loop-factory in Codex, /loop-factory:loop-factory in Claude Code, asks to enable Loop Factory in a repo, asks for a Loop Factory doctor check, or gives complex software work that should move through the Loop Factory operating model.
+description: Public Loop Factory interface. Use when the user invokes /loop-factory in Codex or Claude Code, asks to enable Loop Factory in a repo, asks for a Loop Factory doctor check, or gives complex software work that should move through the Loop Factory operating model.
 argument-hint: "[doctor|help|request]"
 ---
 
@@ -14,11 +14,9 @@ verifier loop. Those are private workflow references loaded from this skill.
 
 ## Public Interface
 
-- Codex: `/loop-factory` enables Loop Factory in the current repo.
-- Codex: `/loop-factory doctor` verifies repo setup, GitHub connectivity, and
-  plugin visibility.
-- Claude Code plugin: `/loop-factory:loop-factory` enables the current repo.
-- Claude Code plugin: `/loop-factory:loop-factory doctor` verifies setup.
+- `/loop-factory` enables Loop Factory in the current repo.
+- `/loop-factory doctor` verifies repo setup, GitHub connectivity, and plugin
+  visibility.
 - Any additional text after the command is treated as software work and runs
   the Loop Factory operating model after confirming the repo is enabled.
 

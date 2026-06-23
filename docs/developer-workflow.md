@@ -21,8 +21,7 @@ npx loop-factory install
 Open the project in your agent surface and run:
 
 ```text
-Codex: /loop-factory
-Claude Code plugin: /loop-factory:loop-factory
+/loop-factory
 ```
 
 This installs the repo-local operating files:
@@ -44,8 +43,7 @@ npx loop-factory setup
 After the target repo has a GitHub `origin` remote, verify connectivity:
 
 ```text
-Codex: /loop-factory doctor
-Claude Code plugin: /loop-factory:loop-factory doctor
+/loop-factory doctor
 ```
 
 This checks:
