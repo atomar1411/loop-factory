@@ -23,7 +23,7 @@ This installs the repo-local operating files:
 - `AGENTS.md`
 - `CLAUDE.md`
 - `docs/agents/*`
-- `docs/truth/README.md` unless the project already uses root `truth/`
+- `docs/truth/README.md`
 - GitHub issue and PR templates
 
 For CI, scripting, or framework debugging, the CLI backstop is:

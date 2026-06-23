@@ -119,7 +119,7 @@ function setup(options) {
   if (options.mode === "minimal") {
     console.log("1. Review generated AGENTS.md, CLAUDE.md, and docs/agents.");
   } else {
-    console.log("1. Review generated AGENTS.md, CLAUDE.md, docs/agents, source-truth docs, and GitHub templates.");
+    console.log("1. Review generated AGENTS.md, CLAUDE.md, docs/agents, docs/truth, and GitHub templates.");
   }
   console.log("2. If this machine is not installed yet:");
   console.log(`   ${cliName()} install`);
@@ -137,21 +137,14 @@ function init(options) {
   if (!existsSync(target)) {
     throw new Error(`Target does not exist: ${target}`);
   }
-  const context = {
-    truthPath: detectTruthPath(target),
-  };
   const copied = [];
   for (const file of listFiles(templateRoot)) {
     if (options.mode === "minimal" && !isMinimalTemplate(file)) {
       continue;
     }
     const relative = path.relative(templateRoot, file);
-    if (relative.startsWith("docs/truth/") && context.truthPath === "truth") {
-      console.log(`kept existing truth/; skipped ${relative}`);
-      continue;
-    }
     const destination = path.join(target, relative);
-    copyTemplate(file, destination, options.force, context);
+    copyTemplate(file, destination, options.force);
     copied.push(relative);
   }
   console.log(`Loop Factory initialized in ${target}`);
@@ -259,8 +252,13 @@ function doctor(options) {
   for (const file of required) {
     addCheck(checks, file, existsSync(path.join(target, file)));
   }
-  const truthPath = detectExistingTruthPath(target);
-  addCheck(checks, "truth path", Boolean(truthPath), truthPath ?? "expected truth/ or docs/truth/");
+  addCheck(checks, "docs/truth source truth", existsDirectory(path.join(target, "docs/truth")), "expected docs/truth/");
+  addCheck(
+    checks,
+    "no root truth folder",
+    !existsDirectory(path.join(target, "truth")),
+    "migrate root truth/ into docs/truth/",
+  );
 
   const gitInside = git(target, ["rev-parse", "--is-inside-work-tree"]).ok;
   addCheck(checks, "git repository", gitInside);
@@ -415,7 +413,7 @@ Loop Orchestrator
 - CLAUDE.md when present
 - docs/agents/loop-factory.md
 - docs/agents/context-loading.md
-- truth/ or docs/truth/ when present
+- docs/truth/ when present
 
 ## Forbidden Changes
 
@@ -509,8 +507,8 @@ function listFiles(root) {
   return output;
 }
 
-function copyTemplate(source, destination, force, context = {}) {
-  const body = renderTemplate(readFileSync(source, "utf8"), context);
+function copyTemplate(source, destination, force) {
+  const body = readFileSync(source, "utf8");
   if (existsSync(destination) && !force) {
     if (readFileSync(destination, "utf8") === body) {
       console.log(`ok existing ${path.relative(process.cwd(), destination)}`);
@@ -525,34 +523,6 @@ function copyTemplate(source, destination, force, context = {}) {
   }
   mkdirSync(path.dirname(destination), { recursive: true });
   writeFileSync(destination, body);
-}
-
-function renderTemplate(body, context = {}) {
-  if (context.truthPath === "truth") {
-    return body
-      .replaceAll("`truth/` or `docs/truth/`", "`truth/`")
-      .replaceAll("truth/ or docs/truth/", "truth/")
-      .replaceAll("`docs/truth/README.md`", "`truth/`")
-      .replaceAll("`docs/truth/*`", "`truth/*`")
-      .replaceAll("docs/truth/README.md", "truth/")
-      .replaceAll("docs/truth/*", "truth/*")
-      .replaceAll("docs/truth", "truth");
-  }
-  return body;
-}
-
-function detectTruthPath(target) {
-  return existsDirectory(path.join(target, "truth")) ? "truth" : "docs/truth";
-}
-
-function detectExistingTruthPath(target) {
-  if (existsDirectory(path.join(target, "truth"))) {
-    return "truth/";
-  }
-  if (existsDirectory(path.join(target, "docs/truth"))) {
-    return "docs/truth/";
-  }
-  return undefined;
 }
 
 function existsDirectory(value) {

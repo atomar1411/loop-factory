@@ -232,7 +232,7 @@ developer can review:
 AGENTS.md
 CLAUDE.md
 docs/agents/
-docs/truth/README.md       Created only when the repo does not already use truth/
+docs/truth/README.md
 .github/ISSUE_TEMPLATE/requirement.yml
 .github/PULL_REQUEST_TEMPLATE.md
 ```

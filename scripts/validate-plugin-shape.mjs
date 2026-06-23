@@ -50,6 +50,9 @@ const stalePatterns = [
   { pattern: /--install-dir\b/, message: "Install uses the machine default ~/.loop-factory" },
   { pattern: /\binstall --agent\b/, message: "Install auto-detects agent CLIs" },
   { pattern: /docs\/superpowers\b/, message: "Do not default project truth to helper-tool scratch folders" },
+  { pattern: /truth\/ or docs\/truth\//i, message: "Use one docs root: docs/truth/" },
+  { pattern: /unless the project already uses root `?truth\/?`?/i, message: "Use one docs root: docs/truth/" },
+  { pattern: /Created only when the repo does not already use truth/i, message: "Use one docs root: docs/truth/" },
   { pattern: /^name:\s*(requirement-intake|autonomous-pr-loop|reviewer-loop|verifier-loop)\b/m, message: "Internal loop workflows must not be public skills" },
 ];
 
@@ -139,6 +142,16 @@ const requiredSnippets = [
     file: "docs/automatic-workflow-activation.md",
     snippet: "does broad source mapping, requirement Q&A, or brainstorming before creating",
     message: "Activation doc must list broad-discovery-before-issue as incorrect Loop Factory use",
+  },
+  {
+    file: "README.md",
+    snippet: "docs/truth/README.md",
+    message: "README must document docs/truth as the source-truth path",
+  },
+  {
+    file: "templates/AGENTS.md",
+    snippet: "Source-truth docs (`docs/truth/`)",
+    message: "AGENTS template must use docs/truth as the only source-truth path",
   },
 ];
 

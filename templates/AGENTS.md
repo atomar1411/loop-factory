@@ -2,7 +2,7 @@
 
 Shared onboarding contract for AI agents.
 
-1. Source-truth docs (`truth/` or `docs/truth/`)
+1. Source-truth docs (`docs/truth/`)
 2. `docs/agents/context-loading.md`
 3. `docs/agents/loop-factory.md`
 4. The assigned issue, PR, task packet, or developer request
@@ -16,7 +16,7 @@ Project truth lives in:
 
 - source code,
 - service or package README files,
-- source-truth docs (`truth/` or `docs/truth/`),
+- source-truth docs (`docs/truth/`),
 - `AGENTS.md`, `CLAUDE.md`, and `docs/agents/*` for agent operating rules,
 - GitHub issues and PRs for task state,
 - explicit maintainer decisions in the current task.

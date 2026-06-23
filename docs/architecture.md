@@ -54,8 +54,7 @@ Loop Factory is intentionally surface-neutral:
   agent profiles in `agents/`, and repo `CLAUDE.md`.
 - GitHub carries issues, PRs, labels, checks, and comments.
 - CI carries repeatable verification.
-- The target repo carries source truth under its existing truth path, usually
-  `truth/` or `docs/truth/`.
+- The target repo carries source truth under `docs/truth/`.
 
 ## State Model
 
@@ -107,7 +106,7 @@ templates and creates or updates:
 - `AGENTS.md`,
 - `CLAUDE.md`,
 - `docs/agents/*`,
-- `docs/truth/README.md` only when the repo does not already use `truth/`,
+- `docs/truth/README.md`,
 - `.github/ISSUE_TEMPLATE/requirement.yml`,
 - `.github/PULL_REQUEST_TEMPLATE.md`.
 
