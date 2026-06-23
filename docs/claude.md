@@ -64,4 +64,12 @@ plugin is loaded:
 Issue triage, Product PRD, architecture, docs, security, and release management
 run as lazy specialist modes inside the active profiles.
 
+## Readiness
+
+GitHub/`gh` lets Claude Code create issues, draft PRs, labels, comments, and
+evidence updates. Docker lets Claude Code run containerized service stacks,
+integration tests, manual flow checks, and log inspection. Missing GitHub or
+Docker should be reported as degraded capability, not treated as a setup
+blocker.
+
 For shared use, publish through a Claude Code plugin marketplace.

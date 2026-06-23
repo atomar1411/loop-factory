@@ -18,6 +18,10 @@ const templateRoot = path.join(repoRoot, "templates");
 
 export async function main(args) {
   const { command, positional, options } = parseArgs(args);
+  if (options.help || command === "help" || command === "--help" || command === "-h") {
+    help();
+    return;
+  }
   if (command === "install") {
     install(options);
     return;
@@ -55,6 +59,7 @@ function parseArgs(args) {
     force: false,
     labels: "",
     mode: "standard",
+    help: false,
     soft: false,
     target: process.cwd(),
   };
@@ -69,6 +74,8 @@ function parseArgs(args) {
       options.execute = true;
     } else if (arg === "--force") {
       options.force = true;
+    } else if (arg === "--help" || arg === "-h") {
+      options.help = true;
     } else if (arg === "--issue") {
       options.issue = rest[index + 1];
       index += 1;
@@ -347,7 +354,7 @@ function doctor(options) {
     }
   }
 
-  printChecks(checks);
+  printChecks(checks, { soft: options.soft });
   if (!options.soft && checks.some((check) => !check.ok && check.required !== false)) {
     process.exitCode = 1;
   }
@@ -516,15 +523,13 @@ After setup:
   Describe the software work normally.
   Example: "Fix checkout retry behavior and open a draft PR."
 
-Automation commands:
+CLI backstop commands:
   node ~/.loop-factory/packages/cli/bin/loop-factory.js setup
   node ~/.loop-factory/packages/cli/bin/loop-factory.js doctor
   node ~/.loop-factory/packages/cli/bin/loop-factory.js doctor --soft
   loop-factory setup [--target <repo>] [--mode minimal|standard] [--force]
   loop-factory init [--target <repo>] [--mode minimal|standard] [--force]
   loop-factory doctor [--target <repo>] [--agent codex|claude|both] [--soft]
-  loop-factory intake "requirement" [--target <repo>] [--create-issue] [--labels "lf:intake"]
-  loop-factory run --issue <number-or-url> [--target <repo>] [--agent codex|claude] [--execute]
 `);
 }
 
@@ -632,9 +637,9 @@ function addCheck(checks, name, ok, detail = "", options = {}) {
   checks.push({ name, ok, detail, required: options.required !== false });
 }
 
-function printChecks(checks) {
+function printChecks(checks, options = {}) {
   for (const check of checks) {
-    const status = check.ok ? "ok" : check.required === false ? "warn" : "fail";
+    const status = check.ok ? "ok" : check.required === false || options.soft ? "warn" : "fail";
     const detail = check.detail ? ` - ${check.detail}` : "";
     console.log(`${status} ${check.name}${detail}`);
   }

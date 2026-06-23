@@ -119,7 +119,7 @@ npx --yes github:atomar1411/loop-factory install
 Then open the project you want to enable in Codex or Claude Code and run:
 
 ```text
-/loop-factory
+/loop-factory-init
 ```
 
 Verify a project when needed:
@@ -141,6 +141,20 @@ readiness, `/loop-factory` for normal operation, and `/loop-factory doctor` for
 strict verification. Normal feature, bug, review, product, architecture, and
 cleanup work should flow from the request itself. Internal workflows such as
 intake, review, and verification should not appear as separate commands.
+
+## Readiness Checks
+
+`/loop-factory-init` checks GitHub and Docker without forcing either one.
+
+If GitHub CLI access is present, agents can create and update issues, open draft
+pull requests, post review and verification evidence, inspect PR state, and keep
+task state durable in GitHub. If it is missing, Loop Factory still works with
+local task packets and branch evidence, but issue/PR automation is degraded.
+
+If Docker is present, agents can run service stacks, databases, integration
+tests, browser/manual feature-flow checks, and container log inspection during
+tester or verifier passes. If it is missing, Docker-based verification is marked
+unavailable and the agent uses the best non-Docker checks it can run.
 
 ## Why This Exists
 

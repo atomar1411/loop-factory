@@ -169,6 +169,41 @@ const requiredSnippets = [
     snippet: "/loop-factory-init",
     message: "Installation docs must expose the init command",
   },
+  {
+    file: "README.md",
+    snippet: "If GitHub CLI access is present",
+    message: "README must explain how GitHub readiness improves the loop",
+  },
+  {
+    file: "README.md",
+    snippet: "If Docker is present",
+    message: "README must explain how Docker readiness improves verification",
+  },
+  {
+    file: "docs/architecture.md",
+    snippet: "Docker runs local service stacks",
+    message: "Architecture docs must explain Docker's role",
+  },
+  {
+    file: "docs/architecture.md",
+    snippet: "`gh` automates issue creation",
+    message: "Architecture docs must explain GitHub CLI's role",
+  },
+  {
+    file: "packages/cli/src/main.js",
+    snippet: "if (options.help || command === \"help\" || command === \"--help\" || command === \"-h\")",
+    message: "CLI help must be read-only before mutating commands run",
+  },
+  {
+    file: "packages/cli/src/main.js",
+    snippet: "CLI backstop commands:",
+    message: "CLI help must keep internal orchestration commands out of the public surface",
+  },
+  {
+    file: "packages/cli/src/main.js",
+    snippet: "printChecks(checks, { soft: options.soft });",
+    message: "Soft doctor output must report degraded readiness without hard-fail wording",
+  },
 ];
 
 for (const { file, snippet, message } of requiredSnippets) {

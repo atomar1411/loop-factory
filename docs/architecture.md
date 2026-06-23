@@ -53,7 +53,13 @@ Loop Factory is intentionally surface-neutral:
   `.claude-plugin/plugin.json`, the public `skills/loop-factory/SKILL.md`,
   agent profiles in `agents/`, and repo `CLAUDE.md`.
 - GitHub carries issues, PRs, labels, checks, and comments.
+- `gh` automates issue creation, PR creation, PR/comment inspection, labels, and
+  evidence updates when available. Missing `gh` degrades automation but does not
+  block the loop.
 - CI carries repeatable verification.
+- Docker runs local service stacks, databases, integration tests, browser/manual
+  feature-flow checks, and container log inspection when available. Missing
+  Docker marks those verification paths unavailable but does not block setup.
 - The target repo carries source truth under `docs/truth/`.
 
 ## State Model
@@ -112,3 +118,18 @@ target-repo templates and creates or updates:
 
 The command must not overwrite project-specific files without backup or explicit
 `--force`.
+
+## Readiness Model
+
+`/loop-factory-init` runs setup and then a soft readiness check. Soft readiness
+means missing optional tools are reported with impact and next steps, not treated
+as setup blockers.
+
+- Git and repo-local files are baseline requirements.
+- GitHub/`gh` is recommended for issue-backed tasks, draft PRs, comments,
+  labels, review threads, and durable evidence.
+- Docker is recommended for integration tests, multi-service smoke tests,
+  database-backed checks, browser/manual feature flows, and container logs.
+
+`/loop-factory doctor` is stricter: use it when you want proof that a repo is
+fully wired for normal issue-to-PR automation.

@@ -35,10 +35,14 @@ npx --yes github:atomar1411/loop-factory doctor --soft
 ## Readiness Meaning
 
 - GitHub/`gh` access is recommended for creating issues, PRs, and durable task
-  state. If it is missing, continue with local task packets and tell the
-  developer to run `gh auth login` when they want issue/PR automation.
+  state. When present, it can create/update issues, open draft PRs, inspect PR
+  state, apply labels, and post evidence. If it is missing, continue with local
+  task packets and tell the developer to run `gh auth login` when they want
+  issue/PR automation.
 - Docker is recommended for integration tests, service-level verification, and
-  manual feature-flow testing. If it is missing, continue and mark Docker-based
+  manual feature-flow testing. When present, it can run service stacks,
+  databases, integration tests, browser/manual feature-flow checks, and
+  container log inspection. If it is missing, continue and mark Docker-based
   verification as unavailable.
 - Missing optional readiness should not block setup.
 

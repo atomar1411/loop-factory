@@ -153,6 +153,20 @@ Claude Code tooling when those CLIs are available. Docker is advisory: it makes
 integration and manual flow testing much stronger, but missing Docker should not
 block setup.
 
+## What GitHub And Docker Unlock
+
+With `gh` authenticated against the repo, Loop Factory can create/update issues,
+open draft PRs, inspect PR state, read comments, apply labels, and post evidence
+without asking the developer to shuttle links around. Without `gh`, agents fall
+back to local task packets and tell the developer which GitHub step needs manual
+action.
+
+With Docker available, tester and verifier passes can run databases, service
+stacks, integration tests, browser/manual feature-flow checks, and container log
+inspection. Without Docker, those checks are skipped with an explicit
+"Docker unavailable" note and the agent runs the best non-Docker verification
+available.
+
 ## First Use
 
 After the plugin is installed and the target repo is enabled, open Codex or

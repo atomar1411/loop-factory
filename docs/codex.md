@@ -43,3 +43,10 @@ Document architecture gaps before implementation.
 
 Do not rely on hidden memory for project truth. The installed repo files and
 GitHub artifacts are the contract.
+
+## Readiness
+
+GitHub/`gh` lets Codex create issues, draft PRs, labels, comments, and evidence
+updates. Docker lets Codex run containerized service stacks, integration tests,
+manual flow checks, and log inspection. Missing GitHub or Docker should be
+reported as degraded capability, not treated as a setup blocker.

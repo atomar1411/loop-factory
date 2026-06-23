@@ -32,10 +32,10 @@ For CI, scripting, or framework debugging, the CLI backstop is:
 node ~/.loop-factory/packages/cli/bin/loop-factory.js setup
 ```
 
-## 3. Verify GitHub Connectivity
+## 3. Verify Readiness
 
-After the target repo has a GitHub `origin` remote, verify connectivity strictly
-when needed:
+`/loop-factory-init` already performs a soft readiness check. Use strict
+verification when needed:
 
 ```text
 /loop-factory doctor
@@ -52,6 +52,11 @@ This checks:
 - `gh repo view` access,
 - Docker CLI, daemon, and Compose availability as advisory checks,
 - Codex or Claude Code plugin visibility when those CLIs are installed.
+
+GitHub access lets agents create issues, open PRs, inspect review state, and
+post evidence. Docker lets tester and verifier passes run service stacks,
+databases, integration tests, browser/manual feature flows, and container logs.
+Both make the factory stronger; neither should block first-run setup.
 
 ## 4. Give The Software Work
 
