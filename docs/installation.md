@@ -3,7 +3,8 @@
 Loop Factory has two installation layers:
 
 1. Install the plugin into an agent surface: Codex or Claude Code.
-2. Bootstrap a target repository with Loop Factory docs, templates, and checks.
+2. Use `/loop-factory` from a target repository to install the repo-local docs,
+   templates, and checks.
 
 ## Fast Path
 
@@ -13,26 +14,23 @@ Install Loop Factory once on your machine:
 npx --yes github:atomar1411/loop-factory install
 ```
 
-Enable it in a project:
+Then open Codex or Claude Code in the project you want to enable and run:
 
-```bash
-cd /path/to/project
-npx --yes github:atomar1411/loop-factory setup
+```text
+/loop-factory
 ```
 
 After npm publication:
 
 ```bash
 npx loop-factory install
-npx loop-factory setup
 ```
 
-When the target project has a GitHub remote and you want to verify issue/PR
-access:
+When the target project has a GitHub remote and you want to verify setup and
+issue/PR access:
 
-```bash
-cd /path/to/project
-npx --yes github:atomar1411/loop-factory doctor
+```text
+/loop-factory doctor
 ```
 
 ## Machine Install
@@ -47,7 +45,7 @@ npx --yes github:atomar1411/loop-factory install
 
 ## Project Setup
 
-`setup` installs repo-local operating files:
+`/loop-factory` installs repo-local operating files:
 
 - `AGENTS.md`
 - `CLAUDE.md`
@@ -78,8 +76,10 @@ Useful checks:
 ```bash
 codex plugin marketplace list
 codex plugin list
-npx --yes github:atomar1411/loop-factory doctor
 ```
+
+From a project thread, use `/loop-factory` to enable the repo and
+`/loop-factory doctor` to verify it.
 
 Expected plugin skills:
 
@@ -104,10 +104,10 @@ machine checkout for a session:
 claude --plugin-dir ~/.loop-factory
 ```
 
-In that session, work in the target repo as usual. The plugin skills and agent
-profiles are used internally when the request looks like a requirement, bug,
-review, product/PRD task, architecture/design task, cleanup, or implementation
-request.
+In that session, open the target repo and run `/loop-factory` to enable it. The
+plugin skills and agent profiles are then used internally when the request looks
+like a requirement, bug, review, product/PRD task, architecture/design task,
+cleanup, or implementation request.
 
 Claude Code agent profiles should also be available to the runtime:
 
@@ -131,7 +131,13 @@ release exists.
 
 ## Verify The Installed Target Repo
 
-Inside a target repository:
+Inside a target repository, use:
+
+```text
+/loop-factory doctor
+```
+
+For CI, scripting, or framework debugging, the CLI backstop is:
 
 ```bash
 loop-factory doctor
@@ -150,7 +156,7 @@ tooling when those CLIs are available.
 
 ## First Use
 
-After the plugin is installed and the target repo is bootstrapped, open Codex or
+After the plugin is installed and the target repo is enabled, open Codex or
 Claude Code in the target repo and describe the software work:
 
 ```text

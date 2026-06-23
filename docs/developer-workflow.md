@@ -16,17 +16,12 @@ After npm publication:
 npx loop-factory install
 ```
 
-## 2. Bootstrap Your Project
+## 2. Enable Your Project
 
-```bash
-cd /path/to/project
-npx --yes github:atomar1411/loop-factory setup
-```
+Open Codex or Claude Code in the project and run:
 
-After npm publication:
-
-```bash
-npx loop-factory setup
+```text
+/loop-factory
 ```
 
 This installs the repo-local operating files:
@@ -37,13 +32,18 @@ This installs the repo-local operating files:
 - `docs/truth/README.md`
 - GitHub issue and PR templates
 
+For CI, scripting, or framework debugging, the CLI backstop is:
+
+```bash
+npx loop-factory setup
+```
+
 ## 3. Verify GitHub Connectivity
 
 After the target repo has a GitHub `origin` remote, verify connectivity:
 
-```bash
-cd /path/to/project
-npx --yes github:atomar1411/loop-factory doctor
+```text
+/loop-factory doctor
 ```
 
 This checks:
@@ -59,8 +59,7 @@ This checks:
 
 ## 4. Give The Software Work
 
-Open Codex or Claude Code in the target repo and describe the work. Do not
-invoke a slash command or remember a skill name.
+Open Codex or Claude Code in the target repo and describe the work.
 
 ```text
 Make wallet payment watcher retry-safe and prevent duplicate confirmed entries after worker restart.

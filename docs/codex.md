@@ -7,24 +7,27 @@ Loop Factory provides a Codex plugin with shared skills and templates.
 ```text
 .agents/plugins/marketplace.json
 .codex-plugin/plugin.json
+commands/
 skills/
 templates/
 scripts/
 ```
 
-Codex discovers the skills from the plugin manifest. Each target repository
-still gets its own `AGENTS.md` and `docs/agents/*` files so the project rules
-are visible in Git review.
+Codex discovers the skills from the plugin manifest and the `/loop-factory`
+slash command from `commands/loop-factory.md`. Each target repository still
+gets its own `AGENTS.md` and `docs/agents/*` files so the project rules are
+visible in Git review.
 
 ## Recommended Use
 
 1. Install or load the Loop Factory plugin.
-2. Bootstrap the target repo with Loop Factory files.
-3. Start a Codex thread in the target repo.
-4. Describe the software work. When the request looks like a requirement, bug,
+2. Start a Codex thread in the target repo.
+3. Run `/loop-factory` once to enable the repo.
+4. Use `/loop-factory doctor` when you want setup and GitHub connectivity proof.
+5. Describe the software work. When the request looks like a requirement, bug,
    cleanup, review, product/PRD, architecture/design, or implementation task,
    Codex should load the Loop Factory skills automatically.
-5. Let Codex create issues, branches, draft PRs, review passes, verification
+6. Let Codex create issues, branches, draft PRs, review passes, verification
    evidence, and stop-condition questions as needed.
 
 Examples:

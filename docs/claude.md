@@ -7,13 +7,14 @@ Loop Factory provides a Claude Code plugin with skills and agent profiles.
 ```text
 .claude-plugin/marketplace.json
 .claude-plugin/plugin.json
+commands/
 skills/
 agents/
 ```
 
-Project installation writes `CLAUDE.md` and `.claude`-compatible repo assets
-where appropriate, because repo-local instructions are visible in Git review
-and survive plugin updates.
+Project enablement writes `CLAUDE.md` and repo-local assets where appropriate,
+because repo-local instructions are visible in Git review and survive plugin
+updates.
 
 ## Supported Claude Code Concepts
 
@@ -30,6 +31,13 @@ claude --plugin-dir ./loop-factory
 Then work in the target repo as usual. Claude Code should use Loop
 Factory when a request looks like a requirement, bug, cleanup, PR review,
 product/PRD task, architecture/design task, or implementation request.
+
+From the target repo, run:
+
+```text
+/loop-factory
+/loop-factory doctor
+```
 
 ```text
 Fix checkout retry behavior.

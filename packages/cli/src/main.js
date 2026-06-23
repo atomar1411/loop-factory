@@ -104,11 +104,11 @@ function install(options) {
 
   console.log("");
   console.log("Next:");
-  console.log("1. Enable Loop Factory in a project:");
-  console.log("   cd /path/to/project");
-  console.log(`   ${cliName()} setup`);
-  console.log("2. Verify the project:");
-  console.log(`   ${cliName()} doctor`);
+  console.log("1. Open Codex or Claude Code in the project you want to enable.");
+  console.log("2. Run:");
+  console.log("   /loop-factory");
+  console.log("3. Verify when needed:");
+  console.log("   /loop-factory doctor");
 }
 
 function setup(options) {
@@ -123,12 +123,12 @@ function setup(options) {
   }
   console.log("2. If this machine is not installed yet:");
   console.log(`   ${cliName()} install`);
-  console.log("3. Open Codex or Claude Code in the target repo and describe the software work:");
+  console.log("3. In Codex or Claude Code, continue with real software work:");
   console.log('   "Fix checkout retry behavior and run it through Loop Factory."');
   console.log('   "Create PRDs for onboarding before implementation."');
   console.log('   "Review PR #42, address comments, and verify the branch."');
-  console.log("4. When GitHub and plugins are ready, verify the setup:");
-  console.log(`   ${cliName()} doctor`);
+  console.log("4. Verify from the agent UI when needed:");
+  console.log("   /loop-factory doctor");
 }
 
 function init(options) {
@@ -450,13 +450,14 @@ Machine install:
   loop-factory install
   npx --yes github:atomar1411/loop-factory install
 
-Project setup:
-  loop-factory setup
-  npx --yes github:atomar1411/loop-factory setup
+Normal developer UX:
+  Open Codex or Claude Code in the target repo, then run:
+  /loop-factory
+  /loop-factory doctor
 
-Daily developer UX:
-  Open Codex or Claude Code in the target repo and describe the software work.
-  Example: "Fix checkout retry behavior and run it through Loop Factory."
+After setup:
+  Describe the software work normally.
+  Example: "Fix checkout retry behavior and open a draft PR."
 
 Automation commands:
   loop-factory setup [--target <repo>] [--mode minimal|standard] [--force]

@@ -7,7 +7,7 @@
 - Target-repo templates.
 - Core skills.
 - Claude Code agent profiles.
-- Conversation-first activation contract.
+- `/loop-factory` slash command for repo enablement and doctor checks.
 - CLI `install`, `setup`, `doctor`, and optional automation commands.
 
 ## V0.2 - GitHub Loop Automation

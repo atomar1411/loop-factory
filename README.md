@@ -111,21 +111,25 @@ Install Loop Factory once on your machine:
 npx --yes github:atomar1411/loop-factory install
 ```
 
-Enable it in a project:
+Then open Codex or Claude Code in the project you want to enable and run:
 
-```bash
-cd /path/to/project
-npx --yes github:atomar1411/loop-factory setup
+```text
+/loop-factory
 ```
 
 After npm publication:
 
 ```bash
 npx loop-factory install
-npx loop-factory setup
 ```
 
-Then give Codex or Claude Code real software work:
+Verify a project when needed:
+
+```text
+/loop-factory doctor
+```
+
+After that, give Codex or Claude Code real software work:
 
 ```text
 Fix checkout retry behavior and open a draft PR.
@@ -133,8 +137,9 @@ Create PRDs for onboarding before code changes.
 Review PR #42, address comments, and verify the branch.
 ```
 
-The agent should infer the loop. You should not need to type a special command
-to start normal work.
+The slash command is for enabling and checking a repo. Normal feature, bug,
+review, product, architecture, and cleanup work should flow from the request
+itself.
 
 ## Why This Exists
 
@@ -266,21 +271,11 @@ replace them.
 
 ## Install Details
 
-Verify a bootstrapped project:
+Loop Factory keeps its CLI for CI, scripting, and automation. For normal
+developer use, prefer the slash command in Codex or Claude Code.
 
-```bash
-cd /path/to/project
-npx --yes github:atomar1411/loop-factory doctor
-```
-
-After npm publication:
-
-```bash
-cd /path/to/project
-npx loop-factory doctor
-```
-
-See [Installation And Setup](docs/installation.md) for the full setup path.
+See [Installation And Setup](docs/installation.md) for CLI backstops, CI usage,
+and troubleshooting.
 
 ## Repository Layout
 
@@ -288,6 +283,7 @@ See [Installation And Setup](docs/installation.md) for the full setup path.
 .agents/                Codex local marketplace manifest
 .codex-plugin/          Codex plugin manifest
 .claude-plugin/         Claude Code plugin and marketplace manifests
+commands/               Slash command instructions for /loop-factory
 agents/                 Claude Code plugin agent profile instructions
 assets/                 README images and diagrams
 docs/                   Framework architecture and operating docs

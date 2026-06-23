@@ -45,8 +45,15 @@ Loop Factory workflow automatically.
 
 ## Internal Automation
 
-Use the CLI for setup checks, CI, scripting, and durable issue creation when
-appropriate:
+Use the slash command for normal repo enablement and verification:
+
+```text
+/loop-factory
+/loop-factory doctor
+```
+
+Use the CLI for CI, scripting, framework debugging, and durable issue creation
+when appropriate:
 
 ```bash
 npx loop-factory setup

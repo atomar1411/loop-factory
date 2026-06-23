@@ -20,11 +20,12 @@ docs/
 
 Create the same shape in a target repo:
 
-```bash
+```text
 mkdir -p /tmp/my-project
 cd /tmp/my-project
-npx --yes github:atomar1411/loop-factory setup
-npx --yes github:atomar1411/loop-factory doctor
+open Codex or Claude Code here
+/loop-factory
+/loop-factory doctor
 ```
 
 `doctor` expects a Git repo with a GitHub `origin` remote when you want issue and
