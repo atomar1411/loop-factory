@@ -19,6 +19,8 @@ Output: an issue ready for an agent.
 
 ```text
 issue
+  -> lightweight triage
+  -> create or identify draft issue/task state
   -> read source truth
   -> create branch/worktree
   -> implement

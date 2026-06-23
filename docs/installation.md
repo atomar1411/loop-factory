@@ -164,9 +164,11 @@ Create and test a new trading strategy.
 
 The agent must infer the route. Small low-risk edits use Fast Path: inspect,
 edit, verify, summarize. Complex, broad, risky, PR/review, new strategy,
-tuning/research, or durable-tracking work uses Factory Loop: task state first,
-then branch/worktree, profiles, review, verification, and evidence. Local specs,
-chat plans, branches, and commits are not task state.
+tuning/research, or durable-tracking work uses Factory Loop: draft issue first,
+discovery recorded there, then branch/worktree, profiles, review, verification,
+and evidence. Local specs, chat plans, branches, and commits are not task state.
+Helper skills can assist thinking, but they do not own task state, route order,
+or canonical project docs.
 
 For automation, CI, or debugging the framework itself, the CLI can still create
 issues or run a prepared issue:

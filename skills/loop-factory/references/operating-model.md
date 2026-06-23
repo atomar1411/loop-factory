@@ -4,9 +4,11 @@
 
 ```text
 requirement
-  -> intake
+  -> lightweight triage
   -> issue/task packet
+  -> requirement discovery recorded in issue
   -> branch/worktree
+  -> PRD/design/doc review when needed
   -> implementation
   -> review
   -> verification
@@ -40,8 +42,15 @@ failure. If the runtime cannot spawn named agent profiles, the main agent must
 report that limitation and execute the profile phases sequentially.
 
 For Factory Loop work, issue/task state must exist before branch/worktree,
-commit, design doc, or code. Chat plans, Superpowers specs, local markdown
-notes, branches, commits, and memory are not task state.
+commit, design doc, or code. Create a draft issue before broad source
+exploration, requirement Q&A, or brainstorming. Chat plans, Superpowers specs,
+local markdown notes, branches, commits, and memory are not task state.
+
+Loop Factory has precedence over helper skills. Helper skills may assist local
+thinking, but the issue/task packet remains the durable state. PRDs, specs, and
+plans belong in the repo's canonical truth/design path or issue/PR state;
+tool-owned scratch/spec folders are not canonical project truth unless the repo
+explicitly says they are.
 
 ## Communication
 

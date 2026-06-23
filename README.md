@@ -14,6 +14,11 @@ work, create durable task state, isolate a branch or worktree, run specialist
 agent profiles, review the diff, verify the result, and leave the evidence in a
 pull request.
 
+For complex work, the issue comes early. The agent creates or identifies a draft
+issue from the rough request, records discovery and decisions there, then
+branches, writes docs in the repo's canonical truth/design path, reviews, and
+implements.
+
 The developer stays in control of product meaning, architecture, risk, merge,
 and deploy decisions. Agents handle the coordination work around them:
 requirements, implementation, review, testing, verification, and release

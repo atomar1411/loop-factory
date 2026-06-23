@@ -30,9 +30,13 @@ The agent did not use Loop Factory correctly if it:
 - forces GitHub issues, worktrees, or agent fan-out for a small Fast Path task,
 - runs complex or risky implementation inline without task state,
 - skips GitHub issue creation for Factory Loop work while GitHub is available,
+- does broad source mapping, requirement Q&A, or brainstorming before creating
+  a draft issue/task packet after Factory Loop is identified,
 - creates branch/commit/design doc/code before Factory Loop issue/task state,
 - treats chat plans, Superpowers specs, local markdown notes, branch names, or
   commits as issue/task state,
+- lets helper-skill workflow names or scratch folders replace Loop Factory task
+  state, route order, or canonical project docs,
 - starts implementation from PRD/design/source-truth/strategy research docs
   without reviewer/doc review unless the developer explicitly skipped review,
 - does not route work through profile phases or explain why profiles were
@@ -48,7 +52,7 @@ developer software request
   -> classify Answer, Fast Path, Factory Loop, or Risk Gate
   -> load AGENTS.md / CLAUDE.md and docs/agents
   -> Fast Path: inspect, edit, verify, summarize
-  -> Factory Loop: task state first, then branch/worktree, profiles, review, verification
+  -> Factory Loop: draft issue first, discovery recorded there, branch/worktree, profiles, review, verification
   -> ask only at stop conditions
 ```
 

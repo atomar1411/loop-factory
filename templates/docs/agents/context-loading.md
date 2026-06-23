@@ -13,12 +13,18 @@ git status --short --branch
 ```
 
 If the developer request is the only input, classify it as Answer, Fast Path,
-Factory Loop, or Risk Gate. Create issue/task state before Factory Loop edits
-unless GitHub is unavailable or disabled.
+Factory Loop, or Risk Gate. For Factory Loop, create draft issue/task state from
+the rough request before broad source exploration, requirement Q&A,
+brainstorming, branch, worktree, design doc, commit, or code unless GitHub is
+unavailable or disabled.
 
 New modules/strategies, tuning/research, PRD/design docs, source-truth changes,
 and multi-file implementation are Factory Loop unless the developer explicitly
 scopes them down.
+
+Use helper skills only inside the Loop Factory route. Helper output is not task
+state, and tool-owned scratch/spec folders are not canonical project truth unless
+the repo explicitly says they are.
 
 ## Context Inputs
 

@@ -23,7 +23,8 @@ Developer software request
   -> activation classifier
   -> Answer, Fast Path, Factory Loop, or Risk Gate
   -> Fast Path: inspect -> edit -> verify -> summarize
-  -> Factory Loop: task state -> branch/worktree -> profiles
+  -> Factory Loop: draft issue -> discovery recorded there
+  -> branch/worktree -> profiles
   -> PRD/design/doc review when needed -> implementation
   -> code review -> verification -> evidence -> merge/deploy gate
 ```

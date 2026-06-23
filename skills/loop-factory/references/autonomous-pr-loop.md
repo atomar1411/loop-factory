@@ -8,26 +8,32 @@ state.
 
 ## Loop Steps
 
-1. Read `AGENTS.md`, `CLAUDE.md` when present, `docs/agents/*`, and the issue.
-2. If no issue exists, create or identify one before branch/worktree, design
-   doc, commit, or implementation. If GitHub is unavailable, create a local task
-   packet and report the fallback.
-3. Validate the task packet.
-4. Select and run the required agent profiles. If the runtime cannot spawn
+1. Read `AGENTS.md`, `CLAUDE.md` when present, and `docs/agents/*`; do only
+   the source reading needed to classify the work.
+2. If no issue exists, create or identify one from the rough request before
+   broad source exploration, requirement Q&A, brainstorming, branch/worktree,
+   design doc, commit, or implementation. If GitHub is unavailable, create a
+   local task packet and report the fallback.
+3. Use the issue/task packet as the durable place for requirement questions,
+   answers, decisions, open risks, and links to docs.
+4. Validate the task packet.
+5. Select and run the required agent profiles. If the runtime cannot spawn
    profiles, report the limitation and execute the phases sequentially.
-5. Create or enter a fresh branch/worktree.
-6. Create or update PRD/design/source-truth/strategy research docs when needed.
-7. Review those docs before implementation unless the developer explicitly
+6. Create or enter a fresh branch/worktree.
+7. Create or update PRD/design/source-truth/strategy research docs when needed.
+   Use the repo's canonical truth/design path or issue/PR state; do not default
+   to helper-tool scratch folders.
+8. Review those docs before implementation unless the developer explicitly
    skips that review.
-8. Implement only the owned scope.
-9. Run narrow verification.
-10. Commit when appropriate.
-11. Open or update a draft PR when autonomy allows.
-12. Run or request code review.
-13. Address review findings.
-14. Run verifier or tester pass.
-15. Update PR evidence.
-16. Mark ready or stop with a decision request.
+9. Implement only the owned scope.
+10. Run narrow verification.
+11. Commit when appropriate.
+12. Open or update a draft PR when autonomy allows.
+13. Run or request code review.
+14. Address review findings.
+15. Run verifier or tester pass.
+16. Update PR evidence.
+17. Mark ready or stop with a decision request.
 
 ## Stop Conditions
 

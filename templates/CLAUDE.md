@@ -20,11 +20,16 @@ For software work, choose the smallest route that proves it:
 
 Do not run complex or risky work inline and call it Loop Factory.
 
-Factory Loop preflight: create or identify GitHub issue/task packet before
-branch, worktree, commit, design doc, or code. PRD/design/source-truth/strategy
-research docs require review before implementation unless explicitly skipped.
-Chat plans, Superpowers specs, local markdown notes, branches, and commits are
-not task state.
+Factory Loop preflight: create a draft GitHub issue/task packet from the rough
+request before broad source exploration, requirement Q&A, brainstorming, branch,
+worktree, commit, design doc, or code. Update it as discovery and decisions
+settle. PRDs, specs, and plans belong in the repo's canonical truth/design path
+or issue/PR state; tool-owned scratch/spec folders are not canonical project
+truth unless the repo explicitly says they are. Loop Factory has precedence over
+helper skills; helper skills cannot replace task state or route order.
+PRD/design/source-truth/strategy research docs require review before
+implementation unless explicitly skipped. Chat plans, Superpowers specs, local
+markdown notes, branches, and commits are not task state.
 
 ## Claude Code Agent Profiles
 

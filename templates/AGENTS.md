@@ -37,10 +37,17 @@ not use Fast Path for complex or risky work.
 
 Factory Loop preflight:
 
-1. Create or identify GitHub issue/task packet before branch, worktree, commit,
+1. Create a draft GitHub issue/task packet from the rough request before broad
+   source exploration, requirement Q&A, brainstorming, branch, worktree, commit,
    design doc, or code.
-2. If GitHub is unavailable, create a local task packet and say why.
-3. PRD/design/source-truth/strategy research docs require review before
+2. Update that issue/task packet as discovery and decisions settle.
+3. If GitHub is unavailable, create a local task packet and say why.
+4. PRDs, specs, and plans belong in the repo's canonical truth/design path or
+   issue/PR state. Tool-owned scratch/spec folders are not canonical project
+   truth unless this repo explicitly says they are.
+5. Loop Factory has precedence over helper skills; helper skills cannot replace
+   issue/task state or alter route order.
+6. PRD/design/source-truth/strategy research docs require review before
    implementation unless the developer explicitly skips that review.
 
 Branch names, commits, chat plans, Superpowers specs, local markdown notes, and
@@ -68,8 +75,8 @@ explicitly say not to create tasks or change code.
 
 - Use one task per branch/worktree.
 - Avoid overlapping owned files across parallel agents.
-- Create or identify issue/task state before Factory Loop branch, worktree,
-  commit, design doc, or code.
+- Create or identify issue/task state before broad discovery, Factory Loop
+  branch, worktree, commit, design doc, or code.
 - Read the task packet and required truth docs before editing.
 - Write or update tests when behavior changes.
 - Run verification before claiming completion.

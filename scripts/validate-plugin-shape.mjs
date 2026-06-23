@@ -49,6 +49,7 @@ const stalePatterns = [
   { pattern: /\bdoctor --agent\b/, message: "Doctor auto-detects installed agent CLIs" },
   { pattern: /--install-dir\b/, message: "Install uses the machine default ~/.loop-factory" },
   { pattern: /\binstall --agent\b/, message: "Install auto-detects agent CLIs" },
+  { pattern: /docs\/superpowers\b/, message: "Do not default project truth to helper-tool scratch folders" },
   { pattern: /^name:\s*(requirement-intake|autonomous-pr-loop|reviewer-loop|verifier-loop)\b/m, message: "Internal loop workflows must not be public skills" },
 ];
 
@@ -101,8 +102,8 @@ const requiredSnippets = [
   },
   {
     file: "skills/loop-factory/references/autonomous-pr-loop.md",
-    snippet: "create or identify one before branch/worktree, design",
-    message: "Autonomous PR loop must create issue/task state before branch or design docs",
+    snippet: "before broad source exploration, requirement Q&A",
+    message: "Autonomous PR loop must create issue/task state before broad discovery",
   },
   {
     file: "skills/loop-factory/references/autonomous-pr-loop.md",
@@ -111,8 +112,8 @@ const requiredSnippets = [
   },
   {
     file: "templates/AGENTS.md",
-    snippet: "Create or identify GitHub issue/task packet before branch, worktree, commit",
-    message: "AGENTS template must force Factory Loop issue/task preflight",
+    snippet: "Create a draft GitHub issue/task packet from the rough request before broad",
+    message: "AGENTS template must force early draft task state",
   },
   {
     file: "templates/CLAUDE.md",
@@ -120,9 +121,24 @@ const requiredSnippets = [
     message: "CLAUDE template must reject Superpowers specs as task state",
   },
   {
+    file: "templates/CLAUDE.md",
+    snippet: "Loop Factory has precedence over helper skills",
+    message: "CLAUDE template must make helper skills subordinate to Loop Factory",
+  },
+  {
+    file: "templates/docs/agents/loop-factory.md",
+    snippet: "tool-owned scratch/spec folders are not canonical project truth",
+    message: "Loop Factory agent docs must keep canonical docs separate from helper scratch output",
+  },
+  {
     file: "docs/automatic-workflow-activation.md",
     snippet: "creates branch/commit/design doc/code before Factory Loop issue/task state",
     message: "Activation doc must list branch-before-issue as incorrect Loop Factory use",
+  },
+  {
+    file: "docs/automatic-workflow-activation.md",
+    snippet: "does broad source mapping, requirement Q&A, or brainstorming before creating",
+    message: "Activation doc must list broad-discovery-before-issue as incorrect Loop Factory use",
   },
 ];
 
@@ -133,7 +149,7 @@ for (const { file, snippet, message } of requiredSnippets) {
     continue;
   }
   const body = readFileSync(fullPath, "utf8");
-  if (!body.includes(snippet)) {
+  if (!normalizeForSnippet(body).includes(normalizeForSnippet(snippet))) {
     errors.push(`${file}: ${message}`);
   }
 }
@@ -210,4 +226,8 @@ function listTextFiles(directory) {
     }
   }
   return output;
+}
+
+function normalizeForSnippet(value) {
+  return value.replace(/\s+/g, " ").trim().toLowerCase();
 }

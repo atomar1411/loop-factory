@@ -1,6 +1,6 @@
 {
   "name": "@loop-factory/cli",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "type": "module",
   "bin": {
     "loop-factory": "./bin/loop-factory.js"

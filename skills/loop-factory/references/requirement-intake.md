@@ -20,16 +20,20 @@ Priority:
 
 ## Process
 
-1. Read existing repo truth and issue tracker rules.
-2. Ask only for blocking missing information.
-3. Classify autonomy level:
+1. Read existing repo truth and issue tracker rules just enough to classify.
+2. If the request is Factory Loop, create or identify a draft issue from the
+   rough request before broad source exploration, requirement Q&A, brainstorming,
+   branch/worktree, design doc, commit, or code.
+3. Ask only for blocking missing information, and record answers in the
+   issue/task packet.
+4. Classify autonomy level:
    - default `A2 Draft PR`,
    - lower if the repo is unknown,
    - higher only when policy exists.
-4. Split broad requirements into agent-sized issues.
-5. Write each issue with objective, scope, forbidden changes, verification, and
+5. Split broad requirements into agent-sized issues.
+6. Write each issue with objective, scope, forbidden changes, verification, and
    stop conditions.
-6. Add risk labels when supported.
+7. Add risk labels when supported.
 
 ## Output
 
@@ -43,6 +47,7 @@ Produce:
 - stop conditions.
 
 When GitHub CLI is available and the repo has a GitHub remote, create or update
-issues for Factory Loop work after confirming the task scope is safe. Use a
-local task packet only when GitHub is unavailable, explicitly disabled, or the
-request is advisory-only or Fast Path. Report links and next loop state.
+issues for Factory Loop work early. Start with a draft issue if the details are
+rough, then edit or comment as requirements settle. Use a local task packet only
+when GitHub is unavailable, explicitly disabled, or the request is advisory-only
+or Fast Path. Report links and next loop state.

@@ -21,8 +21,9 @@ activate this skill when intent is clear.
 
 ## First Moves
 
-1. Inspect `git status --short --branch`, `git remote -v`, `AGENTS.md`,
-   `CLAUDE.md`, `.github/`, `docs/`, and README files.
+1. Do lightweight triage only: inspect `git status --short --branch`,
+   `git remote -v`, `AGENTS.md`, `CLAUDE.md`, `.github/`, `docs/`, and README
+   files.
 2. Classify: setup, retrofit, intake, issue-to-PR, review, or verification.
 3. Load only the needed reference:
    - setup: `references/setup.md`
@@ -55,10 +56,19 @@ fallback, review, verification, skipped gates, residual risk, and next decision.
 
 After choosing Factory Loop, the next durable action must be task state:
 
-1. Create or identify a GitHub issue. If GitHub is unavailable or explicitly
-   disabled, create a local task packet and say why.
-2. Only then create/enter a branch or worktree.
-3. If the work creates a PRD, design spec, source-truth doc, or strategy
+1. Create a draft GitHub issue from the rough request before broad source
+   exploration, requirement Q&A, brainstorming, branch/worktree, design doc,
+   commit, or code. If GitHub is unavailable or explicitly disabled, create a
+   local task packet and say why.
+2. Update that issue/task packet as discovery and decisions settle.
+3. Only then create/enter a branch or worktree.
+4. Write PRDs, specs, and plans to the target repo's canonical truth/design
+   path or to issue/PR state. Tool-owned scratch/spec folders are not canonical
+   project truth unless the repo explicitly says they are.
+5. Loop Factory has precedence over helper skills. Helper skills can assist
+   thinking, but cannot replace issue/task state, alter route order, or choose
+   canonical doc paths.
+6. If the work creates a PRD, design spec, source-truth doc, or strategy
    research plan, run reviewer/doc review before implementation unless the
    developer explicitly approves skipping that review.
 
