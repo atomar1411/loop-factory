@@ -1,65 +1,140 @@
-<svg width="1100" height="360" viewBox="0 0 1100 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">Loop Factory delivery loop</title>
-  <desc id="desc">A human request becomes an issue, branch, implementation, review, verification, and pull request evidence.</desc>
-  <rect width="1100" height="360" rx="24" fill="#F8FAFC"/>
-  <rect x="30" y="30" width="1040" height="300" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Loop Factory agent delivery system</title>
+  <desc id="desc">A human request enters an agent factory, moves through a delivery loop of scope, issue, branch, code, review, verify, pull request, and decision, and leaves evidence in GitHub.</desc>
+
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#0F172A" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2 2L10 6L2 10" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-slate" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2 2L10 6L2 10" stroke="#475569" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect width="1280" height="720" rx="32" fill="#F8FAFC"/>
+  <rect x="32" y="32" width="1216" height="656" rx="28" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
 
   <g font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
-    <text x="62" y="82" fill="#0F172A" font-size="30" font-weight="800">The loop</text>
-    <text x="62" y="113" fill="#64748B" font-size="18" font-weight="500">Every step leaves reviewable state behind.</text>
+    <text x="72" y="94" fill="#0F172A" font-size="34" font-weight="850">Loop Factory: agent teams in a delivery loop</text>
+    <text x="72" y="129" fill="#475569" font-size="19" font-weight="500">Natural-language work enters a factory of roles. GitHub keeps the evidence trail.</text>
 
-    <g transform="translate(62,156)">
-      <rect width="118" height="70" rx="14" fill="#DBEAFE" stroke="#93C5FD"/>
-      <text x="25" y="32" fill="#1E3A8A" font-size="17" font-weight="800">Request</text>
-      <text x="22" y="54" fill="#1D4ED8" font-size="13" font-weight="700">normal text</text>
+    <g filter="url(#shadow)">
+      <rect x="72" y="186" width="250" height="170" rx="22" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="2"/>
     </g>
-    <g transform="translate(205,156)">
-      <rect width="118" height="70" rx="14" fill="#E0F2FE" stroke="#7DD3FC"/>
-      <text x="38" y="32" fill="#075985" font-size="17" font-weight="800">Issue</text>
-      <text x="22" y="54" fill="#0369A1" font-size="13" font-weight="700">task packet</text>
-    </g>
-    <g transform="translate(348,156)">
-      <rect width="118" height="70" rx="14" fill="#CCFBF1" stroke="#5EEAD4"/>
-      <text x="30" y="32" fill="#115E59" font-size="17" font-weight="800">Branch</text>
-      <text x="22" y="54" fill="#0F766E" font-size="13" font-weight="700">worktree</text>
-    </g>
-    <g transform="translate(491,156)">
-      <rect width="118" height="70" rx="14" fill="#DCFCE7" stroke="#86EFAC"/>
-      <text x="17" y="32" fill="#166534" font-size="17" font-weight="800">Implement</text>
-      <text x="29" y="54" fill="#15803D" font-size="13" font-weight="700">scoped</text>
-    </g>
-    <g transform="translate(634,156)">
-      <rect width="118" height="70" rx="14" fill="#FEF3C7" stroke="#FCD34D"/>
-      <text x="30" y="32" fill="#92400E" font-size="17" font-weight="800">Review</text>
-      <text x="25" y="54" fill="#B45309" font-size="13" font-weight="700">findings</text>
-    </g>
-    <g transform="translate(777,156)">
-      <rect width="118" height="70" rx="14" fill="#FCE7F3" stroke="#F9A8D4"/>
-      <text x="31" y="32" fill="#9D174D" font-size="17" font-weight="800">Verify</text>
-      <text x="25" y="54" fill="#BE185D" font-size="13" font-weight="700">evidence</text>
-    </g>
-    <g transform="translate(920,156)">
-      <rect width="118" height="70" rx="14" fill="#F1F5F9" stroke="#CBD5E1"/>
-      <text x="43" y="32" fill="#334155" font-size="17" font-weight="800">PR</text>
-      <text x="22" y="54" fill="#475569" font-size="13" font-weight="700">decision</text>
+    <text x="104" y="234" fill="#1E3A8A" font-size="22" font-weight="800">Human intent</text>
+    <text x="104" y="272" fill="#1E293B" font-size="24" font-weight="750">"Fix checkout</text>
+    <text x="104" y="303" fill="#1E293B" font-size="24" font-weight="750">retry behavior."</text>
+    <rect x="104" y="324" width="144" height="32" rx="16" fill="#DBEAFE"/>
+    <text x="124" y="346" fill="#1D4ED8" font-size="14" font-weight="800">normal prompt</text>
+
+    <path d="M328 271H363" stroke="#2563EB" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+    <text x="338" y="251" fill="#2563EB" font-size="14" font-weight="850">intake</text>
+
+    <g filter="url(#shadow)">
+      <rect x="410" y="182" width="430" height="374" rx="32" fill="#111827"/>
+      <rect x="440" y="212" width="370" height="314" rx="24" fill="#172033" stroke="#334155" stroke-width="2"/>
     </g>
 
-    <g stroke="#94A3B8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M184 191H199"/>
-      <path d="M193 185L200 191L193 197"/>
-      <path d="M327 191H342"/>
-      <path d="M336 185L343 191L336 197"/>
-      <path d="M470 191H485"/>
-      <path d="M479 185L486 191L479 197"/>
-      <path d="M613 191H628"/>
-      <path d="M622 185L629 191L622 197"/>
-      <path d="M756 191H771"/>
-      <path d="M765 185L772 191L765 197"/>
-      <path d="M899 191H914"/>
-      <path d="M908 185L915 191L908 197"/>
+    <text x="494" y="254" fill="#F8FAFC" font-size="29" font-weight="850">Agent Factory</text>
+    <text x="495" y="284" fill="#CBD5E1" font-size="16" font-weight="650">Separate roles. Shared source truth.</text>
+
+    <g>
+      <rect x="480" y="315" width="135" height="46" rx="12" fill="#DBEAFE" stroke="#60A5FA" stroke-width="2"/>
+      <text x="505" y="344" fill="#1E3A8A" font-size="16" font-weight="800">PRD Agent</text>
+
+      <rect x="635" y="315" width="135" height="46" rx="12" fill="#CCFBF1" stroke="#2DD4BF" stroke-width="2"/>
+      <text x="656" y="344" fill="#115E59" font-size="16" font-weight="800">Architect</text>
+
+      <rect x="480" y="379" width="135" height="46" rx="12" fill="#DCFCE7" stroke="#4ADE80" stroke-width="2"/>
+      <text x="512" y="408" fill="#166534" font-size="16" font-weight="800">Coder</text>
+
+      <rect x="635" y="379" width="135" height="46" rx="12" fill="#FEF3C7" stroke="#FBBF24" stroke-width="2"/>
+      <text x="668" y="408" fill="#92400E" font-size="16" font-weight="800">Reviewer</text>
+
+      <rect x="480" y="443" width="135" height="46" rx="12" fill="#FCE7F3" stroke="#F472B6" stroke-width="2"/>
+      <text x="518" y="472" fill="#9D174D" font-size="16" font-weight="800">Tester</text>
+
+      <rect x="635" y="443" width="135" height="46" rx="12" fill="#EDE9FE" stroke="#A78BFA" stroke-width="2"/>
+      <text x="665" y="472" fill="#5B21B6" font-size="16" font-weight="800">Verifier</text>
     </g>
 
-    <text x="62" y="286" fill="#334155" font-size="17" font-weight="700">Stop gates:</text>
-    <text x="160" y="286" fill="#64748B" font-size="17" font-weight="500">product semantics, money, security, deployment, service boundaries, irreversible actions.</text>
+    <rect x="550" y="508" width="150" height="36" rx="18" fill="#0F766E"/>
+    <text x="580" y="532" fill="#ECFEFF" font-size="15" font-weight="850">Gatekeeper</text>
+
+    <path d="M625 152C760 152 878 232 932 348" stroke="#CBD5E1" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 10"/>
+    <path d="M932 372C878 488 760 568 625 568" stroke="#CBD5E1" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 10"/>
+    <path d="M625 568C490 568 372 488 318 372" stroke="#CBD5E1" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 10"/>
+    <path d="M318 348C372 232 490 152 625 152" stroke="#CBD5E1" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 10"/>
+
+    <g filter="url(#shadow)">
+      <rect x="550" y="136" width="150" height="50" rx="25" fill="#1D4ED8"/>
+      <text x="595" y="167" fill="#EFF6FF" font-size="16" font-weight="850">Issue</text>
+    </g>
+    <g filter="url(#shadow)">
+      <rect x="338" y="247" width="140" height="50" rx="25" fill="#0891B2"/>
+      <text x="385" y="278" fill="#ECFEFF" font-size="16" font-weight="850">Scope</text>
+    </g>
+    <g filter="url(#shadow)">
+      <rect x="294" y="349" width="146" height="50" rx="25" fill="#334155"/>
+      <text x="331" y="380" fill="#F8FAFC" font-size="16" font-weight="850">Decision</text>
+    </g>
+    <g filter="url(#shadow)">
+      <rect x="338" y="471" width="140" height="50" rx="25" fill="#7C3AED"/>
+      <text x="396" y="502" fill="#F5F3FF" font-size="16" font-weight="850">PR</text>
+    </g>
+    <g filter="url(#shadow)">
+      <rect x="550" y="552" width="150" height="50" rx="25" fill="#BE185D"/>
+      <text x="593" y="583" fill="#FDF2F8" font-size="16" font-weight="850">Verify</text>
+    </g>
+    <g filter="url(#shadow)">
+      <rect x="772" y="471" width="140" height="50" rx="25" fill="#B45309"/>
+      <text x="814" y="502" fill="#FFFBEB" font-size="16" font-weight="850">Review</text>
+    </g>
+    <g filter="url(#shadow)">
+      <rect x="812" y="349" width="132" height="50" rx="25" fill="#15803D"/>
+      <text x="860" y="380" fill="#F0FDF4" font-size="16" font-weight="850">Code</text>
+    </g>
+    <g filter="url(#shadow)">
+      <rect x="772" y="247" width="140" height="50" rx="25" fill="#0F766E"/>
+      <text x="818" y="278" fill="#ECFEFF" font-size="16" font-weight="850">Branch</text>
+    </g>
+
+    <path d="M944 374H974" stroke="#475569" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow-slate)"/>
+    <text x="874" y="337" fill="#64748B" font-size="14" font-weight="850">evidence out</text>
+
+    <g filter="url(#shadow)">
+      <rect x="966" y="186" width="242" height="380" rx="24" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+    </g>
+    <text x="1002" y="234" fill="#0F172A" font-size="23" font-weight="850">GitHub trail</text>
+    <text x="1002" y="264" fill="#475569" font-size="15" font-weight="600">Reviewable state, not chat fog.</text>
+
+    <g>
+      <rect x="1000" y="300" width="170" height="40" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+      <circle cx="1022" cy="320" r="6" fill="#1D4ED8"/>
+      <text x="1040" y="326" fill="#1E293B" font-size="15" font-weight="800">Issue scope</text>
+
+      <rect x="1000" y="356" width="170" height="40" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+      <circle cx="1022" cy="376" r="6" fill="#0F766E"/>
+      <text x="1040" y="382" fill="#1E293B" font-size="15" font-weight="800">Clean branch</text>
+
+      <rect x="1000" y="412" width="170" height="40" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+      <circle cx="1022" cy="432" r="6" fill="#B45309"/>
+      <text x="1040" y="438" fill="#1E293B" font-size="15" font-weight="800">Review notes</text>
+
+      <rect x="1000" y="468" width="170" height="40" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+      <circle cx="1022" cy="488" r="6" fill="#BE185D"/>
+      <text x="1040" y="494" fill="#1E293B" font-size="15" font-weight="800">Checks run</text>
+
+      <rect x="1000" y="524" width="170" height="40" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+      <circle cx="1022" cy="544" r="6" fill="#334155"/>
+      <text x="1040" y="550" fill="#1E293B" font-size="15" font-weight="800">Merge choice</text>
+    </g>
+
+    <rect x="72" y="610" width="1136" height="50" rx="18" fill="#F1F5F9" stroke="#E2E8F0"/>
+    <text x="104" y="642" fill="#334155" font-size="17" font-weight="800">Factory rule:</text>
+    <text x="220" y="642" fill="#64748B" font-size="17" font-weight="600">agents keep moving, humans decide product, risk, security, merge, and deploy.</text>
   </g>
 </svg>
