@@ -16,21 +16,23 @@ npx --yes github:atomar1411/loop-factory install
 Enable it in a project:
 
 ```bash
-npx --yes github:atomar1411/loop-factory setup --target /path/to/project
+cd /path/to/project
+npx --yes github:atomar1411/loop-factory setup
 ```
 
 After npm publication:
 
 ```bash
 npx loop-factory install
-npx loop-factory setup --target /path/to/project
+npx loop-factory setup
 ```
 
 When the target project has a GitHub remote and you want to verify issue/PR
 access:
 
 ```bash
-npx --yes github:atomar1411/loop-factory doctor --target /path/to/project
+cd /path/to/project
+npx --yes github:atomar1411/loop-factory doctor
 ```
 
 ## Machine Install
@@ -40,11 +42,8 @@ plugin marketplace for Codex when available, and validates Claude Code plugin
 metadata when Claude is installed.
 
 ```bash
-npx --yes github:atomar1411/loop-factory install --agent both
+npx --yes github:atomar1411/loop-factory install
 ```
-
-Use `--agent codex`, `--agent claude`, or `--agent none` to narrow what the
-install command configures.
 
 ## Project Setup
 
@@ -79,7 +78,7 @@ Useful checks:
 ```bash
 codex plugin marketplace list
 codex plugin list
-npx --yes github:atomar1411/loop-factory doctor --target /path/to/project --agent codex
+npx --yes github:atomar1411/loop-factory doctor
 ```
 
 Expected plugin skills:

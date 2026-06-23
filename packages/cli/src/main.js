@@ -49,12 +49,10 @@ function parseArgs(args) {
   const [command = "help", ...rest] = args;
   const positional = [];
   const options = {
-    agent: "none",
-    agentExplicit: false,
+    agent: "auto",
     createIssue: false,
     execute: false,
     force: false,
-    installDir: path.join(os.homedir(), ".loop-factory"),
     labels: "",
     mode: "standard",
     target: process.cwd(),
@@ -63,7 +61,6 @@ function parseArgs(args) {
     const arg = rest[index];
     if (arg === "--agent") {
       options.agent = rest[index + 1] ?? options.agent;
-      options.agentExplicit = true;
       index += 1;
     } else if (arg === "--create-issue") {
       options.createIssue = true;
@@ -73,9 +70,6 @@ function parseArgs(args) {
       options.force = true;
     } else if (arg === "--issue") {
       options.issue = rest[index + 1];
-      index += 1;
-    } else if (arg === "--install-dir") {
-      options.installDir = path.resolve(expandHome(rest[index + 1] ?? ""));
       index += 1;
     } else if (arg === "--labels") {
       options.labels = rest[index + 1] ?? "";
@@ -94,9 +88,8 @@ function parseArgs(args) {
 }
 
 function install(options) {
-  const installDir = path.resolve(options.installDir);
-  const agent = options.agentExplicit ? options.agent : "both";
-  assertAgent(agent);
+  const installDir = loopFactoryHome();
+  const agent = "both";
 
   console.log("== Loop Factory machine install ==");
   ensureStableCheckout(installDir, options.force);
@@ -112,9 +105,10 @@ function install(options) {
   console.log("");
   console.log("Next:");
   console.log("1. Enable Loop Factory in a project:");
-  console.log(`   ${cliName()} setup --target ${quote(process.cwd())}`);
+  console.log("   cd /path/to/project");
+  console.log(`   ${cliName()} setup`);
   console.log("2. Verify the project:");
-  console.log(`   ${cliName()} doctor --target ${quote(process.cwd())} --agent ${agent}`);
+  console.log(`   ${cliName()} doctor`);
 }
 
 function setup(options) {
@@ -134,7 +128,7 @@ function setup(options) {
   console.log('   "Create PRDs for onboarding before implementation."');
   console.log('   "Review PR #42, address comments, and verify the branch."');
   console.log("4. When GitHub and plugins are ready, verify the setup:");
-  console.log(`   ${cliName()} doctor --target ${quote(path.resolve(options.target))} --agent both`);
+  console.log(`   ${cliName()} doctor`);
 }
 
 function init(options) {
@@ -270,8 +264,12 @@ function doctor(options) {
     }
   }
 
-  if (options.agent === "codex" || options.agent === "both") {
-    const codexAvailable = commandExists("codex");
+  const codexAvailable = commandExists("codex");
+  const claudeAvailable = commandExists("claude");
+  const checkCodex = options.agent === "codex" || options.agent === "both" || (options.agent === "auto" && codexAvailable);
+  const checkClaude = options.agent === "claude" || options.agent === "both" || (options.agent === "auto" && claudeAvailable);
+
+  if (checkCodex) {
     addCheck(checks, "codex CLI installed", codexAvailable);
     if (codexAvailable) {
       const marketplace = runCommand("codex", ["plugin", "marketplace", "list"]);
@@ -286,8 +284,7 @@ function doctor(options) {
     }
   }
 
-  if (options.agent === "claude" || options.agent === "both") {
-    const claudeAvailable = commandExists("claude");
+  if (checkClaude) {
     addCheck(checks, "claude CLI installed", claudeAvailable);
     if (claudeAvailable) {
       const validate = runCommand("claude", ["plugin", "validate", repoRoot]);
@@ -445,24 +442,26 @@ function help() {
   console.log(`Loop Factory
 
 Usage:
-  loop-factory install [--agent codex|claude|both] [--install-dir <path>] [--force]
-  loop-factory setup [--target <repo>] [--mode minimal|standard] [--force]
-  loop-factory init [--target <repo>] [--mode minimal|standard] [--force]
-  loop-factory doctor [--target <repo>] [--agent none|codex|claude|both]
+  loop-factory install
+  loop-factory setup
+  loop-factory doctor
 
 Machine install:
   loop-factory install
   npx --yes github:atomar1411/loop-factory install
 
 Project setup:
-  loop-factory setup --target .
-  npx --yes github:atomar1411/loop-factory setup --target .
+  loop-factory setup
+  npx --yes github:atomar1411/loop-factory setup
 
 Daily developer UX:
   Open Codex or Claude Code in the target repo and describe the software work.
   Example: "Fix checkout retry behavior and run it through Loop Factory."
 
 Automation commands:
+  loop-factory setup [--target <repo>] [--mode minimal|standard] [--force]
+  loop-factory init [--target <repo>] [--mode minimal|standard] [--force]
+  loop-factory doctor [--target <repo>] [--agent codex|claude|both]
   loop-factory intake "requirement" [--target <repo>] [--create-issue] [--labels "lf:intake"]
   loop-factory run --issue <number-or-url> [--target <repo>] [--agent codex|claude] [--execute]
 `);
@@ -471,12 +470,6 @@ Automation commands:
 function assertMode(mode) {
   if (!["minimal", "standard"].includes(mode)) {
     throw new Error(`Unknown mode: ${mode}`);
-  }
-}
-
-function assertAgent(agent) {
-  if (!["none", "codex", "claude", "both"].includes(agent)) {
-    throw new Error(`Unknown agent: ${agent}`);
   }
 }
 
@@ -604,14 +597,8 @@ function quote(value) {
   return JSON.stringify(value);
 }
 
-function expandHome(value) {
-  if (value === "~") {
-    return os.homedir();
-  }
-  if (value.startsWith(`~${path.sep}`)) {
-    return path.join(os.homedir(), value.slice(2));
-  }
-  return value;
+function loopFactoryHome() {
+  return path.join(os.homedir(), ".loop-factory");
 }
 
 function shellCommand(parts) {

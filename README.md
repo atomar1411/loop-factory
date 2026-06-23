@@ -111,14 +111,14 @@ Enable it in a project:
 
 ```bash
 cd /path/to/project
-npx --yes github:atomar1411/loop-factory setup --target .
+npx --yes github:atomar1411/loop-factory setup
 ```
 
 After npm publication:
 
 ```bash
 npx loop-factory install
-npx loop-factory setup --target .
+npx loop-factory setup
 ```
 
 Then give Codex or Claude Code real software work:
@@ -265,14 +265,15 @@ replace them.
 Verify a bootstrapped project:
 
 ```bash
-npx --yes github:atomar1411/loop-factory doctor --target /path/to/project --agent both
+cd /path/to/project
+npx --yes github:atomar1411/loop-factory doctor
 ```
 
 After npm publication:
 
 ```bash
-npx loop-factory setup --target /path/to/project
-npx loop-factory doctor --target /path/to/project --agent both
+cd /path/to/project
+npx loop-factory doctor
 ```
 
 See [Installation And Setup](docs/installation.md) for the full setup path.

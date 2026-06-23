@@ -19,13 +19,14 @@ npx loop-factory install
 ## 2. Bootstrap Your Project
 
 ```bash
-npx --yes github:atomar1411/loop-factory setup --target /path/to/project
+cd /path/to/project
+npx --yes github:atomar1411/loop-factory setup
 ```
 
 After npm publication:
 
 ```bash
-npx loop-factory setup --target /path/to/project
+npx loop-factory setup
 ```
 
 This installs the repo-local operating files:
@@ -41,7 +42,8 @@ This installs the repo-local operating files:
 After the target repo has a GitHub `origin` remote, verify connectivity:
 
 ```bash
-npx --yes github:atomar1411/loop-factory doctor --target /path/to/project
+cd /path/to/project
+npx --yes github:atomar1411/loop-factory doctor
 ```
 
 This checks:
@@ -52,15 +54,8 @@ This checks:
 - whether `origin` is a GitHub repo,
 - `gh` CLI installation,
 - `gh auth status`,
-- `gh repo view` access.
-
-To also check agent plugin availability:
-
-```bash
-npx --yes github:atomar1411/loop-factory doctor --target /path/to/project --agent codex
-npx --yes github:atomar1411/loop-factory doctor --target /path/to/project --agent claude
-npx --yes github:atomar1411/loop-factory doctor --target /path/to/project --agent both
-```
+- `gh repo view` access,
+- Codex or Claude Code plugin visibility when those CLIs are installed.
 
 ## 4. Give The Software Work
 
