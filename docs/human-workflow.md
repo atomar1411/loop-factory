@@ -7,7 +7,7 @@ This is the normal Loop Factory path for a human developer or architect.
 Clone the framework:
 
 ```bash
-git clone https://github.com/loop-factory/loop-factory.git
+git clone https://github.com/atomar1411/loop-factory.git
 cd loop-factory
 npm run check
 ```

@@ -5,8 +5,8 @@
   "author": {
     "name": "Loop Factory contributors"
   },
-  "homepage": "https://github.com/loop-factory/loop-factory",
-  "repository": "https://github.com/loop-factory/loop-factory",
+  "homepage": "https://github.com/atomar1411/loop-factory",
+  "repository": "https://github.com/atomar1411/loop-factory",
   "license": "MIT",
   "keywords": [
     "agent-loop",
@@ -32,10 +32,9 @@
       "Set up Loop Factory in this repo.",
       "Turn this requirement into an autonomous issue-to-PR loop."
     ],
-    "websiteURL": "https://github.com/loop-factory/loop-factory",
-    "privacyPolicyURL": "https://github.com/loop-factory/loop-factory",
-    "termsOfServiceURL": "https://github.com/loop-factory/loop-factory",
+    "websiteURL": "https://github.com/atomar1411/loop-factory",
+    "privacyPolicyURL": "https://github.com/atomar1411/loop-factory",
+    "termsOfServiceURL": "https://github.com/atomar1411/loop-factory",
     "brandColor": "#2563EB"
   }
 }
-

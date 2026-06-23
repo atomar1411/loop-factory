@@ -41,7 +41,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/loop-factory/loop-factory.git"
+    "url": "https://github.com/atomar1411/loop-factory.git"
   },
   "engines": {
     "node": ">=20"
