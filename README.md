@@ -1,195 +1,20 @@
 # Loop Factory
 
-Loop Factory is a Git-first operating model for software teams using Codex,
-Claude Code, or other coding agents.
+[![GitHub repo](https://img.shields.io/badge/GitHub-atomar1411%2Floop--factory-181717?logo=github)](https://github.com/atomar1411/loop-factory)
+[![License: MIT](https://img.shields.io/badge/License-MIT-0f766e.svg)](LICENSE)
+[![Node 20+](https://img.shields.io/badge/Node-20%2B-2563eb.svg)](package.json)
 
-A human describes the work in normal language. The agents turn that work into
-issues, task packets, branches, pull requests, reviews, verification, and
-evidence. The human stays in control of product decisions, risk decisions,
-merge, and deployment.
+![Loop Factory banner](assets/loop-factory-banner.svg)
 
-The goal is simple: make AI-assisted software work observable, repeatable, and
-reviewable.
+Turn natural-language coding requests into reviewed, verified pull requests.
 
-## Why This Exists
+Loop Factory gives Codex, Claude Code, and other coding agents a simple delivery
+loop: issue, branch, implementation, review, verification, pull request. Humans
+stay in charge of product meaning, risk, merge, and deployment.
 
-AI coding breaks down when important work lives only in chat.
+No dashboards. No hidden state. No special command to start normal work.
 
-Context gets stale. Agents make assumptions. Review happens too late. Two
-threads touch the same files. Tests are skipped or summarized vaguely. Humans
-become traffic managers, copying context between tools and asking every agent
-what happened.
-
-Loop Factory moves the work into durable project artifacts:
-
-- source code,
-- source-truth docs,
-- GitHub issues,
-- branches and worktrees,
-- pull requests,
-- checks, review comments, and verification evidence.
-
-Private model memory and scratch notes may help an agent think, but they are not
-project truth.
-
-## The Core Idea
-
-Loop Factory is built around two ideas: a loop and a factory.
-
-### What Is A Loop?
-
-A loop is a repeatable path from intent to evidence.
-
-```text
-human request
-  -> requirement intake
-  -> issue or task packet
-  -> branch and worktree
-  -> implementation
-  -> review
-  -> verification
-  -> pull request evidence
-  -> human decision, merge, or escalation
-```
-
-The loop is not just a checklist. It is a control system. At every stage, the
-agent knows what it owns, what it must read, what it must prove, and when it
-must stop.
-
-### What Is A Factory?
-
-A factory is a set of roles and handoffs that make the loop reliable.
-
-Instead of one long-running chat trying to do everything, Loop Factory gives the
-work to clear roles:
-
-| Role | Responsibility |
-| --- | --- |
-| Orchestrator | Splits work, creates task packets, routes agents, prevents overlap. |
-| Issue Triager | Turns rough requests, bugs, and review comments into workable issues. |
-| Product PRD Agent | Writes product requirements, acceptance criteria, and non-goals. |
-| Architecture Reviewer | Checks service boundaries, contracts, diagrams, and source truth. |
-| Implementer | Makes scoped source or documentation changes in one branch or worktree. |
-| Reviewer | Reviews the diff against the task, docs, and evidence. |
-| Verifier | Runs command gates and records pass/fail evidence. |
-| Tester | Runs outside-in checks such as app startup, Docker, browser flows, logs, and database inspection. |
-| Gatekeeper | Enforces risk gates, autonomy level, evidence, and merge/deploy rules. |
-| Release Manager | Coordinates release readiness, rollout notes, and cleanup. |
-
-The same runtime can play several roles, but the responsibilities stay separate.
-That separation is what keeps the work auditable.
-
-## Principles
-
-Loop Factory follows a few hard rules.
-
-1. **Git is the coordination spine.** Issues, branches, commits, PRs, and checks
-   carry the state of the work.
-2. **Source truth beats chat.** Product, architecture, deployment, and agent
-   rules belong in committed files.
-3. **One task owns one lane.** A meaningful task gets one branch and, when
-   needed, one worktree.
-4. **Agents should not overlap blindly.** Parallel work needs explicit owned
-   files, scope, and risk boundaries.
-5. **Evidence comes before completion.** Tests, logs, screenshots, DB checks,
-   Docker checks, or production smoke results must be reported honestly.
-6. **Humans decide meaning and risk.** Agents can move fast inside the loop, but
-   they stop for product semantics, money, legal, safety, security, deployment,
-   service boundaries, and irreversible operations.
-7. **Natural language is the interface.** Humans should not need to remember a
-   special command to start normal work.
-
-## The Human Role
-
-Humans become friction when they have to manually coordinate every handoff:
-
-- rewrite requirements for each agent,
-- remind agents which docs matter,
-- ask whether tests ran,
-- copy review comments between tools,
-- track branches and open PRs by memory,
-- decide whether vague claims are trustworthy.
-
-Loop Factory removes that coordination burden. The human gives direction,
-reviews product and architecture, approves risky decisions, reviews PRs when
-policy requires it, and controls merge or deployment.
-
-The human is not removed from the system. The human is moved to the decisions
-where judgment matters.
-
-## How Work Starts
-
-After Loop Factory is installed in a repo, the human speaks normally inside
-Codex or Claude Code:
-
-```text
-Fix checkout retry behavior.
-Create PRDs for the onboarding experience before code changes.
-Review PR #42, address comments, and verify the branch.
-Clean up stale docs and create tasks for the architecture gaps you find.
-```
-
-The agent should infer whether the prompt is a requirement, bug, review,
-cleanup, product task, architecture task, implementation task, or verification
-task. If durable state is useful, it creates or updates the issue, task packet,
-branch, PR, or evidence trail.
-
-Commands exist for setup, CI, and automation. They are not the daily human
-interface.
-
-## How Humans Track Work
-
-Loop Factory uses GitHub as the normal tracking surface.
-
-- **Issues** describe the task, acceptance criteria, owned scope, forbidden
-  changes, verification, and stop conditions.
-- **Branches and worktrees** isolate implementation work.
-- **Pull requests** show the diff, linked issue, review result, commands run,
-  verification result, skipped gates, and residual risk.
-- **Review comments** capture design, code, product, security, and test
-  findings.
-- **Checks** carry repeatable validation.
-- **Final reports** summarize changed files, evidence, and decisions needed.
-
-No hidden dashboard is required for correctness. A dashboard can be useful later,
-but it should mirror GitHub and committed files, not replace them.
-
-## When Agents Stop
-
-Agents should continue through routine implementation, review, and verification.
-They should stop and ask when a decision affects:
-
-- product semantics,
-- money movement,
-- legal or compliance behavior,
-- safety or data loss,
-- security posture,
-- production deployment or secrets,
-- service boundaries,
-- irreversible operations,
-- merge or deploy authority.
-
-A stop request should explain the decision, why it matters, the options, the
-recommended path, the risk if wrong, and the files or systems affected.
-
-## What Gets Installed In A Repo
-
-Loop Factory bootstraps a target repo with operating files that agents and
-humans can inspect in Git:
-
-```text
-AGENTS.md
-CLAUDE.md
-docs/agents/*
-docs/truth/README.md
-.github/ISSUE_TEMPLATE/requirement.yml
-.github/PULL_REQUEST_TEMPLATE.md
-```
-
-These files tell agents how to load context, how to form task packets, how to
-respect risk gates, and how to report evidence.
-
-## Install
+## Quickstart
 
 Clone and validate Loop Factory:
 
@@ -199,70 +24,204 @@ cd loop-factory
 npm run check
 ```
 
-Install the plugin in Codex:
+Install it in Codex:
 
 ```bash
 codex plugin marketplace add "$(pwd)"
 codex plugin add loop-factory@loop-factory-local
 ```
 
-Load the plugin in Claude Code:
+Load it in Claude Code:
 
 ```bash
 claude --plugin-dir "$(pwd)"
 ```
 
-Bootstrap a target project:
+Bootstrap a project:
 
 ```bash
 node packages/cli/bin/loop-factory.js setup --target /path/to/project
 ```
 
-Verify the target project:
+Then open Codex or Claude Code in that project and speak normally:
+
+```text
+Fix checkout retry behavior and open a draft PR.
+Create PRDs for onboarding before code changes.
+Review PR #42, address comments, and verify the branch.
+```
+
+The agent should infer the loop, create durable task state when useful, work in
+a clean lane, and report evidence.
+
+## Why Loop Factory Exists
+
+Coding agents are fast. Software teams are careful. Loop Factory connects those
+two realities.
+
+### #1: Work Disappears In Chat
+
+**The problem.** A chat thread can contain the requirement, the plan, the test
+output, the review, and the final decision. Then another agent starts with none
+of it.
+
+**The fix.** Loop Factory moves durable state into GitHub and the repo:
+
+- issues for task scope,
+- branches and worktrees for isolated changes,
+- pull requests for review,
+- checks and comments for evidence,
+- `docs/truth/*` for project facts.
+
+Private memory can help an agent think. It is not the source of truth.
+
+### #2: Humans Become The Traffic Controller
+
+**The problem.** The human ends up copying context between agents, asking which
+tests ran, checking who touched what, and deciding whether vague progress claims
+are real.
+
+**The fix.** Loop Factory gives every task the same path:
+
+![Loop Factory delivery loop](assets/loop-factory-loop.svg)
+
+The human gives direction, reviews important decisions, and controls merge or
+deployment. The loop carries the coordination.
+
+### #3: Agents Drift From The Requirement
+
+**The problem.** A broad prompt becomes a broad patch. Files expand, scope
+creeps, and review happens after the agent has already committed to the wrong
+shape.
+
+**The fix.** Loop Factory makes agents work from a task packet:
+
+- objective,
+- owned files or area,
+- forbidden changes,
+- required source-truth docs,
+- verification gates,
+- stop conditions.
+
+If the task needs product or architecture judgment, the loop stops and asks.
+
+### #4: "Done" Has No Evidence
+
+**The problem.** Agents often say work is done without enough proof. Tests might
+not have run. Logs might not have been checked. A browser flow might still be
+broken.
+
+**The fix.** Every meaningful task must report:
+
+- changed files,
+- commands run,
+- pass/fail results,
+- review findings,
+- verification evidence,
+- skipped gates,
+- residual risk.
+
+Evidence is part of the output, not an afterthought.
+
+## What Gets Installed
+
+Loop Factory bootstraps a target repository with reviewable operating files:
+
+```text
+AGENTS.md
+CLAUDE.md
+docs/agents/
+docs/truth/README.md
+.github/ISSUE_TEMPLATE/requirement.yml
+.github/PULL_REQUEST_TEMPLATE.md
+```
+
+These files tell agents how to load context, when to create issues, how to use
+worktrees, what evidence to report, and when to stop.
+
+## How Agents Work
+
+Loop Factory uses roles. A single runtime can perform several roles, but the
+responsibilities stay separate.
+
+| Role | Responsibility |
+| --- | --- |
+| Orchestrator | Splits work, creates task packets, routes agents, prevents overlap. |
+| Issue Triager | Turns rough requests, bugs, and review comments into workable issues. |
+| Product PRD Agent | Writes requirements, acceptance criteria, and non-goals. |
+| Architecture Reviewer | Checks boundaries, contracts, diagrams, and source truth. |
+| Implementer | Makes scoped source or documentation changes. |
+| Reviewer | Reviews the diff against the task, docs, and evidence. |
+| Verifier | Runs command gates and records pass/fail evidence. |
+| Tester | Runs outside-in checks such as app startup, Docker, browser flows, logs, and DB inspection. |
+| Gatekeeper | Enforces risk gates, autonomy level, evidence, and merge/deploy rules. |
+| Release Manager | Coordinates release readiness, rollout notes, and cleanup. |
+
+## Human Control
+
+Agents can continue through routine implementation, review, and verification.
+They stop before changing:
+
+- product semantics,
+- money movement,
+- legal or compliance behavior,
+- safety or data-loss behavior,
+- security posture,
+- deployment config or secrets,
+- service boundaries,
+- irreversible operations,
+- merge or deploy state.
+
+The point is not to remove humans. The point is to move humans to the decisions
+where judgment matters.
+
+## Tracking Work
+
+GitHub is the default workbench.
+
+- **Issues** hold the task and acceptance criteria.
+- **Branches and worktrees** isolate implementation.
+- **Pull requests** hold the diff, linked issue, review result, commands run,
+  verification result, skipped gates, and residual risk.
+- **Comments** carry review findings and decision requests.
+- **Checks** carry repeatable validation.
+
+A dashboard can be useful later. It should mirror GitHub and committed files,
+not replace them.
+
+## Install Details
+
+Verify a bootstrapped project:
 
 ```bash
 node packages/cli/bin/loop-factory.js doctor --target /path/to/project --agent both
 ```
 
-After npm publication, the same setup will be available through:
+After npm publication:
 
 ```bash
 npx loop-factory setup --target /path/to/project
 npx loop-factory doctor --target /path/to/project --agent both
 ```
 
-See [Installation And Setup](docs/installation.md) for the full install path.
+See [Installation And Setup](docs/installation.md) for the full setup path.
 
-## Use
-
-Open Codex or Claude Code in the target repo and speak normally:
-
-```text
-Build the account settings page and open a draft PR.
-Turn this checkout bug into tasks and start the fix.
-Review the current PR against the product docs and test evidence.
-Create architecture docs first; do not change code until I approve them.
-```
-
-The agent should load the repo instructions, inspect source truth, create durable
-task state when useful, choose the right roles, work in a clean lane, verify the
-result, and report what remains.
-
-## Project Layout
+## Repository Layout
 
 ```text
 .codex-plugin/          Codex plugin manifest
 .claude-plugin/         Claude Code plugin manifest
 agents/                 Claude Code plugin agent role prompts
+assets/                 README images and diagrams
 docs/                   Framework architecture and operating docs
 packages/cli/           Bootstrap, doctor, and automation CLI
 scripts/                Validation helpers
 skills/                 Codex and Claude-compatible skills
-templates/              Files copied into target repos
+templates/              Files copied into target repositories
 examples/               Minimal target repo examples
 ```
 
-## Documentation
+## Reference
 
 - [Natural Language Activation](docs/natural-language-activation.md)
 - [Human Workflow](docs/human-workflow.md)
@@ -273,10 +232,8 @@ examples/               Minimal target repo examples
 
 ## Status
 
-Loop Factory is in foundation stage. The current version defines the operating
-model, plugin structure, core skills, agent roles, repo templates, and bootstrap
-CLI.
+Loop Factory is early. The current release is the foundation: plugin manifests,
+skills, agent roles, repo templates, and a bootstrap CLI.
 
-It is meant to be practical before it is fancy: source truth first, GitHub as
-the tracking surface, evidence before completion, and humans in control of
-important decisions.
+The promise is intentionally small: keep agent work in Git, keep evidence close
+to the pull request, and keep humans in control of important decisions.
