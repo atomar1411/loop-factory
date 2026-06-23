@@ -64,6 +64,11 @@ plugin is loaded:
 Issue triage, Product PRD, architecture, docs, security, and release management
 run as lazy specialist modes inside the active profiles.
 
+For complex Factory Loop work, Claude Code should create a Delivery DAG before
+implementation, dispatch ready non-overlapping nodes through separate
+implementers when available, and join the graph before final review and
+verification.
+
 ## Readiness
 
 GitHub/`gh` lets Claude Code create issues, draft PRs, labels, comments, and

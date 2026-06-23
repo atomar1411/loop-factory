@@ -91,10 +91,12 @@ keeps route order and canonical docs.
 The developer does not run the loop manually. The agent should:
 
 - read `AGENTS.md`, `CLAUDE.md`, `docs/agents/*`, and source truth,
-- split broad requests into agent-sized work when using Factory Loop,
+- split broad requests into a Delivery DAG when using Factory Loop,
 - create or identify GitHub issue/task state before broad discovery, branch, or
   code,
-- create one branch/worktree per Factory Loop implementation task,
+- create one branch/worktree per implementation node,
+- run ready DAG nodes through separate implementer agents when ownership does
+  not overlap, then join the graph before final review,
 - write PRDs, specs, and plans in the repo's canonical truth/design path or
   issue/PR state,
 - review PRD/design/source-truth/strategy research docs before implementation
@@ -102,6 +104,10 @@ The developer does not run the loop manually. The agent should:
 - run the smallest useful set of agent profiles,
 - post issue/PR evidence when using Factory Loop,
 - stop only at declared stop conditions.
+
+For complex work, the Delivery DAG is required before implementation. A broad
+one-agent packet is acceptable only when the graph says the work is truly
+sequential and records why parallel implementers would be unsafe.
 
 The developer can steer the loop:
 

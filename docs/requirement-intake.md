@@ -25,6 +25,7 @@ The intake loop creates or updates:
 - issue title,
 - problem statement,
 - acceptance criteria,
+- Delivery DAG for complex Factory Loop work,
 - owned area,
 - forbidden changes,
 - autonomy level,
@@ -46,6 +47,12 @@ Split a requirement when it contains:
 
 Prefer several agent-sized issues over one epic issue. Keep the parent issue as
 a coordination index when needed.
+
+For complex work inside one issue, write a Delivery DAG before implementation.
+Each node needs objective, owned files or area, dependencies, assigned profile,
+branch/worktree lane, verification, evidence target, and stop conditions. Ready
+nodes can run through separate implementers only when ownership does not
+overlap.
 
 ## Good Brief Example
 

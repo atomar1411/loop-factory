@@ -77,11 +77,28 @@ After choosing Factory Loop, the next durable action must be task state:
 Branch names, commits, chat plans, Superpowers specs, local markdown notes, and
 memory are not substitutes for issue/task state.
 
+## Delivery DAG
+
+Complex Factory Loop work requires a Delivery DAG before implementation.
+
+Create the DAG when work has multiple meaningful tasks, modules, services,
+phases, PRD/design dependencies, or independent implementation lanes. Each node
+must name objective, owned files or area, dependencies, assigned profile,
+branch/worktree lane, verification, evidence target, and stop conditions.
+
+Run ready nodes with non-overlapping ownership through separate implementer
+agents when the runtime supports parallel agents. Wait at dependency edges. Add
+a join/integration node before final review and verification. If parallel agents
+are unavailable, execute the same DAG sequentially and report that fallback.
+
+Do not send a broad multi-task Factory Loop to one implementer unless the DAG
+marks it sequential and explains why splitting would be unsafe.
+
 ## Rules
 
 - Store project truth in the target repo, not private memory.
 - Use GitHub issues and PRs as task state for Factory Loop work.
-- Use one branch/worktree per Factory Loop implementation task.
+- Use one branch/worktree per Factory Loop implementation node.
 - Continue until a stop condition.
 - Stop for product, money, legal, safety, deployment, service-boundary, or
   irreversible decisions.

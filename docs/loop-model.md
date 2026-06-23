@@ -15,6 +15,20 @@ rough developer requirement
 
 Output: an issue ready for an agent.
 
+## Orchestration Loop
+
+```text
+issue/task packet
+  -> identify work slices
+  -> write Delivery DAG
+  -> mark owned files or areas
+  -> dispatch ready non-overlapping nodes
+  -> wait at dependencies
+  -> join integrated result
+```
+
+Output: a graph of implementer-sized nodes and a safe execution order.
+
 ## Delivery Loop
 
 ```text
@@ -22,7 +36,8 @@ issue
   -> lightweight triage
   -> create or identify draft issue/task state
   -> read source truth
-  -> create branch/worktree
+  -> create or follow Delivery DAG when complex
+  -> create branch/worktree per implementation node
   -> implement
   -> run narrow verification
   -> commit
@@ -89,6 +104,7 @@ The loop stops and asks for a human or maintainer decision when:
 - risk domains need semantic decisions,
 - tests reveal a broader issue than the task scope,
 - two agents need overlapping ownership,
+- complex work has no Delivery DAG or join point,
 - merge or deploy authority is required,
 - credentials, secrets, money, or irreversible operations are involved.
 

@@ -443,6 +443,16 @@ A2 Draft PR
 
 Loop Orchestrator
 
+## Delivery DAG
+
+Required before implementation for complex Factory Loop work.
+
+| Node | Objective | Owned files/area | Depends on | Profile | Branch/worktree | Verification | Evidence target |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| A | Discover and split this requirement | To be discovered by orchestrator | none | Loop Orchestrator | issue/task state | task packet review | issue comment |
+
+Sequential reason, if this broad task cannot be split:
+
 ## Context Inputs
 
 - Human requirement: see Objective
@@ -479,6 +489,7 @@ git status --short --branch
 
 - Reviewer must compare diff to this packet and project truth.
 - Verifier or tester must report exact evidence.
+- Gatekeeper must block complex work that lacks a Delivery DAG or join evidence.
 - Gatekeeper must enforce autonomy and risk gates before ready/merge/deploy actions.
 
 ## Stop Conditions

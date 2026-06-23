@@ -16,3 +16,7 @@ specialty.
 Each mode must still produce the normal Loop Factory evidence: task state,
 branch/worktree when relevant, findings, verification, skipped gates, risk, and
 decisions.
+
+For complex work, orchestrator owns the Delivery DAG. Implementer owns one DAG
+node at a time. Reviewer and verifier may run per node when risk is high, but
+the final review and verification must run after the join/integration node.

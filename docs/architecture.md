@@ -11,10 +11,11 @@ artifacts.
 2. Issues and PRs are durable loop state.
 3. Project truth lives in source, committed docs, and explicit task decisions.
 4. Private model memory and scratch output are hints, not authority.
-5. Each task owns one branch and one worktree.
-6. Agents can continue without human input until a declared stop condition.
-7. Every claim of completion needs evidence.
-8. Reusable agent behavior belongs in skills, agent profiles, templates, and scripts.
+5. Each implementation task or DAG node owns one branch and one worktree.
+6. Complex Factory Loop work creates a Delivery DAG before implementation.
+7. Agents can continue without human input until a declared stop condition.
+8. Every claim of completion needs evidence.
+9. Reusable agent behavior belongs in skills, agent profiles, templates, and scripts.
 
 ## Components
 
@@ -24,9 +25,10 @@ Developer software request
   -> Answer, Fast Path, Factory Loop, or Risk Gate
   -> Fast Path: inspect -> edit -> verify -> summarize
   -> Factory Loop: draft issue -> discovery recorded there
-  -> branch/worktree -> profiles
+  -> Delivery DAG when complex
+  -> ready DAG nodes run in isolated branch/worktree lanes
   -> PRD/design/doc review when needed -> implementation
-  -> code review -> verification -> evidence -> merge/deploy gate
+  -> join/integration -> code review -> verification -> evidence -> merge/deploy gate
 ```
 
 ## Agent Model
@@ -42,6 +44,28 @@ It uses agent profiles and agent runs:
 Default rule: one agent run uses one profile for one task slice. Small low-risk
 tasks may use Fast Path in one conversation and must not claim independent
 review. Factory Loop work reports phases separately.
+
+## Delivery DAG
+
+Complex Factory Loop work must be decomposed before implementation. The
+orchestrator writes a Delivery DAG into the issue/task packet with one row per
+node:
+
+- node id and objective,
+- owned files or area,
+- dependencies,
+- assigned profile,
+- branch/worktree lane,
+- verification command or evidence,
+- stop conditions.
+
+Nodes with no unmet dependencies and no overlapping owned files may run through
+separate implementer agents in parallel. A blocked node waits. A join or
+integration node combines the graph before final review, verifier/tester gates,
+gatekeeper checks, and PR evidence.
+
+A single implementer packet for many independent tasks is a process failure
+unless the DAG explicitly marks the work as sequential and explains why.
 
 ## Runtime Surfaces
 

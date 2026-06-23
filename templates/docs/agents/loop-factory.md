@@ -18,8 +18,10 @@ Loop Factory is work-first. Agents route software work by size and risk.
 requirement
   -> intake
   -> task packet
-  -> branch/worktree
-  -> implementation
+  -> Delivery DAG when complex
+  -> branch/worktree per ready node
+  -> implementation node(s)
+  -> join/integration
   -> review
   -> verification
   -> PR
@@ -58,9 +60,20 @@ worktree, commit, design doc, or code:
    issue/task state or alter route order.
 6. Review PRD/design/source-truth/strategy research docs before implementation
    unless the developer explicitly skips review.
+7. Create a Delivery DAG before complex implementation. Each node must include
+   objective, owned files or area, dependencies, assigned profile,
+   branch/worktree lane, verification, evidence target, and stop conditions.
 
 Chat plans, Superpowers specs, local markdown notes, branches, commits, and
 memory are not task state.
+
+## Delivery DAG
+
+Ready nodes with no unmet dependencies and no overlapping ownership may run
+through separate implementer agents. Dependent nodes wait for evidence. If
+parallel agents are unavailable, execute the same DAG sequentially and report
+the fallback. A join/integration node must run before final review and
+verification.
 
 ## Autonomy Levels
 

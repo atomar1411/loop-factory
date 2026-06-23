@@ -31,6 +31,7 @@ Every Loop Factory PR should include:
 
 - linked issue,
 - autonomy level,
+- Delivery DAG summary for complex work,
 - changed files,
 - forbidden scope honored,
 - review evidence,
@@ -53,4 +54,3 @@ If the host agent has its own required prefix, use:
 codex/<issue-number>-<short-slug>
 claude/<issue-number>-<short-slug>
 ```
-

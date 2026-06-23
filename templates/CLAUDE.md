@@ -31,6 +31,14 @@ PRD/design/source-truth/strategy research docs require review before
 implementation unless explicitly skipped. Chat plans, Superpowers specs, local
 markdown notes, branches, and commits are not task state.
 
+For complex Factory Loop work, create a Delivery DAG before implementation.
+Each node must include objective, owned files or area, dependencies, assigned
+profile, branch/worktree lane, verification, evidence target, and stop
+conditions. Run ready non-overlapping nodes through separate implementers when
+available, wait at dependencies, and join the graph before final review and
+verification. Do not send broad multi-task work to one implementer unless the
+DAG marks it sequential and explains why.
+
 ## Claude Code Agent Profiles
 
 Use `loop-orchestrator` for broad work and issue triage, then the needed

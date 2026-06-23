@@ -19,6 +19,16 @@ Allowed values: `Loop Orchestrator`, `Loop Implementer`, `Loop Reviewer`,
 `issue triage`, `product PRD`, `architecture review`, `docs stewardship`,
 `security review`, or `release management`.
 
+## Delivery DAG
+
+Required for complex Factory Loop work before implementation.
+
+| Node | Objective | Owned files/area | Depends on | Profile | Branch/worktree | Verification | Evidence target |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| A |  |  | none | Loop Implementer |  |  | issue/PR comment |
+
+Sequential reason, if this broad task cannot be split:
+
 ## Context Inputs
 
 - Developer request, issue, or PR:

@@ -14,6 +14,11 @@ specialist modes are loaded only when the task needs them.
 | Tester | Runs outside-in app, Docker, browser, DB, queue, WSS, or smoke checks. |
 | Gatekeeper | Enforces autonomy, evidence, risk, merge, and deploy gates. |
 
+For complex Factory Loop work, the orchestrator creates a Delivery DAG before
+implementation. Each implementer owns one node. Multiple implementers may run in
+parallel only when their node dependencies are clear and owned files or areas do
+not overlap.
+
 ## Lazy Specialist Modes
 
 These modes run inside the active agents instead of loading as always-on agents:

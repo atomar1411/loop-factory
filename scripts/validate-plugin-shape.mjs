@@ -204,6 +204,36 @@ const requiredSnippets = [
     snippet: "printChecks(checks, { soft: options.soft });",
     message: "Soft doctor output must report degraded readiness without hard-fail wording",
   },
+  {
+    file: "skills/loop-factory/SKILL.md",
+    snippet: "Complex Factory Loop work requires a Delivery DAG before implementation",
+    message: "Factory Loop skill must require a Delivery DAG before complex implementation",
+  },
+  {
+    file: "docs/architecture.md",
+    snippet: "A single implementer packet for many independent tasks is a process failure",
+    message: "Architecture docs must block mega implementer packets without a DAG",
+  },
+  {
+    file: "templates/AGENTS.md",
+    snippet: "Do not send broad multi-task work to one implementer unless the DAG marks it sequential",
+    message: "AGENTS template must block broad one-implementer packets without a DAG",
+  },
+  {
+    file: "templates/docs/agents/task-packet-template.md",
+    snippet: "## Delivery DAG",
+    message: "Task packet template must include a Delivery DAG section",
+  },
+  {
+    file: "packages/cli/src/main.js",
+    snippet: "Gatekeeper must block complex work that lacks a Delivery DAG or join evidence",
+    message: "Generated task packets must gate missing DAG/join evidence",
+  },
+  {
+    file: "agents/loop-gatekeeper.md",
+    snippet: "no broad multi-task implementer packet without a recorded sequential reason",
+    message: "Gatekeeper profile must block mega implementer packets without a recorded reason",
+  },
 ];
 
 for (const { file, snippet, message } of requiredSnippets) {

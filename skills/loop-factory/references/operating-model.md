@@ -7,9 +7,11 @@ requirement
   -> lightweight triage
   -> issue/task packet
   -> requirement discovery recorded in issue
-  -> branch/worktree
+  -> Delivery DAG when complex
+  -> branch/worktree lane per active node
   -> PRD/design/doc review when needed
   -> implementation
+  -> DAG join/integration
   -> review
   -> verification
   -> PR evidence
@@ -36,6 +38,13 @@ architecture review, docs stewardship, security review, or release management.
 Each routed item creates an agent run from one profile and one task packet.
 Small tasks may run multiple phases in one conversation, but the phases must be
 reported separately and must not be described as independent review.
+
+For complex Factory Loop work, create a Delivery DAG before implementation. The
+DAG records node objective, owned files or area, dependencies, assigned profile,
+branch/worktree lane, verification, evidence target, and stop conditions. Ready
+nodes with non-overlapping ownership may run in parallel through separate
+implementers. Dependent nodes wait. A join/integration node must run before
+final review and verification.
 
 For Factory Loop work, inline execution without issue/task state is a process
 failure. If the runtime cannot spawn named agent profiles, the main agent must

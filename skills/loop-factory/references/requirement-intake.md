@@ -30,7 +30,7 @@ Priority:
    - default `A2 Draft PR`,
    - lower if the repo is unknown,
    - higher only when policy exists.
-5. Split broad requirements into agent-sized issues.
+5. Split broad requirements into a Delivery DAG of agent-sized nodes.
 6. Write each issue with objective, scope, forbidden changes, verification, and
    stop conditions.
 7. Add risk labels when supported.
@@ -41,6 +41,7 @@ Produce:
 
 - issue title,
 - task packet body,
+- Delivery DAG when complex,
 - recommended labels,
 - suggested agent profile,
 - verification gates,

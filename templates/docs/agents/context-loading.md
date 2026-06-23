@@ -22,6 +22,10 @@ New modules/strategies, tuning/research, PRD/design docs, source-truth changes,
 and multi-file implementation are Factory Loop unless the developer explicitly
 scopes them down.
 
+For complex Factory Loop work, create or update the Delivery DAG in the
+issue/task packet before implementation. Do not start implementers until node
+ownership, dependencies, verification, and join points are clear.
+
 Use helper skills only inside the Loop Factory route. Helper output is not task
 state, and tool-owned scratch/spec folders are not canonical project truth unless
 the repo explicitly says they are.

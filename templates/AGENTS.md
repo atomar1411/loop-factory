@@ -49,6 +49,9 @@ Factory Loop preflight:
    issue/task state or alter route order.
 6. PRD/design/source-truth/strategy research docs require review before
    implementation unless the developer explicitly skips that review.
+7. For complex work, create a Delivery DAG before implementation. Each node
+   must include objective, owned files or area, dependencies, assigned profile,
+   branch/worktree lane, verification, evidence target, and stop conditions.
 
 Branch names, commits, chat plans, Superpowers specs, local markdown notes, and
 memory are not task state.
@@ -58,8 +61,10 @@ memory are not task state.
 ```text
 requirement
   -> issue and task packet
-  -> fresh branch/worktree
-  -> implementation
+  -> Delivery DAG when complex
+  -> fresh branch/worktree per ready node
+  -> implementation node(s)
+  -> join/integration
   -> review
   -> verification
   -> PR evidence
@@ -73,8 +78,12 @@ explicitly say not to create tasks or change code.
 
 ## Agent Rules
 
-- Use one task per branch/worktree.
+- Use one implementation task or DAG node per branch/worktree.
 - Avoid overlapping owned files across parallel agents.
+- Run ready DAG nodes through separate implementer agents when ownership does
+  not overlap; otherwise execute the DAG sequentially and report the fallback.
+- Do not send broad multi-task work to one implementer unless the DAG marks it
+  sequential and explains why.
 - Create or identify issue/task state before broad discovery, Factory Loop
   branch, worktree, commit, design doc, or code.
 - Read the task packet and required truth docs before editing.

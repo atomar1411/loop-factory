@@ -16,8 +16,9 @@ pull request.
 
 For complex work, the issue comes early. The agent creates or identifies a draft
 issue from the rough request, records discovery and decisions there, then
-branches, writes docs in the repo's canonical truth/design path, reviews, and
-implements.
+creates a Delivery DAG before implementation. Independent nodes can run through
+separate implementer agents in separate worktrees; dependent nodes wait for the
+evidence they need.
 
 The developer stays in control of product meaning, architecture, risk, merge,
 and deploy decisions. Agents handle the coordination work around them:
@@ -39,6 +40,7 @@ creates evidence:
 ```text
 request
   -> issue
+  -> Delivery DAG
   -> branch
   -> implementation
   -> review
@@ -79,6 +81,12 @@ That is the factory.
 The factory does not mean a heavy process. It means the work has a place to go,
 and every specialist knows what it owns.
 
+For complex work, the orchestrator builds a Delivery DAG first. Each node has an
+objective, owned files or area, dependencies, verification, and evidence target.
+Ready nodes with non-overlapping ownership may run in parallel. The final
+integration waits for the graph to complete, then review, verification, and
+gatekeeper checks run on the combined result.
+
 ### Why Put Them Together?
 
 The loop gives agents feedback.
@@ -106,6 +114,7 @@ Use it when you need to:
 - run Codex or Claude Code on a repo without burying task state in chat,
 - keep AI code review, test automation, and PR evidence close to the work,
 - use Git worktrees so parallel agents can work without stepping on each other,
+- split complex work into a Delivery DAG before spawning implementers,
 - make agent output auditable before a developer decides to merge or deploy.
 
 ## Quickstart

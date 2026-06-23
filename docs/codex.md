@@ -27,8 +27,9 @@ the plugin manifest. Each target repository still gets its own `AGENTS.md` and
 5. Describe the software work. When the request looks like a requirement, bug,
    cleanup, review, product/PRD, architecture/design, or implementation task,
    Codex should load the Loop Factory skills automatically.
-6. Let Codex create issues, branches, draft PRs, review passes, verification
-   evidence, and stop-condition questions as needed.
+6. Let Codex create issues, Delivery DAGs for complex work, isolated branches,
+   draft PRs, review passes, verification evidence, and stop-condition
+   questions as needed.
 
 Examples:
 

@@ -35,6 +35,10 @@ The agent did not use Loop Factory correctly if it:
 - creates branch/commit/design doc/code before Factory Loop issue/task state,
 - treats chat plans, Superpowers specs, local markdown notes, branch names, or
   commits as issue/task state,
+- sends a broad multi-task Factory Loop to one implementer without a Delivery
+  DAG,
+- starts implementers before the DAG has owned areas, dependencies,
+  verification, and join points,
 - lets helper-skill workflow names or scratch folders replace Loop Factory task
   state, route order, or canonical project docs,
 - starts implementation from PRD/design/source-truth/strategy research docs
@@ -52,7 +56,7 @@ developer software request
   -> classify Answer, Fast Path, Factory Loop, or Risk Gate
   -> load AGENTS.md / CLAUDE.md and docs/agents
   -> Fast Path: inspect, edit, verify, summarize
-  -> Factory Loop: draft issue first, discovery recorded there, branch/worktree, profiles, review, verification
+  -> Factory Loop: draft issue first, Delivery DAG for complex work, ready nodes in isolated worktrees, review, verification
   -> ask only at stop conditions
 ```
 
