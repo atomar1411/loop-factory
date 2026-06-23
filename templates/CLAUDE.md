@@ -12,13 +12,19 @@ For software work, choose the smallest route that proves it:
 - Answer: questions/explanations only.
 - Fast Path: small, clear, low-risk edits. Inspect, edit, verify, summarize.
   No issue, worktree, or agent fan-out required.
-- Factory Loop: complex, broad, ambiguous, multi-area, PR/review requested, or
-  durable tracking useful. Use issue/task state, branch/worktree, profiles,
-  review, verification, and evidence.
+- Factory Loop: complex, broad, ambiguous, multi-area, PR/review requested, new
+  modules/strategies, tuning/research, or durable tracking useful. Use
+  issue/task state, branch/worktree, profiles, review, verification, evidence.
 - Risk Gate: product, money, legal, safety, production, secrets, service
   boundaries, or destructive actions. Stop for decision first.
 
 Do not run complex or risky work inline and call it Loop Factory.
+
+Factory Loop preflight: create or identify GitHub issue/task packet before
+branch, worktree, commit, design doc, or code. PRD/design/source-truth/strategy
+research docs require review before implementation unless explicitly skipped.
+Chat plans, Superpowers specs, local markdown notes, branches, and commits are
+not task state.
 
 ## Claude Code Agent Profiles
 

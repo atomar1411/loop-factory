@@ -88,6 +88,56 @@ for (const file of textFiles) {
   }
 }
 
+const requiredSnippets = [
+  {
+    file: "skills/loop-factory/SKILL.md",
+    snippet: "After choosing Factory Loop, the next durable action must be task state",
+    message: "Factory Loop skill must force task state as the first durable action",
+  },
+  {
+    file: "skills/loop-factory/SKILL.md",
+    snippet: "Superpowers specs",
+    message: "Factory Loop skill must reject Superpowers specs as task state",
+  },
+  {
+    file: "skills/loop-factory/references/autonomous-pr-loop.md",
+    snippet: "create or identify one before branch/worktree, design",
+    message: "Autonomous PR loop must create issue/task state before branch or design docs",
+  },
+  {
+    file: "skills/loop-factory/references/autonomous-pr-loop.md",
+    snippet: "Review those docs before implementation",
+    message: "Autonomous PR loop must review design docs before implementation",
+  },
+  {
+    file: "templates/AGENTS.md",
+    snippet: "Create or identify GitHub issue/task packet before branch, worktree, commit",
+    message: "AGENTS template must force Factory Loop issue/task preflight",
+  },
+  {
+    file: "templates/CLAUDE.md",
+    snippet: "Superpowers specs",
+    message: "CLAUDE template must reject Superpowers specs as task state",
+  },
+  {
+    file: "docs/automatic-workflow-activation.md",
+    snippet: "creates branch/commit/design doc/code before Factory Loop issue/task state",
+    message: "Activation doc must list branch-before-issue as incorrect Loop Factory use",
+  },
+];
+
+for (const { file, snippet, message } of requiredSnippets) {
+  const fullPath = path.join(root, file);
+  if (!existsSync(fullPath)) {
+    errors.push(`Missing ${file}`);
+    continue;
+  }
+  const body = readFileSync(fullPath, "utf8");
+  if (!body.includes(snippet)) {
+    errors.push(`${file}: ${message}`);
+  }
+}
+
 for (const skillDir of readdirSync(path.join(root, "skills"))) {
   const skillPath = path.join(root, "skills", skillDir, "SKILL.md");
   if (!existsSync(skillPath)) {

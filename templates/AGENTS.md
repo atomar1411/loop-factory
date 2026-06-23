@@ -29,11 +29,22 @@ Private memory, scratch notes, and raw local output are not project truth.
 | --- | --- | --- |
 | Answer | Questions, explanations, brainstorming, one-line shell asks. | Answer normally. |
 | Fast Path | Small, low-risk edits, usually 1-2 files, clear intent, no risk domain. | Inspect, edit, verify, summarize. No issue/agents required. |
-| Factory Loop | Complex, broad, ambiguous, multi-area, PR/review requested, or durable tracking useful. | Issue/task packet, branch/worktree, profiles, review, verification, evidence. |
+| Factory Loop | Complex, broad, ambiguous, multi-area, PR/review requested, new modules/strategies, tuning/research, or durable tracking useful. | Issue/task packet, branch/worktree, profiles, review, verification, evidence. |
 | Risk Gate | Product, money, legal, safety, production, secrets, service boundaries, destructive actions. | Stop for decision, then Factory Loop after approval. |
 
 Do not force GitHub issues, worktrees, or agent fan-out for Fast Path work. Do
 not use Fast Path for complex or risky work.
+
+Factory Loop preflight:
+
+1. Create or identify GitHub issue/task packet before branch, worktree, commit,
+   design doc, or code.
+2. If GitHub is unavailable, create a local task packet and say why.
+3. PRD/design/source-truth/strategy research docs require review before
+   implementation unless the developer explicitly skips that review.
+
+Branch names, commits, chat plans, Superpowers specs, local markdown notes, and
+memory are not task state.
 
 ## Default Loop
 
@@ -57,7 +68,8 @@ explicitly say not to create tasks or change code.
 
 - Use one task per branch/worktree.
 - Avoid overlapping owned files across parallel agents.
-- Create or identify issue/task state before Factory Loop edits.
+- Create or identify issue/task state before Factory Loop branch, worktree,
+  commit, design doc, or code.
 - Read the task packet and required truth docs before editing.
 - Write or update tests when behavior changes.
 - Run verification before claiming completion.

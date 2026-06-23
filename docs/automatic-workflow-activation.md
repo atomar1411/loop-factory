@@ -19,6 +19,7 @@ Examples:
 - "This bug is happening in production."
 - "Build the dashboard settings page."
 - "Create tasks for these architecture gaps."
+- "Create and test a new trading strategy."
 
 The developer may mention Loop Factory, but does not have to.
 
@@ -29,6 +30,11 @@ The agent did not use Loop Factory correctly if it:
 - forces GitHub issues, worktrees, or agent fan-out for a small Fast Path task,
 - runs complex or risky implementation inline without task state,
 - skips GitHub issue creation for Factory Loop work while GitHub is available,
+- creates branch/commit/design doc/code before Factory Loop issue/task state,
+- treats chat plans, Superpowers specs, local markdown notes, branch names, or
+  commits as issue/task state,
+- starts implementation from PRD/design/source-truth/strategy research docs
+  without reviewer/doc review unless the developer explicitly skipped review,
 - does not route work through profile phases or explain why profiles were
   unavailable when the Factory Loop is required,
 - claims review or verification without evidence,
@@ -42,7 +48,7 @@ developer software request
   -> classify Answer, Fast Path, Factory Loop, or Risk Gate
   -> load AGENTS.md / CLAUDE.md and docs/agents
   -> Fast Path: inspect, edit, verify, summarize
-  -> Factory Loop: create task state, branch/worktree, profiles, review, verification
+  -> Factory Loop: task state first, then branch/worktree, profiles, review, verification
   -> ask only at stop conditions
 ```
 

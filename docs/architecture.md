@@ -24,7 +24,8 @@ Developer software request
   -> Answer, Fast Path, Factory Loop, or Risk Gate
   -> Fast Path: inspect -> edit -> verify -> summarize
   -> Factory Loop: task state -> branch/worktree -> profiles
-  -> review -> verification -> evidence -> merge/deploy gate
+  -> PRD/design/doc review when needed -> implementation
+  -> code review -> verification -> evidence -> merge/deploy gate
 ```
 
 ## Agent Model

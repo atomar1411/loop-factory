@@ -67,13 +67,15 @@ The agent first chooses a route:
 - **Answer** for questions and discussion.
 - **Fast Path** for small, clear, low-risk edits.
 - **Factory Loop** for complex, broad, ambiguous, multi-area, PR/review, or
-  durable-tracking work.
+  durable-tracking work, including new modules, strategies, tuning, and research.
 - **Risk Gate** for product, money, legal, safety, production, secrets, service
   boundaries, destructive, or irreversible actions.
 
 Fast Path work does not need GitHub issues, worktrees, or agent fan-out. Factory
-Loop work creates or identifies task state, branch/worktree, profiles, review,
-verification, and evidence.
+Loop work creates or identifies task state before branch, worktree, design doc,
+commit, or code, then uses profiles, review, verification, and evidence. Chat
+plans, local markdown notes, Superpowers specs, branches, and commits are not
+task state.
 
 ## 5. Run The Agent Loop
 
@@ -81,7 +83,10 @@ The developer does not run the loop manually. The agent should:
 
 - read `AGENTS.md`, `CLAUDE.md`, `docs/agents/*`, and source truth,
 - split broad requests into agent-sized work when using Factory Loop,
+- create or identify GitHub issue/task state before branch or code,
 - create one branch/worktree per Factory Loop implementation task,
+- review PRD/design/source-truth/strategy research docs before implementation
+  unless the developer explicitly skips that review,
 - run the smallest useful set of agent profiles,
 - post issue/PR evidence when using Factory Loop,
 - stop only at declared stop conditions.

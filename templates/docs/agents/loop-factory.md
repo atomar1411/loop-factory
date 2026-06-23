@@ -37,11 +37,23 @@ Do not activate for simple questions or explicit discussion-only asks.
 | --- | --- | --- |
 | Answer | Questions, explanations, brainstorming, one-line shell asks. | Answer normally. |
 | Fast Path | Small, low-risk edits, usually 1-2 files, clear intent, no risk domain. | Inspect, edit, verify, summarize. |
-| Factory Loop | Complex, broad, ambiguous, multi-area, PR/review requested, or durable tracking useful. | Issue/task packet, branch/worktree, profiles, review, verification, evidence. |
+| Factory Loop | Complex, broad, ambiguous, multi-area, PR/review requested, new modules/strategies, tuning/research, or durable tracking useful. | Issue/task packet, branch/worktree, profiles, review, verification, evidence. |
 | Risk Gate | Product, money, legal, safety, production, secrets, service boundaries, destructive actions. | Stop for decision, then Factory Loop after approval. |
 
 Do not force GitHub issues, worktrees, or agent fan-out for Fast Path work. Do
 not use Fast Path for complex or risky work.
+
+## Factory Loop Preflight
+
+Before branch, worktree, commit, design doc, or code:
+
+1. Create or identify GitHub issue/task packet.
+2. If GitHub is unavailable, create a local task packet and state why.
+3. Review PRD/design/source-truth/strategy research docs before implementation
+   unless the developer explicitly skips review.
+
+Chat plans, Superpowers specs, local markdown notes, branches, commits, and
+memory are not task state.
 
 ## Autonomy Levels
 

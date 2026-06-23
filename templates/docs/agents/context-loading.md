@@ -16,6 +16,10 @@ If the developer request is the only input, classify it as Answer, Fast Path,
 Factory Loop, or Risk Gate. Create issue/task state before Factory Loop edits
 unless GitHub is unavailable or disabled.
 
+New modules/strategies, tuning/research, PRD/design docs, source-truth changes,
+and multi-file implementation are Factory Loop unless the developer explicitly
+scopes them down.
+
 ## Context Inputs
 
 Task packets should identify:

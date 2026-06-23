@@ -39,6 +39,10 @@ For Factory Loop work, inline execution without issue/task state is a process
 failure. If the runtime cannot spawn named agent profiles, the main agent must
 report that limitation and execute the profile phases sequentially.
 
+For Factory Loop work, issue/task state must exist before branch/worktree,
+commit, design doc, or code. Chat plans, Superpowers specs, local markdown
+notes, branches, commits, and memory are not task state.
+
 ## Communication
 
 Agents communicate through:

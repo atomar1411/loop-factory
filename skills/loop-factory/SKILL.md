@@ -42,7 +42,7 @@ Choose the smallest loop that proves the work.
 | --- | --- | --- |
 | Answer | Questions, explanations, brainstorming, one-line shell asks. | Answer normally. No issue, branch, or agents. |
 | Fast Path | Small, low-risk edits: narrow scope, usually 1-2 files, clear intent, no product/money/security/deploy/architecture impact. | Inspect, edit, run relevant verification, summarize. No GitHub issue or agent fan-out required. |
-| Factory Loop | Non-trivial work: broad/ambiguous scope, multiple areas, tests/design/docs needed, PR/review requested, or task likely benefits from durable tracking. | Issue or task packet, branch/worktree, profile sequence, review, verification, evidence. |
+| Factory Loop | Non-trivial work: broad/ambiguous scope, multiple areas, tests/design/docs needed, PR/review requested, new modules/strategies, tuning/research, or task likely benefits from durable tracking. | Issue or task packet, branch/worktree, profile sequence, review, verification, evidence. |
 | Risk Gate | Product, money, legal, safety, production, secrets, service boundaries, destructive or irreversible actions. | Stop for decision, then use Factory Loop after approval. |
 
 Do not force GitHub issues, worktrees, or agent fan-out for Fast Path work.
@@ -50,6 +50,20 @@ Do not use Fast Path for complex or risky work.
 
 Factory Loop completion requires: task state, branch/worktree, profiles or
 fallback, review, verification, skipped gates, residual risk, and next decision.
+
+## Factory Loop Preflight
+
+After choosing Factory Loop, the next durable action must be task state:
+
+1. Create or identify a GitHub issue. If GitHub is unavailable or explicitly
+   disabled, create a local task packet and say why.
+2. Only then create/enter a branch or worktree.
+3. If the work creates a PRD, design spec, source-truth doc, or strategy
+   research plan, run reviewer/doc review before implementation unless the
+   developer explicitly approves skipping that review.
+
+Branch names, commits, chat plans, Superpowers specs, local markdown notes, and
+memory are not substitutes for issue/task state.
 
 ## Rules
 

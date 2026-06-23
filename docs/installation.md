@@ -159,12 +159,14 @@ Add retry-safe payment watcher handling.
 Create PRDs for onboarding before implementation.
 Review PR #123, address comments, and verify the branch.
 Clean up stale docs and create tasks for architecture gaps.
+Create and test a new trading strategy.
 ```
 
 The agent must infer the route. Small low-risk edits use Fast Path: inspect,
-edit, verify, summarize. Complex, broad, risky, PR/review, or durable-tracking
-work uses Factory Loop: task state, branch/worktree, profiles, review,
-verification, and evidence.
+edit, verify, summarize. Complex, broad, risky, PR/review, new strategy,
+tuning/research, or durable-tracking work uses Factory Loop: task state first,
+then branch/worktree, profiles, review, verification, and evidence. Local specs,
+chat plans, branches, and commits are not task state.
 
 For automation, CI, or debugging the framework itself, the CLI can still create
 issues or run a prepared issue:
