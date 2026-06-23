@@ -6,16 +6,18 @@
 
 ![Loop Factory banner](assets/loop-factory-banner-v2.svg)
 
-An agent factory for developers moving complex software work from problem to PR.
+Loop Factory helps developers use AI agents for real engineering work, not just
+one-off code generation.
 
-Loop Factory helps a developer solve non-trivial features, bugs, cleanups, and
-architecture work by coordinating specialized agent profiles through scoped
-issues, isolated branches, reviewed diffs, verification evidence, and pull
-requests.
+It turns a rough software request into a controlled delivery loop: scope the
+work, create durable task state, isolate a branch or worktree, run specialist
+agent profiles, review the diff, verify the result, and leave the evidence in a
+pull request.
 
-It is not a team dashboard. It is not a chat ritual. It is a small operating
-model for commanding many specialist agent runs while keeping the work visible
-in GitHub.
+The developer stays in control of product meaning, architecture, risk, merge,
+and deploy decisions. Agents handle the coordination work around them:
+requirements, implementation, review, testing, verification, and release
+readiness.
 
 ## The Core Idea
 
