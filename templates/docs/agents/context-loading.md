@@ -12,9 +12,9 @@
 git status --short --branch
 ```
 
-If the developer request is the only input, classify it. For tracked work,
-create or identify issue/task state before edits unless GitHub is unavailable
-or disabled.
+If the developer request is the only input, classify it as Answer, Fast Path,
+Factory Loop, or Risk Gate. Create issue/task state before Factory Loop edits
+unless GitHub is unavailable or disabled.
 
 ## Context Inputs
 

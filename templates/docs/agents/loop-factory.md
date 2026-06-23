@@ -2,7 +2,7 @@
 
 This repo uses a Git-first autonomous loop.
 
-Loop Factory is work-first. Agents infer tracked software work from the request.
+Loop Factory is work-first. Agents route software work by size and risk.
 
 ## Source Of Truth
 
@@ -28,23 +28,20 @@ requirement
 
 ## Activation
 
-Start automatically for tracked software work. Do not require commands or skill
-names. Do not activate for simple questions or explicit discussion-only asks.
+Start automatically for software work. Do not require commands or skill names.
+Do not activate for simple questions or explicit discussion-only asks.
 
-## Mandatory Preflight
+## Routes
 
-Before implementation:
+| Route | Use For | Required Shape |
+| --- | --- | --- |
+| Answer | Questions, explanations, brainstorming, one-line shell asks. | Answer normally. |
+| Fast Path | Small, low-risk edits, usually 1-2 files, clear intent, no risk domain. | Inspect, edit, verify, summarize. |
+| Factory Loop | Complex, broad, ambiguous, multi-area, PR/review requested, or durable tracking useful. | Issue/task packet, branch/worktree, profiles, review, verification, evidence. |
+| Risk Gate | Product, money, legal, safety, production, secrets, service boundaries, destructive actions. | Stop for decision, then Factory Loop after approval. |
 
-1. Create or identify a GitHub issue when GitHub access is available.
-2. Use a local task packet only when GitHub is unavailable or explicitly
-   disabled.
-3. Select the profile sequence for the loop.
-4. Spawn the relevant agent profiles when the runtime supports it.
-5. If agent profiles cannot be spawned, state that limitation and run the same
-   phases sequentially.
-6. Create or enter the branch/worktree for the task.
-
-State any skipped preflight step and reason.
+Do not force GitHub issues, worktrees, or agent fan-out for Fast Path work. Do
+not use Fast Path for complex or risky work.
 
 ## Autonomy Levels
 
@@ -59,5 +56,6 @@ Default: `A2 Draft PR`.
 
 ## Required Evidence
 
-Every task report needs: issue/task packet, branch/worktree, profiles or
-fallback, changed files, review, verification, skipped gates, risk, decisions.
+Fast Path reports need changed files, verification, and risk. Factory Loop
+reports need issue/task packet, branch/worktree, profiles or fallback, changed
+files, review, verification, skipped gates, risk, and decisions.

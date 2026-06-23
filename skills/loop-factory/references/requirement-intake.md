@@ -43,6 +43,6 @@ Produce:
 - stop conditions.
 
 When GitHub CLI is available and the repo has a GitHub remote, create or update
-issues for tracked software work after confirming the task scope is safe. Use a
+issues for Factory Loop work after confirming the task scope is safe. Use a
 local task packet only when GitHub is unavailable, explicitly disabled, or the
-request is advisory-only. Report links and next loop state.
+request is advisory-only or Fast Path. Report links and next loop state.

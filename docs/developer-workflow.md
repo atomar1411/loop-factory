@@ -68,22 +68,28 @@ Review PR #123, address the comments, and verify the branch.
 Clean up stale docs and create tasks for architecture gaps you find.
 ```
 
-The agent decides whether this is requirement intake, PRD/product work,
-architecture/design work, implementation, review, verification, or cleanup.
-For tracked software work, it creates or identifies GitHub issues, task packets,
-branches, draft PRs, and evidence before implementation. If GitHub or named
-agent profiles are unavailable, it must report that fallback instead of silently
-running inline.
+The agent first chooses a route:
+
+- **Answer** for questions and discussion.
+- **Fast Path** for small, clear, low-risk edits.
+- **Factory Loop** for complex, broad, ambiguous, multi-area, PR/review, or
+  durable-tracking work.
+- **Risk Gate** for product, money, legal, safety, production, secrets, service
+  boundaries, destructive, or irreversible actions.
+
+Fast Path work does not need GitHub issues, worktrees, or agent fan-out. Factory
+Loop work creates or identifies task state, branch/worktree, profiles, review,
+verification, and evidence.
 
 ## 5. Run The Agent Loop
 
 The developer does not run the loop manually. The agent should:
 
 - read `AGENTS.md`, `CLAUDE.md`, `docs/agents/*`, and source truth,
-- split broad requests into agent-sized work,
-- create one branch/worktree per task when implementation starts,
+- split broad requests into agent-sized work when using Factory Loop,
+- create one branch/worktree per Factory Loop implementation task,
 - run the smallest useful set of agent profiles,
-- post issue/PR evidence,
+- post issue/PR evidence when using Factory Loop,
 - stop only at declared stop conditions.
 
 The developer can steer the loop:

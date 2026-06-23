@@ -14,7 +14,7 @@ Loop Factory command; internal profile names are not user commands.
 - `/loop-factory` enables Loop Factory in the current repo.
 - `/loop-factory doctor` verifies repo setup, GitHub connectivity, and plugin
   visibility.
-- Extra text after the command is treated as tracked software work.
+- Extra text after the command is routed by task size and risk.
 
 Features, bugs, reviews, PRDs, architecture, cleanup, and verification must
 activate this skill when intent is clear.
@@ -34,30 +34,28 @@ activate this skill when intent is clear.
    - risk gates: `references/risk-gates.md`
    - specialist modes: `references/specialist-profiles.md`
 
-## Mandatory Loop Contract
+## Routing Contract
 
-Tracked work means feature, bug, cleanup, PRD, architecture/design,
-implementation, PR review, or verification.
+Choose the smallest loop that proves the work.
 
-Before edits or progress claims:
+| Route | Use For | Required Shape |
+| --- | --- | --- |
+| Answer | Questions, explanations, brainstorming, one-line shell asks. | Answer normally. No issue, branch, or agents. |
+| Fast Path | Small, low-risk edits: narrow scope, usually 1-2 files, clear intent, no product/money/security/deploy/architecture impact. | Inspect, edit, run relevant verification, summarize. No GitHub issue or agent fan-out required. |
+| Factory Loop | Non-trivial work: broad/ambiguous scope, multiple areas, tests/design/docs needed, PR/review requested, or task likely benefits from durable tracking. | Issue or task packet, branch/worktree, profile sequence, review, verification, evidence. |
+| Risk Gate | Product, money, legal, safety, production, secrets, service boundaries, destructive or irreversible actions. | Stop for decision, then use Factory Loop after approval. |
 
-1. Create or identify task state: GitHub issue if available, local task packet
-   only when GitHub is unavailable or explicitly disabled.
-2. Select profile sequence. Use `loop-orchestrator` for broad work and
-   orchestrator-led issue triage when no issue exists.
-3. Spawn named profiles when the runtime supports it. If not, state the
-   fallback and run phases sequentially.
-4. Use one branch/worktree per implementation task.
-5. Post evidence to the issue, PR, or task packet.
+Do not force GitHub issues, worktrees, or agent fan-out for Fast Path work.
+Do not use Fast Path for complex or risky work.
 
-Completion report requires: task state, branch/worktree, profiles or fallback,
-review, verification, skipped gates, residual risk, and next decision.
+Factory Loop completion requires: task state, branch/worktree, profiles or
+fallback, review, verification, skipped gates, residual risk, and next decision.
 
 ## Rules
 
 - Store project truth in the target repo, not private memory.
-- Use GitHub issues and PRs as task state whenever GitHub is available.
-- Use one branch/worktree per task.
+- Use GitHub issues and PRs as task state for Factory Loop work.
+- Use one branch/worktree per Factory Loop implementation task.
 - Continue until a stop condition.
 - Stop for product, money, legal, safety, deployment, service-boundary, or
   irreversible decisions.

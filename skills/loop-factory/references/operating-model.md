@@ -14,6 +14,9 @@ requirement
   -> merge or escalation
 ```
 
+Use this full loop for Factory Loop work. Small low-risk edits may use Fast
+Path: inspect -> edit -> verify -> summarize.
+
 ## Active Runtime Profiles
 
 - Orchestrator: split and route work.
@@ -32,9 +35,9 @@ Each routed item creates an agent run from one profile and one task packet.
 Small tasks may run multiple phases in one conversation, but the phases must be
 reported separately and must not be described as independent review.
 
-For tracked software work, inline execution without issue/task state is a
-process failure. If the runtime cannot spawn named agent profiles, the main
-agent must report that limitation and execute the profile phases sequentially.
+For Factory Loop work, inline execution without issue/task state is a process
+failure. If the runtime cannot spawn named agent profiles, the main agent must
+report that limitation and execute the profile phases sequentially.
 
 ## Communication
 

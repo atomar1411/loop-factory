@@ -7,18 +7,18 @@ PR, and source files.
 
 ## Loop Factory Contract
 
-For feature, bug, cleanup, PR review, PRD, architecture/design, implementation,
-or verification work:
+For software work, choose the smallest route that proves it:
 
-1. Create or identify GitHub issue/task state before edits.
-2. If GitHub is unavailable or disabled, create a local task packet and say why.
-3. Use Loop Factory profiles when available; otherwise run phases sequentially
-   and state that no independent agents were spawned.
-4. Use one branch/worktree per implementation task.
-5. Report task state, branch/worktree, profiles or fallback, review,
-   verification, skipped gates, risk, and next decision.
+- Answer: questions/explanations only.
+- Fast Path: small, clear, low-risk edits. Inspect, edit, verify, summarize.
+  No issue, worktree, or agent fan-out required.
+- Factory Loop: complex, broad, ambiguous, multi-area, PR/review requested, or
+  durable tracking useful. Use issue/task state, branch/worktree, profiles,
+  review, verification, and evidence.
+- Risk Gate: product, money, legal, safety, production, secrets, service
+  boundaries, or destructive actions. Stop for decision first.
 
-Do not run tracked work inline and call it Loop Factory.
+Do not run complex or risky work inline and call it Loop Factory.
 
 ## Claude Code Agent Profiles
 

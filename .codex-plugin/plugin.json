@@ -1,6 +1,6 @@
 {
   "name": "loop-factory",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Git-first autonomous loop factory for issue intake, worktree execution, agent review, verification, and PR evidence.",
   "author": {
     "name": "Loop Factory contributors"

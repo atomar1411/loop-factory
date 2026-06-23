@@ -6,8 +6,8 @@ software problem.
 
 ## Activation Rule
 
-When an agent in a Loop Factory-enabled repo sees a request that looks like new
-software work, it must start the Loop Factory workflow automatically.
+When an agent in a Loop Factory-enabled repo sees software work, it must choose
+the smallest Loop Factory route that proves the work.
 
 Examples:
 
@@ -26,24 +26,23 @@ The developer may mention Loop Factory, but does not have to.
 
 The agent did not use Loop Factory correctly if it:
 
-- runs implementation inline without creating or identifying task state,
-- skips GitHub issue creation while GitHub is available,
+- forces GitHub issues, worktrees, or agent fan-out for a small Fast Path task,
+- runs complex or risky implementation inline without task state,
+- skips GitHub issue creation for Factory Loop work while GitHub is available,
 - does not route work through profile phases or explain why profiles were
-  unavailable,
+  unavailable when the Factory Loop is required,
 - claims review or verification without evidence,
-- reports completion without issue/task, branch/worktree, review,
+- reports Factory Loop completion without issue/task, branch/worktree, review,
   verification, skipped gates, and residual risk.
 
 ## What The Agent Does
 
 ```text
 developer software request
-  -> detect requirement, bug, review, cleanup, design, or implementation intent
+  -> classify Answer, Fast Path, Factory Loop, or Risk Gate
   -> load AGENTS.md / CLAUDE.md and docs/agents
-  -> verify Git/GitHub connectivity when needed
-  -> create or identify GitHub issue, or local task packet when GitHub is unavailable
-  -> run the appropriate agent profiles, or state why profiles are unavailable
-  -> post evidence to issue/PR
+  -> Fast Path: inspect, edit, verify, summarize
+  -> Factory Loop: create task state, branch/worktree, profiles, review, verification
   -> ask only at stop conditions
 ```
 
@@ -58,8 +57,8 @@ Do not start a full Loop Factory workflow for:
 - requests that explicitly say not to create tasks or code changes,
 - exploratory brainstorming before the user asks to turn it into work.
 
-For these, answer normally. Offer Loop Factory only if turning the topic into
-tracked work would clearly help.
+For these, answer normally. Offer Factory Loop only if durable task state would
+clearly help.
 
 ## Stop Conditions
 

@@ -21,17 +21,10 @@ artifacts.
 ```text
 Developer software request
   -> activation classifier
-  -> Requirement Intake Skill creates or identifies durable task state
-  -> GitHub issue or local task packet
-  -> Orchestrator Skill
-  -> Product, architecture, or triage profile when needed
-  -> Worktree manager
-  -> Implementer agent run
-  -> Reviewer, architecture reviewer, or security reviewer run
-  -> Verifier or tester run
-  -> Gatekeeper run
-  -> PR evidence
-  -> Merge/deploy gate
+  -> Answer, Fast Path, Factory Loop, or Risk Gate
+  -> Fast Path: inspect -> edit -> verify -> summarize
+  -> Factory Loop: task state -> branch/worktree -> profiles
+  -> review -> verification -> evidence -> merge/deploy gate
 ```
 
 ## Agent Model
@@ -44,9 +37,9 @@ It uses agent profiles and agent runs:
 - **Agent run:** one execution of a profile against one task packet in one repo
   context.
 
-Default rule: one agent run uses one profile for one task slice. If a small task
-is handled in one conversation, the phases must still be reported separately and
-must not be described as independent review.
+Default rule: one agent run uses one profile for one task slice. Small low-risk
+tasks may use Fast Path in one conversation and must not claim independent
+review. Factory Loop work reports phases separately.
 
 ## Runtime Surfaces
 

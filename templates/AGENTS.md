@@ -10,8 +10,7 @@ Shared onboarding contract for AI agents.
 
 ## Loop Factory Mode
 
-For requirement, bug, cleanup, review, architecture/design, product/PRD,
-implementation, or verification work, start Loop Factory automatically.
+For software work, choose the smallest Loop Factory route that proves the work.
 
 Project truth lives in:
 
@@ -24,19 +23,17 @@ Project truth lives in:
 
 Private memory, scratch notes, and raw local output are not project truth.
 
-## Mandatory Loop Contract
+## Routing Contract
 
-Before edits or completion claims:
+| Route | Use For | Required Shape |
+| --- | --- | --- |
+| Answer | Questions, explanations, brainstorming, one-line shell asks. | Answer normally. |
+| Fast Path | Small, low-risk edits, usually 1-2 files, clear intent, no risk domain. | Inspect, edit, verify, summarize. No issue/agents required. |
+| Factory Loop | Complex, broad, ambiguous, multi-area, PR/review requested, or durable tracking useful. | Issue/task packet, branch/worktree, profiles, review, verification, evidence. |
+| Risk Gate | Product, money, legal, safety, production, secrets, service boundaries, destructive actions. | Stop for decision, then Factory Loop after approval. |
 
-1. Create or identify a GitHub issue when the repo has GitHub access.
-2. If GitHub is unavailable or explicitly disabled, create a local task packet
-   and report why.
-3. Select the Loop Factory agent profile sequence.
-4. Use runtime agent/subagent support when available. If unavailable, run the
-   same phases sequentially and state that no independent agents were spawned.
-5. Create or enter one branch/worktree per implementation task.
-6. Report task state, branch/worktree, profiles or fallback, review,
-   verification, skipped gates, risk, and next decision.
+Do not force GitHub issues, worktrees, or agent fan-out for Fast Path work. Do
+not use Fast Path for complex or risky work.
 
 ## Default Loop
 
@@ -53,14 +50,14 @@ requirement
 
 ## Automatic Workflow Activation
 
-Do not activate the full workflow for simple questions, explanations, or
-requests that explicitly say not to create tasks or change code.
+Use Answer route for simple questions, explanations, or requests that
+explicitly say not to create tasks or change code.
 
 ## Agent Rules
 
 - Use one task per branch/worktree.
 - Avoid overlapping owned files across parallel agents.
-- Create or identify issue/task state before non-trivial edits.
+- Create or identify issue/task state before Factory Loop edits.
 - Read the task packet and required truth docs before editing.
 - Write or update tests when behavior changes.
 - Run verification before claiming completion.

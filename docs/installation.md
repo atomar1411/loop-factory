@@ -167,9 +167,10 @@ Review PR #123, address comments, and verify the branch.
 Clean up stale docs and create tasks for architecture gaps.
 ```
 
-The agent must infer the workflow, create or identify durable issue/PR state
-before implementation when GitHub is available, run the required Loop Factory
-profiles or report why profiles are unavailable, and stop only at risk gates.
+The agent must infer the route. Small low-risk edits use Fast Path: inspect,
+edit, verify, summarize. Complex, broad, risky, PR/review, or durable-tracking
+work uses Factory Loop: task state, branch/worktree, profiles, review,
+verification, and evidence.
 
 For automation, CI, or debugging the framework itself, the CLI can still create
 issues or run a prepared issue:
