@@ -19,7 +19,7 @@ This repo uses Loop Factory for agentic work.
 Developers do not need to invoke Loop Factory explicitly. If a request looks
 like a new requirement, bug, cleanup request, review request,
 architecture/design task, product/PRD task, or implementation request, the agent
-should start the Loop Factory workflow automatically.
+must start the Loop Factory workflow automatically.
 
 Project truth lives in:
 
@@ -31,6 +31,22 @@ Project truth lives in:
 - explicit maintainer decisions in the current task.
 
 Private memory, scratch notes, and local command output are not project truth.
+
+## Mandatory Loop Contract
+
+For tracked software work, do not work inline without durable state.
+
+Before edits or completion claims:
+
+1. Create or identify a GitHub issue when the repo has GitHub access.
+2. If GitHub is unavailable or explicitly disabled, create a local task packet
+   and report why.
+3. Select the Loop Factory agent profile sequence.
+4. Use runtime agent/subagent support when available. If unavailable, run the
+   same phases sequentially and state that no independent agents were spawned.
+5. Create or enter one branch/worktree per implementation task.
+6. Report issue/task packet, branch/worktree, selected profiles, review,
+   verification, skipped gates, residual risk, and next decision.
 
 ## Default Loop
 
@@ -62,6 +78,7 @@ requests that explicitly say not to create tasks or change code.
 
 - Use one task per branch/worktree.
 - Avoid overlapping owned files across parallel agents.
+- Create or identify issue/task state before non-trivial edits.
 - Read the task packet and required truth docs before editing.
 - Write or update tests when behavior changes.
 - Run verification before claiming completion.

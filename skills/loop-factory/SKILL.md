@@ -21,7 +21,7 @@ verifier loop. Those are private workflow references loaded from this skill.
   the Loop Factory operating model after confirming the repo is enabled.
 
 Normal feature, bug, review, PRD, architecture, cleanup, and verification work
-should also activate this skill from the conversation when the intent is clear.
+must also activate this skill from the conversation when the intent is clear.
 
 ## First Moves
 
@@ -44,10 +44,37 @@ should also activate this skill from the conversation when the intent is clear.
    - verification: `references/verifier-loop.md`
    - risk gates: `references/risk-gates.md`
 
+## Mandatory Loop Contract
+
+For tracked software work, Loop Factory is not optional guidance. Tracked work
+means a feature, bug, cleanup, PRD, architecture/design task, implementation,
+PR review, or verification task.
+
+Before editing files or claiming progress on tracked work:
+
+1. Create or identify durable task state:
+   - Prefer a GitHub issue when the repo has GitHub access.
+   - Use a local task packet only when GitHub is unavailable or the developer
+     explicitly asks not to create issues.
+2. Select the agent profile or profile sequence:
+   - always start with `loop-orchestrator` for broad or ambiguous work,
+   - use `loop-issue-triager` before implementation when no issue exists,
+   - use `loop-implementer`, `loop-reviewer`, `loop-verifier`, `loop-tester`,
+     and `loop-gatekeeper` as the task requires.
+3. Use the runtime's agent/subagent mechanism when available. If named agent
+   profiles are not available, state that limitation and run the same phases
+   sequentially in the main conversation.
+4. Create or enter one branch/worktree per implementation task before edits.
+5. Post or summarize evidence back to the issue, PR, or task packet.
+
+Do not call work "Loop Factory complete" unless the report includes task state,
+branch/worktree, selected profiles or fallback reason, review result,
+verification result, skipped gates, residual risk, and next decision.
+
 ## Rules
 
 - Store project truth in the target repo, not private memory.
-- Use GitHub issues and PRs as task state when available.
+- Use GitHub issues and PRs as task state whenever GitHub is available.
 - Use one branch/worktree per task.
 - Let agents continue until a stop condition.
 - Stop for product, money, legal, safety, deployment, service-boundary, or

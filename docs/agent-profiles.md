@@ -15,6 +15,11 @@ Default rule: one agent run uses one profile for one task slice. Small tasks may
 run several phases in one conversation, but the report must label each phase and
 must not claim independent review.
 
+For tracked software work, the orchestrator must create or identify task state
+before implementation. If the runtime cannot spawn named agent profiles, the
+main agent must state that fallback and run the same profile phases
+sequentially.
+
 ## Coordination Profiles
 
 | Profile | Purpose |

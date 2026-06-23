@@ -70,8 +70,10 @@ Clean up stale docs and create tasks for architecture gaps you find.
 
 The agent decides whether this is requirement intake, PRD/product work,
 architecture/design work, implementation, review, verification, or cleanup.
-When durable state is useful, it creates or updates GitHub issues, task packets,
-branches, draft PRs, and evidence.
+For tracked software work, it creates or identifies GitHub issues, task packets,
+branches, draft PRs, and evidence before implementation. If GitHub or named
+agent profiles are unavailable, it must report that fallback instead of silently
+running inline.
 
 ## 5. Run The Agent Loop
 

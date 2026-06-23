@@ -9,17 +9,21 @@ state.
 ## Loop Steps
 
 1. Read `AGENTS.md`, `CLAUDE.md` when present, `docs/agents/*`, and the issue.
-2. Validate the task packet.
-3. Create or enter a fresh branch/worktree.
-4. Implement only the owned scope.
-5. Run narrow verification.
-6. Commit when appropriate.
-7. Open or update a draft PR when autonomy allows.
-8. Run or request review.
-9. Address review findings.
-10. Run verifier or tester pass.
-11. Update PR evidence.
-12. Mark ready or stop with a decision request.
+2. If no issue exists, create or identify one before implementation. If GitHub
+   is unavailable, create a local task packet and report the fallback.
+3. Validate the task packet.
+4. Select and run the required agent profiles. If the runtime cannot spawn
+   profiles, report the limitation and execute the phases sequentially.
+5. Create or enter a fresh branch/worktree.
+6. Implement only the owned scope.
+7. Run narrow verification.
+8. Commit when appropriate.
+9. Open or update a draft PR when autonomy allows.
+10. Run or request review.
+11. Address review findings.
+12. Run verifier or tester pass.
+13. Update PR evidence.
+14. Mark ready or stop with a decision request.
 
 ## Stop Conditions
 

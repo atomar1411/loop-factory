@@ -21,7 +21,7 @@ artifacts.
 ```text
 Developer software request
   -> activation classifier
-  -> Requirement Intake Skill when durable task state is useful
+  -> Requirement Intake Skill creates or identifies durable task state
   -> GitHub issue or local task packet
   -> Orchestrator Skill
   -> Product, architecture, or triage profile when needed

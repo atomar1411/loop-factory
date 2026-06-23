@@ -7,7 +7,7 @@ software problem.
 ## Activation Rule
 
 When an agent in a Loop Factory-enabled repo sees a request that looks like new
-software work, it should start the Loop Factory workflow automatically.
+software work, it must start the Loop Factory workflow automatically.
 
 Examples:
 
@@ -22,6 +22,18 @@ Examples:
 
 The developer may mention Loop Factory, but does not have to.
 
+## What Counts As A Failure
+
+The agent did not use Loop Factory correctly if it:
+
+- runs implementation inline without creating or identifying task state,
+- skips GitHub issue creation while GitHub is available,
+- does not route work through profile phases or explain why profiles were
+  unavailable,
+- claims review or verification without evidence,
+- reports completion without issue/task, branch/worktree, review,
+  verification, skipped gates, and residual risk.
+
 ## What The Agent Does
 
 ```text
@@ -29,8 +41,8 @@ developer software request
   -> detect requirement, bug, review, cleanup, design, or implementation intent
   -> load AGENTS.md / CLAUDE.md and docs/agents
   -> verify Git/GitHub connectivity when needed
-  -> create or update issue/task packet when durable state is needed
-  -> run the appropriate agent profiles
+  -> create or identify GitHub issue, or local task packet when GitHub is unavailable
+  -> run the appropriate agent profiles, or state why profiles are unavailable
   -> post evidence to issue/PR
   -> ask only at stop conditions
 ```

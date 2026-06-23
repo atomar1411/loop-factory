@@ -169,8 +169,9 @@ Review PR #123, address comments, and verify the branch.
 Clean up stale docs and create tasks for architecture gaps.
 ```
 
-The agent should infer the workflow, create durable issue/PR state when useful,
-run the required Loop Factory profiles, and stop only at risk gates.
+The agent must infer the workflow, create or identify durable issue/PR state
+before implementation when GitHub is available, run the required Loop Factory
+profiles or report why profiles are unavailable, and stop only at risk gates.
 
 For automation, CI, or debugging the framework itself, the CLI can still create
 issues or run a prepared issue:

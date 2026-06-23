@@ -42,6 +42,7 @@ Produce:
 - verification gates,
 - stop conditions.
 
-When GitHub CLI is available and durable task state is useful, create issues
-after confirming the task scope is safe or after the user has asked to create
-tasks. Report links and next loop state.
+When GitHub CLI is available and the repo has a GitHub remote, create or update
+issues for tracked software work after confirming the task scope is safe. Use a
+local task packet only when GitHub is unavailable, explicitly disabled, or the
+request is advisory-only. Report links and next loop state.

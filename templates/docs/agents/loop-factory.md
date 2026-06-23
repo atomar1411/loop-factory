@@ -35,6 +35,24 @@ Do not require CLI commands, slash commands, or explicit skill names.
 Do not activate for simple questions, explanations, or requests that explicitly
 ask for discussion only.
 
+## Mandatory Preflight
+
+For tracked software work, the agent must not proceed as a normal inline coding
+session.
+
+Before implementation:
+
+1. Create or identify a GitHub issue when GitHub access is available.
+2. Use a local task packet only when GitHub is unavailable or explicitly
+   disabled.
+3. Select the profile sequence for the loop.
+4. Spawn the relevant agent profiles when the runtime supports it.
+5. If agent profiles cannot be spawned, state that limitation and run the same
+   phases sequentially.
+6. Create or enter the branch/worktree for the task.
+
+Skipping any preflight step requires a stated reason in the final report.
+
 ## Autonomy Levels
 
 - `A0 Advisory`: inspect and propose only.
@@ -52,6 +70,7 @@ Every task report must include:
 
 - issue or task packet,
 - branch/worktree,
+- selected profiles or fallback reason,
 - changed files,
 - review result,
 - verification result,

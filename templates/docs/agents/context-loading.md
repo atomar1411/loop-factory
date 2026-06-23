@@ -15,8 +15,9 @@ git status --short --branch
 ```
 
 If the developer request is the only input, infer whether it is a requirement,
-review, bug, cleanup, design, product, or implementation task. Create durable
-issue/task state when useful and safe.
+review, bug, cleanup, design, product, or implementation task. For tracked
+software work, create or identify durable issue/task state before edits unless
+GitHub is unavailable or explicitly disabled.
 
 ## Context Inputs
 
