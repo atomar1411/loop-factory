@@ -101,25 +101,24 @@ Use it when you need to:
 
 ## Quickstart
 
-From the project you want to enable:
+Install Loop Factory once on your machine:
 
 ```bash
+npx --yes github:atomar1411/loop-factory install
+```
+
+Enable it in a project:
+
+```bash
+cd /path/to/project
 npx --yes github:atomar1411/loop-factory setup --target .
 ```
 
 After npm publication:
 
 ```bash
+npx loop-factory install
 npx loop-factory setup --target .
-```
-
-For local plugin use before marketplace release, keep a stable checkout:
-
-```bash
-git clone https://github.com/atomar1411/loop-factory.git ~/.loop-factory
-codex plugin marketplace add ~/.loop-factory
-codex plugin add loop-factory@loop-factory-local
-claude --plugin-dir ~/.loop-factory
 ```
 
 Then give Codex or Claude Code real software work:

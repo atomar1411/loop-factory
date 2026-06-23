@@ -4,31 +4,16 @@ This is the normal Loop Factory path for a developer or architect.
 
 ## 1. Install Loop Factory
 
-Bootstrap the project you want agents to work in:
+Install Loop Factory once on your machine:
 
 ```bash
-npx --yes github:atomar1411/loop-factory setup --target /path/to/project
+npx --yes github:atomar1411/loop-factory install
 ```
 
-For local plugin use before marketplace publication, keep a stable checkout:
+After npm publication:
 
 ```bash
-git clone https://github.com/atomar1411/loop-factory.git ~/.loop-factory
-```
-
-Install the plugin in the agent surface you use.
-
-Codex:
-
-```bash
-codex plugin marketplace add ~/.loop-factory
-codex plugin add loop-factory@loop-factory-local
-```
-
-Claude Code, local session:
-
-```bash
-claude --plugin-dir ~/.loop-factory
+npx loop-factory install
 ```
 
 ## 2. Bootstrap Your Project

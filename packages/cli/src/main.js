@@ -18,6 +18,10 @@ const templateRoot = path.join(repoRoot, "templates");
 
 export async function main(args) {
   const { command, positional, options } = parseArgs(args);
+  if (command === "install") {
+    install(options);
+    return;
+  }
   if (command === "init") {
     init(options);
     return;
@@ -46,9 +50,11 @@ function parseArgs(args) {
   const positional = [];
   const options = {
     agent: "none",
+    agentExplicit: false,
     createIssue: false,
     execute: false,
     force: false,
+    installDir: path.join(os.homedir(), ".loop-factory"),
     labels: "",
     mode: "standard",
     target: process.cwd(),
@@ -57,6 +63,7 @@ function parseArgs(args) {
     const arg = rest[index];
     if (arg === "--agent") {
       options.agent = rest[index + 1] ?? options.agent;
+      options.agentExplicit = true;
       index += 1;
     } else if (arg === "--create-issue") {
       options.createIssue = true;
@@ -66,6 +73,9 @@ function parseArgs(args) {
       options.force = true;
     } else if (arg === "--issue") {
       options.issue = rest[index + 1];
+      index += 1;
+    } else if (arg === "--install-dir") {
+      options.installDir = path.resolve(expandHome(rest[index + 1] ?? ""));
       index += 1;
     } else if (arg === "--labels") {
       options.labels = rest[index + 1] ?? "";
@@ -83,6 +93,30 @@ function parseArgs(args) {
   return { command, positional, options };
 }
 
+function install(options) {
+  const installDir = path.resolve(options.installDir);
+  const agent = options.agentExplicit ? options.agent : "both";
+  assertAgent(agent);
+
+  console.log("== Loop Factory machine install ==");
+  ensureStableCheckout(installDir, options.force);
+  console.log(`Loop Factory checkout: ${installDir}`);
+
+  if (agent === "codex" || agent === "both") {
+    installCodexPlugin(installDir);
+  }
+  if (agent === "claude" || agent === "both") {
+    installClaudePlugin(installDir);
+  }
+
+  console.log("");
+  console.log("Next:");
+  console.log("1. Enable Loop Factory in a project:");
+  console.log(`   ${cliName()} setup --target ${quote(process.cwd())}`);
+  console.log("2. Verify the project:");
+  console.log(`   ${cliName()} doctor --target ${quote(process.cwd())} --agent ${agent}`);
+}
+
 function setup(options) {
   console.log("== Loop Factory setup ==");
   init(options);
@@ -93,18 +127,8 @@ function setup(options) {
   } else {
     console.log("1. Review generated AGENTS.md, CLAUDE.md, docs/agents, docs/truth, and GitHub templates.");
   }
-  console.log("2. Install the Loop Factory plugin in Codex or Claude Code when you need agent skills loaded:");
-  if (isNpxCachePath(repoRoot)) {
-    console.log("   Use a stable checkout until npm/plugin marketplace release:");
-    console.log("   git clone https://github.com/atomar1411/loop-factory.git ~/.loop-factory");
-    console.log("   codex plugin marketplace add ~/.loop-factory");
-    console.log("   codex plugin add loop-factory@loop-factory-local");
-    console.log("   claude --plugin-dir ~/.loop-factory");
-  } else {
-    console.log(`   codex plugin marketplace add ${quote(repoRoot)}`);
-    console.log("   codex plugin add loop-factory@loop-factory-local");
-    console.log(`   claude --plugin-dir ${quote(repoRoot)}`);
-  }
+  console.log("2. If this machine is not installed yet:");
+  console.log(`   ${cliName()} install`);
   console.log("3. Open Codex or Claude Code in the target repo and describe the software work:");
   console.log('   "Fix checkout retry behavior and run it through Loop Factory."');
   console.log('   "Create PRDs for onboarding before implementation."');
@@ -133,6 +157,71 @@ function init(options) {
   console.log(`Mode: ${options.mode}`);
   for (const file of copied) {
     console.log(`- ${file}`);
+  }
+}
+
+function ensureStableCheckout(installDir, force) {
+  const source = "https://github.com/atomar1411/loop-factory.git";
+  const currentRepo = path.resolve(repoRoot);
+  if (path.resolve(installDir) === currentRepo) {
+    console.log("Using current checkout.");
+    return;
+  }
+
+  if (!existsSync(installDir)) {
+    mkdirSync(path.dirname(installDir), { recursive: true });
+    runRequired("git", ["clone", source, installDir], `Clone ${source}`);
+    return;
+  }
+
+  if (!git(installDir, ["rev-parse", "--is-inside-work-tree"]).ok) {
+    if (!force) {
+      throw new Error(`Install dir exists but is not a Git checkout: ${installDir}. Use --force to replace it.`);
+    }
+    rmSync(installDir, { recursive: true, force: true });
+    runRequired("git", ["clone", source, installDir], `Clone ${source}`);
+    return;
+  }
+
+  const remote = git(installDir, ["remote", "get-url", "origin"]);
+  if (!remote.ok) {
+    throw new Error(`Install dir is a Git checkout without an origin remote: ${installDir}`);
+  }
+
+  runRequired("git", ["fetch", "origin", "main"], "Update Loop Factory checkout", installDir);
+  runRequired("git", ["checkout", "main"], "Checkout main", installDir);
+  runRequired("git", ["pull", "--ff-only", "origin", "main"], "Pull latest Loop Factory", installDir);
+}
+
+function installCodexPlugin(installDir) {
+  console.log("");
+  console.log("Codex:");
+  if (!commandExists("codex")) {
+    console.log("skip codex CLI not found");
+    return;
+  }
+  printCommandResult("marketplace", runCommand("codex", ["plugin", "marketplace", "add", installDir]), {
+    okPattern: /already|exists/i,
+  });
+  printCommandResult("plugin", runCommand("codex", ["plugin", "add", "loop-factory@loop-factory-local"]), {
+    okPattern: /already|installed|exists/i,
+  });
+}
+
+function installClaudePlugin(installDir) {
+  console.log("");
+  console.log("Claude Code:");
+  if (!commandExists("claude")) {
+    console.log("skip claude CLI not found");
+    return;
+  }
+  printCommandResult("validate", runCommand("claude", ["plugin", "validate", installDir]));
+  const marketplace = runCommand("claude", ["plugin", "marketplace", "add", installDir]);
+  printCommandResult("marketplace", marketplace, { okPattern: /already|exists/i });
+  const plugin = runCommand("claude", ["plugin", "install", "loop-factory@loop-factory-local"]);
+  printCommandResult("plugin", plugin, { okPattern: /already|installed|exists/i });
+  if (!plugin.ok) {
+    console.log(`session ${shellCommand(["claude", "--plugin-dir", installDir])}`);
   }
 }
 
@@ -356,9 +445,18 @@ function help() {
   console.log(`Loop Factory
 
 Usage:
+  loop-factory install [--agent codex|claude|both] [--install-dir <path>] [--force]
   loop-factory setup [--target <repo>] [--mode minimal|standard] [--force]
   loop-factory init [--target <repo>] [--mode minimal|standard] [--force]
   loop-factory doctor [--target <repo>] [--agent none|codex|claude|both]
+
+Machine install:
+  loop-factory install
+  npx --yes github:atomar1411/loop-factory install
+
+Project setup:
+  loop-factory setup --target .
+  npx --yes github:atomar1411/loop-factory setup --target .
 
 Daily developer UX:
   Open Codex or Claude Code in the target repo and describe the software work.
@@ -373,6 +471,12 @@ Automation commands:
 function assertMode(mode) {
   if (!["minimal", "standard"].includes(mode)) {
     throw new Error(`Unknown mode: ${mode}`);
+  }
+}
+
+function assertAgent(agent) {
+  if (!["none", "codex", "claude", "both"].includes(agent)) {
+    throw new Error(`Unknown agent: ${agent}`);
   }
 }
 
@@ -446,6 +550,21 @@ function runCommand(command, args, options = {}) {
   }
 }
 
+function runRequired(command, args, label, cwd = process.cwd()) {
+  const result = runCommand(command, args, { cwd });
+  if (!result.ok) {
+    throw new Error(`${label} failed: ${firstUsefulLine(result.stderr || result.stdout)}`);
+  }
+}
+
+function printCommandResult(label, result, options = {}) {
+  const tolerated = options.okPattern?.test(result.stderr || result.stdout || "");
+  const ok = result.ok || tolerated;
+  const status = ok ? "ok" : "fail";
+  const detail = firstUsefulLine(result.stdout || result.stderr);
+  console.log(`${status} ${label}${detail ? ` - ${detail}` : ""}`);
+}
+
 function addCheck(checks, name, ok, detail = "") {
   checks.push({ name, ok, detail });
 }
@@ -483,6 +602,16 @@ function splitCSV(value) {
 
 function quote(value) {
   return JSON.stringify(value);
+}
+
+function expandHome(value) {
+  if (value === "~") {
+    return os.homedir();
+  }
+  if (value.startsWith(`~${path.sep}`)) {
+    return path.join(os.homedir(), value.slice(2));
+  }
+  return value;
 }
 
 function shellCommand(parts) {

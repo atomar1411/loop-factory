@@ -7,6 +7,14 @@ Loop Factory has two installation layers:
 
 ## Fast Path
 
+Install Loop Factory once on your machine:
+
+```bash
+npx --yes github:atomar1411/loop-factory install
+```
+
+Enable it in a project:
+
 ```bash
 npx --yes github:atomar1411/loop-factory setup --target /path/to/project
 ```
@@ -14,6 +22,7 @@ npx --yes github:atomar1411/loop-factory setup --target /path/to/project
 After npm publication:
 
 ```bash
+npx loop-factory install
 npx loop-factory setup --target /path/to/project
 ```
 
@@ -24,20 +33,22 @@ access:
 npx --yes github:atomar1411/loop-factory doctor --target /path/to/project
 ```
 
-## Local Checkout
+## Machine Install
 
-Use a checkout when developing Loop Factory itself or when installing the local
-plugin before marketplace publication:
+`install` keeps a stable checkout at `~/.loop-factory`, registers the local
+plugin marketplace for Codex when available, and validates Claude Code plugin
+metadata when Claude is installed.
 
 ```bash
-git clone https://github.com/atomar1411/loop-factory.git ~/.loop-factory
-cd ~/.loop-factory
-npm run check
-node packages/cli/bin/loop-factory.js init --target /path/to/project
-node packages/cli/bin/loop-factory.js doctor --target /path/to/project
+npx --yes github:atomar1411/loop-factory install --agent both
 ```
 
-`init` installs:
+Use `--agent codex`, `--agent claude`, or `--agent none` to narrow what the
+install command configures.
+
+## Project Setup
+
+`setup` installs repo-local operating files:
 
 - `AGENTS.md`
 - `CLAUDE.md`
@@ -45,7 +56,7 @@ node packages/cli/bin/loop-factory.js doctor --target /path/to/project
 - `docs/truth/README.md`
 - GitHub issue and PR templates
 
-## Install In Codex
+## Codex Details
 
 Loop Factory includes a Codex plugin manifest:
 
@@ -53,8 +64,8 @@ Loop Factory includes a Codex plugin manifest:
 cat .codex-plugin/plugin.json
 ```
 
-For local development, add this checkout as a Codex marketplace and install the
-plugin from it:
+The machine install command runs the local Codex marketplace steps for you when
+the `codex` CLI is available:
 
 ```bash
 codex plugin marketplace add ~/.loop-factory
@@ -79,7 +90,7 @@ Expected plugin skills:
 - `reviewer-loop`
 - `verifier-loop`
 
-## Install In Claude Code
+## Claude Code Details
 
 Loop Factory includes a Claude Code plugin manifest:
 
@@ -87,7 +98,8 @@ Loop Factory includes a Claude Code plugin manifest:
 claude plugin validate /path/to/loop-factory
 ```
 
-For local development or review, load it for one session:
+Until a public marketplace install is available, Claude Code can load the
+machine checkout for a session:
 
 ```bash
 claude --plugin-dir ~/.loop-factory
