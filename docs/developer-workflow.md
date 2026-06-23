@@ -10,12 +10,6 @@ Install Loop Factory once on your machine:
 npx --yes github:atomar1411/loop-factory install
 ```
 
-After npm publication:
-
-```bash
-npx loop-factory install
-```
-
 ## 2. Enable Your Project
 
 Open the project in your agent surface and run:
@@ -29,13 +23,13 @@ This installs the repo-local operating files:
 - `AGENTS.md`
 - `CLAUDE.md`
 - `docs/agents/*`
-- `docs/truth/README.md`
+- `docs/truth/README.md` unless the project already uses root `truth/`
 - GitHub issue and PR templates
 
 For CI, scripting, or framework debugging, the CLI backstop is:
 
 ```bash
-npx loop-factory setup
+node ~/.loop-factory/packages/cli/bin/loop-factory.js setup
 ```
 
 ## 3. Verify GitHub Connectivity
@@ -107,8 +101,8 @@ For CI, scripting, or agent-internal automation, the CLI still exposes
 `intake` and `run`. These are not the normal human UX.
 
 ```bash
-loop-factory intake "Make wallet payment watcher retry-safe" --target /path/to/project --create-issue
-loop-factory run --target /path/to/project --issue 123 --agent codex
+node ~/.loop-factory/packages/cli/bin/loop-factory.js intake "Make wallet payment watcher retry-safe" --target /path/to/project --create-issue
+node ~/.loop-factory/packages/cli/bin/loop-factory.js run --target /path/to/project --issue 123 --agent codex
 ```
 
 ## 7. Developer Role

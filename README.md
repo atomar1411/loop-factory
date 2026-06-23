@@ -117,12 +117,6 @@ Then open the project you want to enable in Codex or Claude Code and run:
 /loop-factory
 ```
 
-After npm publication:
-
-```bash
-npx loop-factory install
-```
-
 Verify a project when needed:
 
 ```text
@@ -233,7 +227,7 @@ developer can review:
 AGENTS.md
 CLAUDE.md
 docs/agents/
-docs/truth/README.md
+docs/truth/README.md       Created only when the repo does not already use truth/
 .github/ISSUE_TEMPLATE/requirement.yml
 .github/PULL_REQUEST_TEMPLATE.md
 ```

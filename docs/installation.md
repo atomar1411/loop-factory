@@ -20,12 +20,6 @@ Then open the project you want to enable in Codex or Claude Code and run:
 /loop-factory
 ```
 
-After npm publication:
-
-```bash
-npx loop-factory install
-```
-
 When the target project has a GitHub remote and you want to verify setup and
 issue/PR access:
 
@@ -50,7 +44,7 @@ The public Loop Factory command installs repo-local operating files:
 - `AGENTS.md`
 - `CLAUDE.md`
 - `docs/agents/*`
-- `docs/truth/README.md`
+- `docs/truth/README.md` unless the project already uses root `truth/`
 - GitHub issue and PR templates
 
 ## Codex Details
@@ -141,7 +135,7 @@ Inside a target repository, use:
 For CI, scripting, or framework debugging, the CLI backstop is:
 
 ```bash
-loop-factory doctor
+node ~/.loop-factory/packages/cli/bin/loop-factory.js doctor
 git status --short --branch
 ```
 
@@ -176,6 +170,6 @@ For automation, CI, or debugging the framework itself, the CLI can still create
 issues or run a prepared issue:
 
 ```bash
-loop-factory intake "Add retry-safe payment watcher handling" --target /path/to/project --create-issue
-loop-factory run --target /path/to/project --issue 123 --agent codex
+node ~/.loop-factory/packages/cli/bin/loop-factory.js intake "Add retry-safe payment watcher handling" --target /path/to/project --create-issue
+node ~/.loop-factory/packages/cli/bin/loop-factory.js run --target /path/to/project --issue 123 --agent codex
 ```

@@ -119,7 +119,7 @@ function setup(options) {
   if (options.mode === "minimal") {
     console.log("1. Review generated AGENTS.md, CLAUDE.md, and docs/agents.");
   } else {
-    console.log("1. Review generated AGENTS.md, CLAUDE.md, docs/agents, docs/truth, and GitHub templates.");
+    console.log("1. Review generated AGENTS.md, CLAUDE.md, docs/agents, source-truth docs, and GitHub templates.");
   }
   console.log("2. If this machine is not installed yet:");
   console.log(`   ${cliName()} install`);
@@ -137,14 +137,21 @@ function init(options) {
   if (!existsSync(target)) {
     throw new Error(`Target does not exist: ${target}`);
   }
+  const context = {
+    truthPath: detectTruthPath(target),
+  };
   const copied = [];
   for (const file of listFiles(templateRoot)) {
     if (options.mode === "minimal" && !isMinimalTemplate(file)) {
       continue;
     }
     const relative = path.relative(templateRoot, file);
+    if (relative.startsWith("docs/truth/") && context.truthPath === "truth") {
+      console.log(`kept existing truth/; skipped ${relative}`);
+      continue;
+    }
     const destination = path.join(target, relative);
-    copyTemplate(file, destination, options.force);
+    copyTemplate(file, destination, options.force, context);
     copied.push(relative);
   }
   console.log(`Loop Factory initialized in ${target}`);
@@ -238,7 +245,6 @@ function doctor(options) {
     "docs/agents/loop-factory.md",
     "docs/agents/context-loading.md",
     "docs/agents/task-packet-template.md",
-    "docs/truth/README.md",
     ".github/PULL_REQUEST_TEMPLATE.md",
     ".github/ISSUE_TEMPLATE/requirement.yml",
   ];
@@ -253,6 +259,8 @@ function doctor(options) {
   for (const file of required) {
     addCheck(checks, file, existsSync(path.join(target, file)));
   }
+  const truthPath = detectExistingTruthPath(target);
+  addCheck(checks, "truth path", Boolean(truthPath), truthPath ?? "expected truth/ or docs/truth/");
 
   const gitInside = git(target, ["rev-parse", "--is-inside-work-tree"]).ok;
   addCheck(checks, "git repository", gitInside);
@@ -407,7 +415,7 @@ Loop Orchestrator
 - CLAUDE.md when present
 - docs/agents/loop-factory.md
 - docs/agents/context-loading.md
-- docs/truth/README.md when present
+- truth/ or docs/truth/ when present
 
 ## Forbidden Changes
 
@@ -459,6 +467,7 @@ Usage:
 Machine install:
   loop-factory install
   npx --yes github:atomar1411/loop-factory install
+  node ~/.loop-factory/packages/cli/bin/loop-factory.js install
 
 Normal developer UX:
   Open Codex or Claude Code in the target repo, then run:
@@ -470,6 +479,8 @@ After setup:
   Example: "Fix checkout retry behavior and open a draft PR."
 
 Automation commands:
+  node ~/.loop-factory/packages/cli/bin/loop-factory.js setup
+  node ~/.loop-factory/packages/cli/bin/loop-factory.js doctor
   loop-factory setup [--target <repo>] [--mode minimal|standard] [--force]
   loop-factory init [--target <repo>] [--mode minimal|standard] [--force]
   loop-factory doctor [--target <repo>] [--agent codex|claude|both]
@@ -498,8 +509,13 @@ function listFiles(root) {
   return output;
 }
 
-function copyTemplate(source, destination, force) {
+function copyTemplate(source, destination, force, context = {}) {
+  const body = renderTemplate(readFileSync(source, "utf8"), context);
   if (existsSync(destination) && !force) {
+    if (readFileSync(destination, "utf8") === body) {
+      console.log(`ok existing ${path.relative(process.cwd(), destination)}`);
+      return;
+    }
     const backup = `${destination}.loop-factory-existing`;
     if (!existsSync(backup)) {
       writeFileSync(backup, readFileSync(destination));
@@ -508,7 +524,39 @@ function copyTemplate(source, destination, force) {
     return;
   }
   mkdirSync(path.dirname(destination), { recursive: true });
-  writeFileSync(destination, readFileSync(source));
+  writeFileSync(destination, body);
+}
+
+function renderTemplate(body, context = {}) {
+  if (context.truthPath === "truth") {
+    return body
+      .replaceAll("`truth/` or `docs/truth/`", "`truth/`")
+      .replaceAll("truth/ or docs/truth/", "truth/")
+      .replaceAll("`docs/truth/README.md`", "`truth/`")
+      .replaceAll("`docs/truth/*`", "`truth/*`")
+      .replaceAll("docs/truth/README.md", "truth/")
+      .replaceAll("docs/truth/*", "truth/*")
+      .replaceAll("docs/truth", "truth");
+  }
+  return body;
+}
+
+function detectTruthPath(target) {
+  return existsDirectory(path.join(target, "truth")) ? "truth" : "docs/truth";
+}
+
+function detectExistingTruthPath(target) {
+  if (existsDirectory(path.join(target, "truth"))) {
+    return "truth/";
+  }
+  if (existsDirectory(path.join(target, "docs/truth"))) {
+    return "docs/truth/";
+  }
+  return undefined;
+}
+
+function existsDirectory(value) {
+  return existsSync(value) && statSync(value).isDirectory();
 }
 
 function isMinimalTemplate(file) {

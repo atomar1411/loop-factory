@@ -69,14 +69,12 @@ fallback, review, verification, skipped gates, residual risk, and next decision.
 CLI backstop:
 
 ```bash
-npx loop-factory setup
-npx loop-factory doctor
+node ~/.loop-factory/packages/cli/bin/loop-factory.js setup
+node ~/.loop-factory/packages/cli/bin/loop-factory.js doctor
 ```
 
-If the package is checked out locally:
+Without a machine install, use the GitHub package directly:
 
 ```bash
-cd /path/to/repo
-node /path/to/loop-factory/packages/cli/bin/loop-factory.js setup
-node /path/to/loop-factory/packages/cli/bin/loop-factory.js doctor
+npx --yes github:atomar1411/loop-factory doctor
 ```

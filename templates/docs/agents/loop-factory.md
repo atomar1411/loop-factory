@@ -6,7 +6,7 @@ Loop Factory is work-first. Agents route software work by size and risk.
 
 ## Source Of Truth
 
-- Product and architecture truth: `docs/truth/*`
+- Product and architecture truth: source-truth docs (`truth/` or `docs/truth/`)
 - Agent operating rules: `AGENTS.md`, `CLAUDE.md`, `docs/agents/*`
 - Task state: GitHub issues and PRs
 - Proof: CI, local command output summarized in PRs, committed tests

@@ -32,7 +32,7 @@ Allowed values: `Loop Orchestrator`, `Loop Implementer`, `Loop Reviewer`,
 
 ## Truth Docs To Read
 
-- `docs/truth/README.md`
+- Source-truth docs (`truth/` or `docs/truth/`)
 - `docs/agents/context-loading.md`
 - `docs/agents/loop-factory.md`
 

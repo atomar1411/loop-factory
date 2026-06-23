@@ -2,8 +2,8 @@
 
 This repo uses Loop Factory.
 
-Read `AGENTS.md`, then only the needed `docs/agents/*`, `docs/truth/*`, issue,
-PR, and source files.
+Read `AGENTS.md`, then only the needed `docs/agents/*`, source-truth docs,
+issue, PR, and source files.
 
 ## Loop Factory Contract
 
