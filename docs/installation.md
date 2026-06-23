@@ -42,7 +42,6 @@ loop-factory setup --target /path/to/project
 - `docs/agents/*`
 - `docs/truth/README.md`
 - GitHub issue and PR templates
-- optional GitHub workflow checks
 
 ## Install In Codex
 
@@ -104,8 +103,12 @@ loop-orchestrator
 loop-issue-triager
 loop-product-prd
 loop-architecture-reviewer
-loop-coder
-loop-test-engineer
+loop-docs-steward
+loop-implementer
+loop-reviewer
+loop-security-reviewer
+loop-verifier
+loop-tester
 loop-gatekeeper
 loop-release-manager
 ```

@@ -87,10 +87,12 @@ function setup(options) {
   console.log("== Loop Factory setup ==");
   init(options);
   console.log("");
-  doctor(options);
-  console.log("");
   console.log("Next:");
-  console.log("1. Review generated AGENTS.md, CLAUDE.md, docs/agents, and docs/truth.");
+  if (options.mode === "minimal") {
+    console.log("1. Review generated AGENTS.md, CLAUDE.md, and docs/agents.");
+  } else {
+    console.log("1. Review generated AGENTS.md, CLAUDE.md, docs/agents, docs/truth, and GitHub templates.");
+  }
   console.log("2. Install the Loop Factory plugin in Codex or Claude Code:");
   console.log(`   codex plugin marketplace add ${quote(repoRoot)}`);
   console.log("   codex plugin add loop-factory@loop-factory-local");
@@ -99,7 +101,7 @@ function setup(options) {
   console.log('   "Fix checkout retry behavior and run it through Loop Factory."');
   console.log('   "Create PRDs for onboarding before implementation."');
   console.log('   "Review PR #42, address comments, and verify the branch."');
-  console.log("4. Optional automation/CI check:");
+  console.log("4. When GitHub and plugins are ready, verify the setup:");
   console.log(`   ${cliName()} doctor --target ${quote(path.resolve(options.target))} --agent both`);
 }
 
@@ -346,8 +348,8 @@ function help() {
   console.log(`Loop Factory
 
 Usage:
-  loop-factory setup [--target <repo>] [--mode minimal|standard|strict] [--force]
-  loop-factory init [--target <repo>] [--mode minimal|standard|strict] [--force]
+  loop-factory setup [--target <repo>] [--mode minimal|standard] [--force]
+  loop-factory init [--target <repo>] [--mode minimal|standard] [--force]
   loop-factory doctor [--target <repo>] [--agent none|codex|claude|both]
 
 Daily human UX:
@@ -361,7 +363,7 @@ Automation commands:
 }
 
 function assertMode(mode) {
-  if (!["minimal", "standard", "strict"].includes(mode)) {
+  if (!["minimal", "standard"].includes(mode)) {
     throw new Error(`Unknown mode: ${mode}`);
   }
 }

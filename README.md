@@ -69,9 +69,10 @@ work to clear roles:
 | Issue Triager | Turns rough requests, bugs, and review comments into workable issues. |
 | Product PRD Agent | Writes product requirements, acceptance criteria, and non-goals. |
 | Architecture Reviewer | Checks service boundaries, contracts, diagrams, and source truth. |
-| Coder / Implementer | Makes scoped changes in one branch or worktree. |
+| Implementer | Makes scoped source or documentation changes in one branch or worktree. |
 | Reviewer | Reviews the diff against the task, docs, and evidence. |
-| Test Engineer / Verifier | Runs tests, checks logs, inspects systems, and records proof. |
+| Verifier | Runs command gates and records pass/fail evidence. |
+| Tester | Runs outside-in checks such as app startup, Docker, browser flows, logs, and database inspection. |
 | Gatekeeper | Enforces risk gates, autonomy level, evidence, and merge/deploy rules. |
 | Release Manager | Coordinates release readiness, rollout notes, and cleanup. |
 
@@ -183,7 +184,6 @@ docs/agents/*
 docs/truth/README.md
 .github/ISSUE_TEMPLATE/requirement.yml
 .github/PULL_REQUEST_TEMPLATE.md
-.github/workflows/loop-factory-check.yml
 ```
 
 These files tell agents how to load context, how to form task packets, how to
@@ -255,7 +255,6 @@ result, and report what remains.
 .claude-plugin/         Claude Code plugin manifest
 agents/                 Claude Code plugin agent role prompts
 docs/                   Framework architecture and operating docs
-hooks/                  Optional plugin hooks
 packages/cli/           Bootstrap, doctor, and automation CLI
 scripts/                Validation helpers
 skills/                 Codex and Claude-compatible skills

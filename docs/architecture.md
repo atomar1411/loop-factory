@@ -26,9 +26,9 @@ Human natural-language request
   -> Orchestrator Skill
   -> Product, architecture, or triage role when needed
   -> Worktree manager
-  -> Coder or implementer agent
+  -> Implementer agent
   -> Reviewer, architecture reviewer, or security reviewer
-  -> Verifier, test engineer, or tester
+  -> Verifier or tester
   -> Gatekeeper
   -> PR evidence
   -> Merge/deploy gate
@@ -39,8 +39,8 @@ Human natural-language request
 Loop Factory is intentionally surface-neutral:
 
 - Codex uses `.codex-plugin/plugin.json`, `skills/`, and repo `AGENTS.md`.
-- Claude Code uses `.claude-plugin/plugin.json`, `skills/`, `agents/`, hooks,
-  and repo `CLAUDE.md`.
+- Claude Code uses `.claude-plugin/plugin.json`, `skills/`, `agents/`, and repo
+  `CLAUDE.md`.
 - GitHub carries issues, PRs, labels, checks, and comments.
 - CI carries repeatable verification.
 - The target repo carries source truth under files such as `docs/truth/*`.
@@ -92,8 +92,7 @@ posts a decision request with options, recommendation, and risk if wrong.
 - `docs/agents/*`,
 - `docs/truth/README.md`,
 - `.github/ISSUE_TEMPLATE/requirement.yml`,
-- `.github/PULL_REQUEST_TEMPLATE.md`,
-- `.github/workflows/loop-factory-check.yml`.
+- `.github/PULL_REQUEST_TEMPLATE.md`.
 
 The command must not overwrite project-specific files without backup or explicit
 `--force`.

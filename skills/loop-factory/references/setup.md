@@ -7,7 +7,6 @@ Use this when installing Loop Factory into a target repository.
 - `minimal`: only `AGENTS.md`, `CLAUDE.md`, and task templates.
 - `standard`: minimal plus `docs/agents/*`, `docs/truth/README.md`, issue and
   PR templates.
-- `strict`: standard plus CI workflow and stricter validation hooks.
 
 Default to `standard`.
 
@@ -24,4 +23,3 @@ Default to `standard`.
 - Create the full standard template set.
 - Leave product and architecture truth skeletal.
 - Add first issue: "Establish source truth and architecture baseline."
-

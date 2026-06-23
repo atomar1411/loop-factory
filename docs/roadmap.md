@@ -17,7 +17,7 @@
 - Label bootstrap.
 - Task packet validation.
 - PR body validation.
-- GitHub Actions examples for Claude Code and Codex-compatible workflows.
+- Optional GitHub Actions examples for Claude Code and Codex-compatible workflows.
 
 ## V0.3 - Durable Orchestration
 

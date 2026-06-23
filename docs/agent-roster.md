@@ -24,7 +24,6 @@ Code, another agent runtime, or a human teammate.
 
 | Role | Purpose |
 | --- | --- |
-| Coder | Implements scoped source changes in one branch/worktree. |
 | Implementer | General implementation role, useful when a task mixes code and docs. |
 | Reviewer | Reviews diffs against task packets, source truth, and evidence. |
 | Security Reviewer | Reviews auth, secrets, dependency advisories, permissions, and destructive operations. |
@@ -34,16 +33,15 @@ Code, another agent runtime, or a human teammate.
 | Role | Purpose |
 | --- | --- |
 | Verifier | Runs command gates and reports exact evidence. |
-| Test Engineer | Designs and runs unit, integration, browser, Docker, DB, and log-based tests. |
 | Tester | Outside-in product verification role for app, Docker, DB, browser, WSS, and smoke checks. |
 
 ## Routing Defaults
 
 - New requirement: Issue Triager -> Product PRD Agent when product behavior is unclear.
 - Architecture/design task: Architecture Reviewer + Docs Steward.
-- Normal code task: Coder -> Reviewer -> Verifier.
-- Product flow task: Coder -> Reviewer -> Test Engineer -> Gatekeeper.
-- Security or dependency task: Coder -> Security Reviewer -> Verifier -> Gatekeeper.
+- Normal code task: Implementer -> Reviewer -> Verifier.
+- Product flow task: Implementer -> Reviewer -> Tester -> Gatekeeper.
+- Security or dependency task: Implementer -> Security Reviewer -> Verifier -> Gatekeeper.
 - Release/deploy task: Gatekeeper -> Release Manager -> Tester.
 
 ## Codex Usage

@@ -8,7 +8,6 @@ Loop Factory provides a Claude Code plugin with skills and agents.
 .claude-plugin/plugin.json
 skills/
 agents/
-hooks/
 ```
 
 Project installation writes `CLAUDE.md` and `.claude`-compatible repo assets
@@ -17,10 +16,9 @@ survive plugin updates.
 
 ## Supported Claude Code Concepts
 
-Loop Factory aligns with Claude Code skills, plugin agents, hooks, worktrees,
-and GitHub Actions. Skills carry workflows; agents carry role-specific system
-prompts; hooks can enforce local policy where deterministic enforcement is
-better than model judgment.
+Loop Factory aligns with Claude Code skills, plugin agents, worktrees, and
+GitHub pull requests. Skills carry workflows; agents carry role-specific system
+prompts.
 
 ## Recommended Use
 
@@ -47,12 +45,10 @@ loaded:
 - `loop-product-prd`
 - `loop-architecture-reviewer`
 - `loop-docs-steward`
-- `loop-coder`
 - `loop-implementer`
 - `loop-reviewer`
 - `loop-security-reviewer`
 - `loop-verifier`
-- `loop-test-engineer`
 - `loop-tester`
 - `loop-gatekeeper`
 - `loop-release-manager`

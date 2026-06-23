@@ -15,7 +15,6 @@
     ".claude-plugin",
     "agents",
     "docs",
-    "hooks",
     "packages",
     "scripts",
     "skills",
@@ -48,4 +47,3 @@
     "node": ">=20"
   }
 }
-
