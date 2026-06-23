@@ -1,6 +1,6 @@
-# Human Workflow
+# Developer Workflow
 
-This is the normal Loop Factory path for a human developer or architect.
+This is the normal Loop Factory path for a developer or architect.
 
 ## 1. Install Loop Factory
 
@@ -77,9 +77,9 @@ npx --yes github:atomar1411/loop-factory doctor --target /path/to/project --agen
 npx --yes github:atomar1411/loop-factory doctor --target /path/to/project --agent both
 ```
 
-## 4. Give A Requirement As A Prompt
+## 4. Give The Software Work
 
-Open Codex or Claude Code in the target repo and use rough language. Do not
+Open Codex or Claude Code in the target repo and describe the work. Do not
 invoke a slash command or remember a skill name.
 
 ```text
@@ -96,7 +96,7 @@ branches, draft PRs, and evidence.
 
 ## 5. Run The Agent Loop
 
-The human does not run the loop manually. The agent should:
+The developer does not run the loop manually. The agent should:
 
 - read `AGENTS.md`, `CLAUDE.md`, `docs/agents/*`, and source truth,
 - split broad requests into agent-sized work,
@@ -106,7 +106,7 @@ The human does not run the loop manually. The agent should:
 - post issue/PR evidence,
 - stop only at declared stop conditions.
 
-The human can steer in normal language:
+The developer can steer the loop:
 
 ```text
 This is approved, continue to implementation.
@@ -125,9 +125,9 @@ loop-factory intake "Make wallet payment watcher retry-safe" --target /path/to/p
 loop-factory run --target /path/to/project --issue 123 --agent codex
 ```
 
-## 7. Human Role
+## 7. Developer Role
 
-The human does not manually coordinate every step. The human reviews only:
+The developer does not manually coordinate every step. The developer reviews only:
 
 - stop-condition decisions,
 - product or architecture truth,

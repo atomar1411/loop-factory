@@ -1,13 +1,13 @@
 ---
 name: loop-factory
-description: Set up or operate a Git-first autonomous software agent loop. Use automatically in a repo when the user gives a natural-language feature request, bug report, cleanup request, PR/review request, architecture/design task, product/PRD request, or asks to create/run AI engineering teams; also use when the user explicitly mentions Loop Factory, autonomous loops, issue-to-PR loops, agent roles, task packets, or Codex/Claude Code factory setup.
+description: Set up or operate a Git-first autonomous software agent loop. Use automatically in a repo when the user gives a feature request, bug report, cleanup request, PR/review request, architecture/design task, product/PRD request, or asks to run coordinated agent roles; also use when the user explicitly mentions Loop Factory, autonomous loops, issue-to-PR loops, agent roles, task packets, or Codex/Claude Code factory setup.
 ---
 
 # Loop Factory
 
-Use Loop Factory to turn natural-language requirements into durable Git loops.
+Use Loop Factory to turn complex software work into durable Git loops.
 
-Humans should not need to type CLI commands, slash commands, or skill names
+Developers should not need to type CLI commands, slash commands, or skill names
 during normal work. If the conversation looks like a new requirement, bug,
 cleanup, review, design, product, or implementation task in a repo, start the
 Loop Factory workflow automatically.
@@ -38,10 +38,10 @@ Loop Factory workflow automatically.
 - Stop for product, money, legal, safety, deployment, service-boundary, or
   irreversible decisions.
 - Report evidence before claiming completion.
-- Do not ask the human to invoke Loop Factory again when intent is already
+- Do not ask the developer to invoke Loop Factory again when intent is already
   clear.
 - Use CLI commands as internal automation only when useful; do not make them the
-  normal human interface.
+  normal developer interface.
 
 ## Internal Automation
 

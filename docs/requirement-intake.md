@@ -1,9 +1,9 @@
 # Requirement Intake
 
-Humans should not need to write full task packets. They provide intent. Loop
-Factory turns intent into agent-ready tasks.
+Developers should not need to write full task packets. They provide intent.
+Loop Factory turns intent into agent-ready tasks.
 
-## Human Brief
+## Developer Brief
 
 ```text
 Goal:
@@ -58,4 +58,3 @@ Done means: Restart scenario proves one confirmed entry per transfer.
 Risk: Payment semantics. Ask before changing confirmation-depth policy.
 Priority: P1.
 ```
-

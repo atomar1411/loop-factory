@@ -1,13 +1,13 @@
 ---
 name: autonomous-pr-loop
-description: Run a Loop Factory task from natural-language request or issue to reviewed and verified PR. Use automatically when a requirement is ready for autonomous agent work with branches, worktrees, implementation, review, verification, and PR evidence, even if the user did not invoke a command.
+description: Run a Loop Factory task from developer request or issue to reviewed and verified PR. Use automatically when a requirement is ready for autonomous agent work with branches, worktrees, implementation, review, verification, and PR evidence, even if the user did not invoke a command.
 ---
 
 # Autonomous PR Loop
 
 Run the issue-to-PR loop until it merges, is ready for maintainer action, or
-hits a stop condition. The user should be able to say the work in normal
-language; the agent owns translating it into loop state.
+hits a stop condition. The user gives the software work; the agent owns
+translating it into loop state.
 
 ## Loop Steps
 

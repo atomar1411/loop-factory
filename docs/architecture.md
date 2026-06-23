@@ -19,7 +19,7 @@ artifacts.
 ## Components
 
 ```text
-Human natural-language request
+Developer software request
   -> activation classifier
   -> Requirement Intake Skill when durable task state is useful
   -> GitHub issue or local task packet
@@ -47,7 +47,8 @@ Loop Factory is intentionally surface-neutral:
 
 ## State Model
 
-The loop stores state in artifacts that other agents and humans can inspect:
+The loop stores state in artifacts that other agents, developers, and
+maintainers can inspect:
 
 - Requirement brief.
 - Issue.
@@ -59,7 +60,7 @@ The loop stores state in artifacts that other agents and humans can inspect:
 - Verification report.
 - Gatekeeper report.
 - PR checklist.
-- Decision log when a human or maintainer changes semantics.
+- Decision log when a developer or maintainer changes semantics.
 
 No hidden dashboard is required for correctness. Dashboards may exist later as
 read-only mirrors of GitHub and committed files.

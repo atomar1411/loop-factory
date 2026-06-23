@@ -17,8 +17,8 @@ survive plugin updates.
 ## Supported Claude Code Concepts
 
 Loop Factory aligns with Claude Code skills, plugin agents, worktrees, and
-GitHub pull requests. Skills carry workflows; agents carry role-specific system
-prompts.
+GitHub pull requests. Skills carry workflows; agents carry role-specific
+instructions.
 
 ## Recommended Use
 
@@ -26,8 +26,8 @@ prompts.
 claude --plugin-dir ./loop-factory
 ```
 
-Then work in the target repo using normal language. Claude Code should use Loop
-Factory when a prompt looks like a requirement, bug, cleanup, PR review,
+Then work in the target repo as usual. Claude Code should use Loop
+Factory when a request looks like a requirement, bug, cleanup, PR review,
 product/PRD task, architecture/design task, or implementation request.
 
 ```text

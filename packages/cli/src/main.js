@@ -105,7 +105,7 @@ function setup(options) {
     console.log("   codex plugin add loop-factory@loop-factory-local");
     console.log(`   claude --plugin-dir ${quote(repoRoot)}`);
   }
-  console.log("3. Open Codex or Claude Code in the target repo and speak normally:");
+  console.log("3. Open Codex or Claude Code in the target repo and describe the software work:");
   console.log('   "Fix checkout retry behavior and run it through Loop Factory."');
   console.log('   "Create PRDs for onboarding before implementation."');
   console.log('   "Review PR #42, address comments, and verify the branch."');
@@ -259,15 +259,15 @@ function runLoop(options) {
     throw new Error("Usage: loop-factory run --issue <number-or-url> [--target <repo>] [--agent codex|claude] [--execute]");
   }
   const agent = options.agent === "claude" ? "claude" : "codex";
-  const prompt = [
+  const requestText = [
     `Use Loop Factory to run issue ${options.issue} through the autonomous PR loop.`,
     "Read AGENTS.md/CLAUDE.md, docs/agents, the issue, and source truth.",
     "Create or use one branch/worktree, implement within scope, run reviewer and verifier/tester loops,",
     "post durable PR/issue evidence, and stop only on declared risk gates.",
   ].join(" ");
   const command = agent === "claude"
-    ? ["claude", "--plugin-dir", repoRoot, prompt]
-    : ["codex", "-C", target, prompt];
+    ? ["claude", "--plugin-dir", repoRoot, requestText]
+    : ["codex", "-C", target, requestText];
 
   if (!options.execute) {
     console.log("Run this command:");
@@ -360,8 +360,8 @@ Usage:
   loop-factory init [--target <repo>] [--mode minimal|standard] [--force]
   loop-factory doctor [--target <repo>] [--agent none|codex|claude|both]
 
-Daily human UX:
-  Open Codex or Claude Code in the target repo and speak normally.
+Daily developer UX:
+  Open Codex or Claude Code in the target repo and describe the software work.
   Example: "Fix checkout retry behavior and run it through Loop Factory."
 
 Automation commands:

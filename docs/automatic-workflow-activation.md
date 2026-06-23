@@ -1,11 +1,12 @@
-# Natural Language Activation
+# Automatic Workflow Activation
 
-Loop Factory is conversation-first. Humans should not need to remember CLI
-commands, slash commands, or skill names during normal work.
+Loop Factory is work-first. A developer should not need to remember CLI
+commands, slash commands, or skill names before agents can coordinate on a real
+software problem.
 
 ## Activation Rule
 
-When an agent in a Loop Factory-enabled repo sees a message that looks like new
+When an agent in a Loop Factory-enabled repo sees a request that looks like new
 software work, it should start the Loop Factory workflow automatically.
 
 Examples:
@@ -19,12 +20,12 @@ Examples:
 - "Build the dashboard settings page."
 - "Create tasks for these architecture gaps."
 
-The human may mention Loop Factory, but does not have to.
+The developer may mention Loop Factory, but does not have to.
 
 ## What The Agent Does
 
 ```text
-human natural-language request
+developer software request
   -> detect requirement, bug, review, cleanup, design, or implementation intent
   -> load AGENTS.md / CLAUDE.md and docs/agents
   -> verify Git/GitHub connectivity when needed
@@ -50,7 +51,7 @@ tracked work would clearly help.
 
 ## Stop Conditions
 
-Ask the human only when:
+Ask the developer only when:
 
 - product, money, legal, safety, deployment, service-boundary, or irreversible
   behavior needs a decision,
@@ -62,5 +63,4 @@ Ask the human only when:
 ## CLI Role
 
 The CLI is for setup, CI, scripting, and agent-internal automation. It is not
-the primary human interface.
-
+the primary developer interface.

@@ -1,6 +1,6 @@
 <svg width="1200" height="520" viewBox="0 0 1200 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Loop Factory</title>
-  <desc id="desc">Turn natural-language coding requests into reviewed, verified pull requests.</desc>
+  <desc id="desc">Coordinate agent roles to move complex software work from problem to reviewed pull request.</desc>
   <rect width="1200" height="520" rx="28" fill="#0B1020"/>
   <rect x="28" y="28" width="1144" height="464" rx="22" fill="#111827" stroke="#263244" stroke-width="2"/>
   <circle cx="1010" cy="96" r="132" fill="#1D4ED8" opacity="0.18"/>
@@ -10,7 +10,7 @@
   <text x="148" y="187" fill="#334155" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="28" font-weight="700">"Fix checkout retry</text>
   <text x="148" y="225" fill="#334155" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="28" font-weight="700">behavior."</text>
   <rect x="148" y="252" width="216" height="34" rx="17" fill="#DBEAFE"/>
-  <text x="168" y="275" fill="#1D4ED8" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17" font-weight="700">Natural language in</text>
+  <text x="168" y="275" fill="#1D4ED8" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17" font-weight="700">Complex task in</text>
 
   <path d="M542 195H656" stroke="#60A5FA" stroke-width="5" stroke-linecap="round"/>
   <path d="M640 177L663 195L640 213" stroke="#60A5FA" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>

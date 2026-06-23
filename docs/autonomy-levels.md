@@ -1,6 +1,7 @@
 # Autonomy Levels
 
-Autonomy levels define what agents may do without waiting for humans.
+Autonomy levels define what agents may do without waiting for the developer or
+maintainer.
 
 ## A0 - Advisory
 
@@ -14,7 +15,7 @@ Use for unknown systems, early architecture discovery, or sensitive domains.
 Agents may create a branch/worktree, edit files, run tests, and commit locally.
 They do not push branches or open PRs.
 
-Use when the team is calibrating trust.
+Use when the project is calibrating trust.
 
 ## A2 - Draft PR
 
@@ -27,7 +28,7 @@ Use as the default for healthy repos.
 
 Agents may mark PRs ready after review and verification pass. They do not merge.
 
-Use for teams that want maintainers to review only final PRs.
+Use when maintainers want to review only final PRs.
 
 ## A4 - Auto-Merge
 
@@ -47,4 +48,3 @@ instructions, and explicit maintainer approval.
 
 Loop Factory recommends A2 for normal engineering work and A0/A1 for newly
 onboarded repos until the first loop succeeds.
-

@@ -6,9 +6,10 @@
 
 ![Loop Factory banner](assets/loop-factory-banner.svg)
 
-An agent factory for developers moving real work from prompt to PR.
+An agent factory for developers moving complex software work from problem to PR.
 
-Loop Factory turns a developer's natural-language coding request into scoped issues,
+Loop Factory helps a developer solve non-trivial features, bugs, cleanups, and
+architecture work by coordinating specialized agent roles through scoped issues,
 isolated branches, reviewed diffs, verification evidence, and pull requests.
 
 It is not a team dashboard. It is not a chat ritual. It is a small operating
@@ -125,7 +126,7 @@ used on real projects.
 
 ### #1: The Agent Did The Wrong Thing
 
-**The problem.** You gave the agent a prompt. It guessed the missing context,
+**The problem.** You gave the agent a hard task. It guessed the missing context,
 touched too many files, and came back with a patch that sort of works but does
 not match the intent.
 
@@ -266,7 +267,7 @@ See [Installation And Setup](docs/installation.md) for the full setup path.
 ```text
 .codex-plugin/          Codex plugin manifest
 .claude-plugin/         Claude Code plugin manifest
-agents/                 Claude Code plugin agent role prompts
+agents/                 Claude Code plugin agent role instructions
 assets/                 README images and diagrams
 docs/                   Framework architecture and operating docs
 packages/cli/           Bootstrap, doctor, and automation CLI
@@ -278,8 +279,8 @@ examples/               Minimal target repo examples
 
 ## Reference
 
-- [Natural Language Activation](docs/natural-language-activation.md)
-- [Developer Workflow](docs/human-workflow.md)
+- [Automatic Workflow Activation](docs/automatic-workflow-activation.md)
+- [Developer Workflow](docs/developer-workflow.md)
 - [Installation And Setup](docs/installation.md)
 - [Autonomous Loop Model](docs/loop-model.md)
 - [Agent Roster](docs/agent-roster.md)

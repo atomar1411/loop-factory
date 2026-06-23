@@ -20,7 +20,7 @@ are visible in Git review.
 1. Install or load the Loop Factory plugin.
 2. Bootstrap the target repo with Loop Factory files.
 3. Start a Codex thread in the target repo.
-4. Speak in natural language. When the prompt looks like a requirement, bug,
+4. Describe the software work. When the request looks like a requirement, bug,
    cleanup, review, product/PRD, architecture/design, or implementation task,
    Codex should load the Loop Factory skills automatically.
 5. Let Codex create issues, branches, draft PRs, review passes, verification

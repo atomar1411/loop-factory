@@ -6,7 +6,7 @@ Agents must start from explicit repo context.
 
 1. Read `AGENTS.md`.
 2. Read `docs/agents/loop-factory.md`.
-3. Read the issue, PR, task packet, or human prompt.
+3. Read the issue, PR, task packet, or developer request.
 4. Read only the truth docs and source files needed for the task.
 5. Run:
 
@@ -14,7 +14,7 @@ Agents must start from explicit repo context.
 git status --short --branch
 ```
 
-If the human prompt is the only input, infer whether it is a requirement,
+If the developer request is the only input, infer whether it is a requirement,
 review, bug, cleanup, design, product, or implementation task. Create durable
 issue/task state when useful and safe.
 

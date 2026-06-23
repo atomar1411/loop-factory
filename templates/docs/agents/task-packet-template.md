@@ -19,7 +19,7 @@ Allowed values: `Loop Orchestrator`, `Loop Implementer`, `Loop Reviewer`,
 
 ## Context Inputs
 
-- Human prompt, issue, or PR:
+- Developer request, issue, or PR:
 - Relevant source files:
 - Relevant logs, screenshots, or failing commands:
 - Prior maintainer decisions:
@@ -69,4 +69,3 @@ git status --short --branch
 - Review result
 - Residual risk
 - Decisions needed
-

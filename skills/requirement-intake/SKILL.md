@@ -1,12 +1,12 @@
 ---
 name: requirement-intake
-description: Convert rough human product or engineering requirements into Loop Factory issues and task packets. Use automatically when a natural-language user message appears to be a new feature request, bug report, cleanup request, architecture/design ask, product/PRD ask, review request, or vague goal that should become agent-ready work, even if the user does not name this skill or Loop Factory.
+description: Convert rough product or engineering requirements into Loop Factory issues and task packets. Use automatically when a developer request appears to be a new feature, bug, cleanup, architecture/design ask, product/PRD ask, review request, or vague goal that should become agent-ready work, even if the user does not name this skill or Loop Factory.
 ---
 
 # Requirement Intake
 
-Turn human intent into agent-ready work. The human can speak normally; do not
-require a command, slash command, or template.
+Turn developer intent into agent-ready work. Do not require a command, slash
+command, or template.
 
 ## Input
 

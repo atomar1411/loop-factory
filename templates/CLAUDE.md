@@ -5,10 +5,10 @@ This repo uses Loop Factory.
 Read `AGENTS.md` first, then read the relevant files under `docs/agents/` and
 `docs/truth/`.
 
-## Natural Language Activation
+## Automatic Workflow Activation
 
-Humans do not need slash commands. If the user gives a natural-language feature
-request, bug report, cleanup request, PR review request, architecture/design ask,
+Developers do not need slash commands. If the user gives a feature request, bug
+report, cleanup request, PR review request, architecture/design ask,
 product/PRD ask, or implementation task, use Loop Factory automatically.
 
 Use plugin skills and agents internally when available; do not ask the human to

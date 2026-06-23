@@ -9,17 +9,17 @@ Every agent starts here, then reads only the docs needed for the assigned task:
 1. `docs/truth/README.md`
 2. `docs/agents/context-loading.md`
 3. `docs/agents/loop-factory.md`
-4. The assigned issue, PR, task packet, or human prompt
+4. The assigned issue, PR, task packet, or developer request
 5. Any local `AGENTS.md` in the target subdirectory
 
 ## Loop Factory Mode
 
 This repo uses Loop Factory for agentic work.
 
-Humans do not need to invoke Loop Factory explicitly. If a prompt looks like a
-new requirement, bug, cleanup request, review request, architecture/design task,
-product/PRD task, or implementation request, the agent should start the Loop
-Factory workflow automatically.
+Developers do not need to invoke Loop Factory explicitly. If a request looks
+like a new requirement, bug, cleanup request, review request,
+architecture/design task, product/PRD task, or implementation request, the agent
+should start the Loop Factory workflow automatically.
 
 Project truth lives in:
 
@@ -45,9 +45,9 @@ requirement
   -> merge or escalation
 ```
 
-## Natural Language Activation
+## Automatic Workflow Activation
 
-Activate the workflow for normal prompts such as:
+Activate the workflow for software requests such as:
 
 - "Fix checkout retry behavior."
 - "Create PRDs for onboarding."
@@ -55,8 +55,8 @@ Activate the workflow for normal prompts such as:
 - "Clean up dead docs and branches."
 - "Start agents on this issue."
 
-Do not activate the full workflow for simple questions, explanations, or prompts
-that explicitly say not to create tasks or change code.
+Do not activate the full workflow for simple questions, explanations, or
+requests that explicitly say not to create tasks or change code.
 
 ## Agent Rules
 

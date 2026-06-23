@@ -93,8 +93,8 @@ For local development or review, load it for one session:
 claude --plugin-dir ~/.loop-factory
 ```
 
-In that session, speak normally in the target repo. The plugin skills and
-agents are used internally when the prompt looks like a requirement, bug,
+In that session, work in the target repo as usual. The plugin skills and
+agents are used internally when the request looks like a requirement, bug,
 review, product/PRD task, architecture/design task, cleanup, or implementation
 request.
 
@@ -145,7 +145,7 @@ or `--agent both` to include plugin/tooling checks.
 ## First Use
 
 After the plugin is installed and the target repo is bootstrapped, open Codex or
-Claude Code in the target repo and speak normally:
+Claude Code in the target repo and describe the software work:
 
 ```text
 Add retry-safe payment watcher handling.

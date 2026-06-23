@@ -6,7 +6,7 @@ conditions.
 ## Requirement Loop
 
 ```text
-rough natural-language requirement
+rough developer requirement
   -> clarify only blocking gaps
   -> classify risk
   -> create issue
