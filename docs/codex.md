@@ -7,16 +7,14 @@ Loop Factory provides a Codex plugin with shared skills and templates.
 ```text
 .agents/plugins/marketplace.json
 .codex-plugin/plugin.json
-commands/
 skills/
 templates/
 scripts/
 ```
 
-Codex discovers the skills from the plugin manifest and the `/loop-factory`
-slash command from `commands/loop-factory.md`. Each target repository still
-gets its own `AGENTS.md` and `docs/agents/*` files so the project rules are
-visible in Git review.
+Codex discovers the public `/loop-factory` skill from the plugin manifest. Each
+target repository still gets its own `AGENTS.md` and `docs/agents/*` files so
+the project rules are visible in Git review.
 
 ## Recommended Use
 

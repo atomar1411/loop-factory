@@ -8,7 +8,6 @@ const requiredFiles = [
   ".codex-plugin/plugin.json",
   ".claude-plugin/marketplace.json",
   ".claude-plugin/plugin.json",
-  "commands/loop-factory.md",
   "agents/loop-architecture-reviewer.md",
   "agents/loop-docs-steward.md",
   "agents/loop-gatekeeper.md",
@@ -25,10 +24,10 @@ const requiredFiles = [
   "docs/automatic-workflow-activation.md",
   "docs/developer-workflow.md",
   "skills/loop-factory/SKILL.md",
-  "skills/requirement-intake/SKILL.md",
-  "skills/autonomous-pr-loop/SKILL.md",
-  "skills/reviewer-loop/SKILL.md",
-  "skills/verifier-loop/SKILL.md",
+  "skills/loop-factory/references/requirement-intake.md",
+  "skills/loop-factory/references/autonomous-pr-loop.md",
+  "skills/loop-factory/references/reviewer-loop.md",
+  "skills/loop-factory/references/verifier-loop.md",
   "templates/AGENTS.md",
   "templates/CLAUDE.md",
 ];
@@ -55,13 +54,13 @@ const stalePatterns = [
   { pattern: /\bdoctor --agent\b/, message: "Doctor auto-detects installed agent CLIs" },
   { pattern: /--install-dir\b/, message: "Install uses the machine default ~/.loop-factory" },
   { pattern: /\binstall --agent\b/, message: "Install auto-detects agent CLIs" },
+  { pattern: /^name:\s*(requirement-intake|autonomous-pr-loop|reviewer-loop|verifier-loop)\b/m, message: "Internal loop workflows must not be public skills" },
 ];
 
 const textRoots = [
   ".agents",
   ".codex-plugin",
   ".claude-plugin",
-  "commands",
   "agents",
   "assets",
   "docs",

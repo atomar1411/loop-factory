@@ -283,13 +283,12 @@ and troubleshooting.
 .agents/                Codex local marketplace manifest
 .codex-plugin/          Codex plugin manifest
 .claude-plugin/         Claude Code plugin and marketplace manifests
-commands/               Slash command instructions for /loop-factory
 agents/                 Claude Code plugin agent profile instructions
 assets/                 README images and diagrams
 docs/                   Framework architecture and operating docs
 packages/cli/           Bootstrap, doctor, and automation CLI
 scripts/                Validation helpers
-skills/                 Codex and Claude-compatible skills
+skills/                 Public /loop-factory skill and private references
 templates/              Files copied into target repositories
 examples/               Minimal target repo examples
 ```

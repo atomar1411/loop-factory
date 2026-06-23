@@ -81,13 +81,13 @@ codex plugin list
 From a project thread, use `/loop-factory` to enable the repo and
 `/loop-factory doctor` to verify it.
 
-Expected plugin skills:
+Expected public surface:
 
-- `loop-factory`
-- `requirement-intake`
-- `autonomous-pr-loop`
-- `reviewer-loop`
-- `verifier-loop`
+- `/loop-factory`
+- `/loop-factory doctor`
+
+Requirement intake, PR delivery, review, and verification are internal workflow
+references. They should not appear as separate slash commands.
 
 ## Claude Code Details
 

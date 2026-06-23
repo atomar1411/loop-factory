@@ -1,11 +1,7 @@
----
-name: reviewer-loop
-description: Review a Loop Factory branch or PR against the task packet, source truth, risk gates, and verification evidence. Use when a diff needs agent review before merge or before human maintainer review.
----
+# Reviewer Loop Reference
 
-# Reviewer Loop
-
-Review as an independent reviewer.
+Review a branch or PR against the task packet, source truth, risk gates, and
+verification evidence.
 
 ## Inputs
 
@@ -44,4 +40,3 @@ Residual risk:
 
 If there are no findings, say that clearly and list unrun gates or residual
 risk.
-

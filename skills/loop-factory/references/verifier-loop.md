@@ -1,9 +1,4 @@
----
-name: verifier-loop
-description: Run Loop Factory verification gates and report exact evidence. Use when a task, branch, or PR needs proof through tests, builds, linters, Docker, browser checks, logs, database checks, or CI evidence.
----
-
-# Verifier Loop
+# Verifier Loop Reference
 
 Verify claims with commands and evidence.
 
@@ -39,4 +34,3 @@ When a gate fails:
 4. Classify as product bug, test bug, environment issue, missing dependency, or
    unknown.
 5. Return the task to implementer or stop if the fix changes risk semantics.
-

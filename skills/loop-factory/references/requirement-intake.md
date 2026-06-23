@@ -1,16 +1,12 @@
----
-name: requirement-intake
-description: Convert rough product or engineering requirements into Loop Factory issues and task packets. Use automatically when a developer request appears to be a new feature, bug, cleanup, architecture/design ask, product/PRD ask, review request, or vague goal that should become agent-ready work, even if the user does not name this skill or Loop Factory.
----
+# Requirement Intake Reference
 
-# Requirement Intake
-
-Turn developer intent into agent-ready work. Do not require a command, slash
-command, or template.
+Turn developer intent into agent-ready work. Do not require a separate command,
+slash command, or template.
 
 ## Input
 
-Accept rough text. Prefer this brief when the user can provide it:
+Accept rough text. Prefer this brief only when the user can provide it without
+friction:
 
 ```text
 Goal:

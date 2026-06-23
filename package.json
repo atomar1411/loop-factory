@@ -1,6 +1,6 @@
 {
   "name": "loop-factory",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Open agent factory for developers solving complex software work with Git-first loops.",
   "type": "module",
   "license": "MIT",
@@ -14,7 +14,6 @@
     ".agents",
     ".codex-plugin",
     ".claude-plugin",
-    "commands",
     "agents",
     "assets",
     "docs",

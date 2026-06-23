@@ -53,10 +53,10 @@ must not be described as independent review.
 Loop Factory is intentionally surface-neutral:
 
 - Codex uses `.agents/plugins/marketplace.json`, `.codex-plugin/plugin.json`,
-  `commands/`, `skills/`, and repo `AGENTS.md`.
+  the public `skills/loop-factory/SKILL.md`, and repo `AGENTS.md`.
 - Claude Code uses `.claude-plugin/marketplace.json`,
-  `.claude-plugin/plugin.json`, `commands/`, `skills/`, agent profiles in
-  `agents/`, and repo `CLAUDE.md`.
+  `.claude-plugin/plugin.json`, the public `skills/loop-factory/SKILL.md`,
+  agent profiles in `agents/`, and repo `CLAUDE.md`.
 - GitHub carries issues, PRs, labels, checks, and comments.
 - CI carries repeatable verification.
 - The target repo carries source truth under files such as `docs/truth/*`.

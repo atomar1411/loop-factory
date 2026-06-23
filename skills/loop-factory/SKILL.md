@@ -1,16 +1,27 @@
 ---
 name: loop-factory
-description: Set up or operate a Git-first autonomous software agent loop. Use automatically in a repo when the user gives a feature request, bug report, cleanup request, PR/review request, architecture/design task, product/PRD request, or asks to run coordinated agent profiles; also use when the user explicitly mentions Loop Factory, autonomous loops, issue-to-PR loops, agent profiles, task packets, or Codex/Claude Code factory setup.
+description: Public Loop Factory interface. Use when the user invokes /loop-factory, asks to enable Loop Factory in a repo, asks for a Loop Factory doctor check, or gives complex software work that should move through the Loop Factory operating model.
+argument-hint: "[doctor|help|request]"
 ---
 
 # Loop Factory
 
 Use Loop Factory to turn complex software work into durable Git loops.
 
-Developers should not need to type CLI commands, slash commands, or skill names
-during normal work. If the conversation looks like a new requirement, bug,
-cleanup, review, design, product, or implementation task in a repo, start the
-Loop Factory workflow automatically.
+This is the only public Loop Factory slash command. Do not ask the developer to
+invoke internal profiles such as requirement intake, PR loop, reviewer loop, or
+verifier loop. Those are private workflow references loaded from this skill.
+
+## Public Interface
+
+- `/loop-factory`: enable Loop Factory in the current repo.
+- `/loop-factory doctor`: verify repo setup, GitHub connectivity, and plugin
+  visibility.
+- `/loop-factory <request>`: treat the text as software work and run the Loop
+  Factory operating model after confirming the repo is enabled.
+
+Normal feature, bug, review, PRD, architecture, cleanup, and verification work
+should also activate this skill from the conversation when the intent is clear.
 
 ## First Moves
 
@@ -27,6 +38,10 @@ Loop Factory workflow automatically.
 3. Load only the matching reference:
    - setup: `references/setup.md`
    - operating model: `references/operating-model.md`
+   - requirement intake: `references/requirement-intake.md`
+   - PR delivery loop: `references/autonomous-pr-loop.md`
+   - review: `references/reviewer-loop.md`
+   - verification: `references/verifier-loop.md`
    - risk gates: `references/risk-gates.md`
 
 ## Rules
@@ -42,15 +57,9 @@ Loop Factory workflow automatically.
   clear.
 - Use CLI commands as internal automation only when useful; do not make them the
   normal developer interface.
+- Keep internal workflow names out of the public command surface.
 
 ## Internal Automation
-
-Use the slash command for normal repo enablement and verification:
-
-```text
-/loop-factory
-/loop-factory doctor
-```
 
 Use the CLI for CI, scripting, framework debugging, and durable issue creation
 when appropriate:
