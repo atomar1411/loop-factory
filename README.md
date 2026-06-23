@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-0f766e.svg)](LICENSE)
 [![Node 20+](https://img.shields.io/badge/Node-20%2B-2563eb.svg)](package.json)
 
-![Loop Factory banner](assets/loop-factory-banner.svg)
+![Loop Factory banner](assets/loop-factory-banner-v2.svg)
 
 An agent factory for developers moving complex software work from problem to PR.
 
@@ -81,7 +81,7 @@ GitHub gives the developer an audit trail.
 Together, they turn "please fix this" into a piece of software work you can
 inspect, review, and trust.
 
-![Loop Factory delivery loop](assets/loop-factory-loop.svg)
+![Loop Factory delivery loop](assets/loop-factory-agent-loop-v2.svg)
 
 ## Quickstart
 
