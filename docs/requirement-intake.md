@@ -30,7 +30,7 @@ The intake loop creates or updates:
 - autonomy level,
 - verification gates,
 - escalation triggers,
-- suggested agent role,
+- suggested agent profile,
 - blocked-by relationships.
 
 ## Splitting Rules

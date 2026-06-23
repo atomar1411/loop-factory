@@ -11,12 +11,12 @@ Developers do not need slash commands. If the user gives a feature request, bug
 report, cleanup request, PR review request, architecture/design ask,
 product/PRD ask, or implementation task, use Loop Factory automatically.
 
-Use plugin skills and agents internally when available; do not ask the human to
-remember skill names.
+Use plugin skills and agent profiles internally when available; do not ask the
+human to remember skill names.
 
-## Claude Code Agents
+## Claude Code Agent Profiles
 
-When Loop Factory plugin agents are available, use:
+When Loop Factory plugin agent profiles are available, use:
 
 - `loop-orchestrator` for task decomposition and routing.
 - `loop-implementer` for scoped changes.

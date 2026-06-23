@@ -81,8 +81,7 @@ The developer does not run the loop manually. The agent should:
 - read `AGENTS.md`, `CLAUDE.md`, `docs/agents/*`, and source truth,
 - split broad requests into agent-sized work,
 - create one branch/worktree per task when implementation starts,
-- run product, architecture, coding, review, tester, verifier, and gatekeeper
-  roles as needed,
+- run the smallest useful set of agent profiles,
 - post issue/PR evidence,
 - stop only at declared stop conditions.
 

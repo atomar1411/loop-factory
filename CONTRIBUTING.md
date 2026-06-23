@@ -15,7 +15,10 @@ making target projects depend on hidden state.
 
 ```bash
 npm run check
-node packages/cli/bin/loop-factory.js init --target /tmp/loop-factory-test --mode minimal
+repo=$PWD
+tmpdir=$(mktemp -d /tmp/loop-factory-test.XXXXXX)
+(cd "$tmpdir" && node "$repo/packages/cli/bin/loop-factory.js" setup --mode minimal)
+rm -rf "$tmpdir"
 ```
 
 ## Pull Requests
@@ -26,4 +29,3 @@ Every PR should include:
 - which target-repo files are affected,
 - how it was verified,
 - any compatibility notes for Codex or Claude Code.
-

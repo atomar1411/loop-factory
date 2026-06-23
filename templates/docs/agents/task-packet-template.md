@@ -10,12 +10,14 @@ State the concrete outcome.
 
 A2 Draft PR
 
-## Agent Role
+## Agent Profile
 
 Loop Implementer
 
-Allowed values: `Loop Orchestrator`, `Loop Implementer`, `Loop Reviewer`,
-`Loop Verifier`, `Loop Tester`.
+Allowed values: `Loop Orchestrator`, `Loop Issue Triager`,
+`Loop Product PRD`, `Loop Architecture Reviewer`, `Loop Docs Steward`,
+`Loop Implementer`, `Loop Reviewer`, `Loop Security Reviewer`,
+`Loop Verifier`, `Loop Tester`, `Loop Gatekeeper`, `Loop Release Manager`.
 
 ## Context Inputs
 

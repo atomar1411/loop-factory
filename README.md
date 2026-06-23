@@ -9,11 +9,13 @@
 An agent factory for developers moving complex software work from problem to PR.
 
 Loop Factory helps a developer solve non-trivial features, bugs, cleanups, and
-architecture work by coordinating specialized agent roles through scoped issues,
-isolated branches, reviewed diffs, verification evidence, and pull requests.
+architecture work by coordinating specialized agent profiles through scoped
+issues, isolated branches, reviewed diffs, verification evidence, and pull
+requests.
 
 It is not a team dashboard. It is not a chat ritual. It is a small operating
-model for commanding many agent roles while keeping the work visible in GitHub.
+model for commanding many specialist agent runs while keeping the work visible
+in GitHub.
 
 ## The Core Idea
 
@@ -46,13 +48,13 @@ money, security, deployment, or architecture, it stops and asks.
 
 ### What Is A Factory?
 
-A factory is a set of roles and handoffs.
+A factory is a set of specialist profiles and handoffs.
 
 One agent can write code. A developer shipping real software needs more than
 that. They need help shaping requirements, protecting architecture, reviewing
 diffs, running tests, enforcing risk gates, and preparing releases.
 
-Loop Factory gives agents those roles:
+Loop Factory gives agents those profiles:
 
 - **Orchestrator** splits work and prevents overlap.
 - **Issue Triager** turns rough requests into workable tasks.
@@ -68,7 +70,7 @@ Loop Factory gives agents those roles:
 That is the factory.
 
 The factory does not mean a heavy process. It means the work has a place to go,
-and every role knows what it owns.
+and every specialist knows what it owns.
 
 ### Why Put Them Together?
 
@@ -91,7 +93,7 @@ work without losing control of the codebase.
 Use it when you need to:
 
 - coordinate coding agents across product, architecture, implementation,
-  review, testing, verification, and release roles,
+  review, testing, verification, and release profiles,
 - move complex feature work from requirement to GitHub issue, branch, reviewed
   pull request, and verification evidence,
 - run Codex or Claude Code on a repo without burying task state in chat,
@@ -181,8 +183,8 @@ Private model memory can help an agent think. It is not project truth.
 touched which files, whether review happened, and whether the branch is safe to
 merge.
 
-**The fix.** The factory gives those jobs to agent roles. The developer stays
-focused on the decisions that actually need judgment:
+**The fix.** The factory gives those jobs to specialist agent profiles. The
+developer stays focused on the decisions that actually need judgment:
 
 - product meaning,
 - risk,
@@ -283,7 +285,7 @@ See [Installation And Setup](docs/installation.md) for the full setup path.
 ```text
 .codex-plugin/          Codex plugin manifest
 .claude-plugin/         Claude Code plugin manifest
-agents/                 Claude Code plugin agent role instructions
+agents/                 Claude Code plugin agent profile instructions
 assets/                 README images and diagrams
 docs/                   Framework architecture and operating docs
 packages/cli/           Bootstrap, doctor, and automation CLI
@@ -299,13 +301,13 @@ examples/               Minimal target repo examples
 - [Developer Workflow](docs/developer-workflow.md)
 - [Installation And Setup](docs/installation.md)
 - [Autonomous Loop Model](docs/loop-model.md)
-- [Agent Roster](docs/agent-roster.md)
+- [Agent Profiles](docs/agent-profiles.md)
 - [Architecture](docs/architecture.md)
 
 ## Status
 
 Loop Factory is early. The current release is the foundation: plugin manifests,
-skills, agent roles, repo templates, and a bootstrap CLI.
+skills, agent profiles, repo templates, and a bootstrap CLI.
 
 The promise is intentionally small: keep agent work in Git, keep evidence close
 to the pull request, and keep the developer in control of important decisions.

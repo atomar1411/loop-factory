@@ -19,7 +19,7 @@ const requiredFiles = [
   "agents/loop-security-reviewer.md",
   "agents/loop-tester.md",
   "agents/loop-verifier.md",
-  "docs/agent-roster.md",
+  "docs/agent-profiles.md",
   "docs/automatic-workflow-activation.md",
   "docs/developer-workflow.md",
   "skills/loop-factory/SKILL.md",

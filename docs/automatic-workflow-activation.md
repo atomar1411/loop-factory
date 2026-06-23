@@ -30,7 +30,7 @@ developer software request
   -> load AGENTS.md / CLAUDE.md and docs/agents
   -> verify Git/GitHub connectivity when needed
   -> create or update issue/task packet when durable state is needed
-  -> run the appropriate loop roles
+  -> run the appropriate agent profiles
   -> post evidence to issue/PR
   -> ask only at stop conditions
 ```

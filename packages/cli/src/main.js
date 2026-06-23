@@ -377,7 +377,7 @@ ${text}
 
 A2 Draft PR
 
-## Agent Role
+## Agent Profile
 
 Loop Orchestrator
 
@@ -405,7 +405,7 @@ Loop Orchestrator
 
 ## Expected Behavior
 
-The orchestrator turns this requirement into agent-sized work, runs the appropriate Loop Factory roles, and produces PR evidence.
+The orchestrator turns this requirement into agent-sized work, runs the appropriate Loop Factory profiles, and produces PR evidence.
 
 ## Verification Commands
 

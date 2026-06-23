@@ -14,7 +14,7 @@ requirement
   -> merge or escalation
 ```
 
-## Role Routing
+## Profile Routing
 
 - Orchestrator: split and route work.
 - Issue Triager: turn rough input into agent-ready issues.
@@ -28,6 +28,10 @@ requirement
 - Tester: run outside-in app, Docker, DB, browser, or production-like checks.
 - Gatekeeper: enforce autonomy and evidence gates.
 - Release Manager: coordinate merge, deploy readiness, rollback notes, and cleanup.
+
+Each routed item creates an agent run from one profile and one task packet.
+Small tasks may run multiple phases in one conversation, but the phases must be
+reported separately and must not be described as independent review.
 
 ## Communication
 

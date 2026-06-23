@@ -18,11 +18,13 @@ docs/
   PULL_REQUEST_TEMPLATE.md
 ```
 
-Run from the Loop Factory repo:
+Create the same shape in a target repo:
 
 ```bash
-npx --yes github:atomar1411/loop-factory init --target /tmp/my-project
-npx --yes github:atomar1411/loop-factory doctor --target /tmp/my-project
+mkdir -p /tmp/my-project
+cd /tmp/my-project
+npx --yes github:atomar1411/loop-factory setup
+npx --yes github:atomar1411/loop-factory doctor
 ```
 
 `doctor` expects a Git repo with a GitHub `origin` remote when you want issue and

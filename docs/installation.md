@@ -104,12 +104,12 @@ machine checkout for a session:
 claude --plugin-dir ~/.loop-factory
 ```
 
-In that session, work in the target repo as usual. The plugin skills and
-agents are used internally when the request looks like a requirement, bug,
+In that session, work in the target repo as usual. The plugin skills and agent
+profiles are used internally when the request looks like a requirement, bug,
 review, product/PRD task, architecture/design task, cleanup, or implementation
 request.
 
-Claude Code plugin agents should also be available to the runtime:
+Claude Code agent profiles should also be available to the runtime:
 
 ```text
 loop-orchestrator
@@ -146,12 +146,12 @@ git status --short --branch
 For local checkout use:
 
 ```bash
-node /path/to/loop-factory/packages/cli/bin/loop-factory.js doctor --target .
+node /path/to/loop-factory/packages/cli/bin/loop-factory.js doctor
 ```
 
 This verifies required Loop Factory files, Git repo status, GitHub `origin`,
-`gh` CLI auth, and `gh repo view` access. Use `--agent codex`, `--agent claude`,
-or `--agent both` to include plugin/tooling checks.
+`gh` CLI auth, `gh repo view` access, and installed Codex or Claude Code
+tooling when those CLIs are available.
 
 ## First Use
 
@@ -166,7 +166,7 @@ Clean up stale docs and create tasks for architecture gaps.
 ```
 
 The agent should infer the workflow, create durable issue/PR state when useful,
-run the required Loop Factory roles, and stop only at risk gates.
+run the required Loop Factory profiles, and stop only at risk gates.
 
 For automation, CI, or debugging the framework itself, the CLI can still create
 issues or run a prepared issue:

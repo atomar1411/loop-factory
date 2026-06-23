@@ -42,7 +42,7 @@ Produce:
 - issue title,
 - task packet body,
 - recommended labels,
-- suggested agent role,
+- suggested agent profile,
 - verification gates,
 - stop conditions.
 

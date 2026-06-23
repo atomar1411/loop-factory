@@ -1,6 +1,6 @@
 # Claude Code Integration
 
-Loop Factory provides a Claude Code plugin with skills and agents.
+Loop Factory provides a Claude Code plugin with skills and agent profiles.
 
 ## Plugin Layout
 
@@ -11,13 +11,13 @@ agents/
 ```
 
 Project installation writes `CLAUDE.md` and `.claude`-compatible repo assets
-where appropriate, because repo-local instructions are visible to the team and
-survive plugin updates.
+where appropriate, because repo-local instructions are visible in Git review
+and survive plugin updates.
 
 ## Supported Claude Code Concepts
 
 Loop Factory aligns with Claude Code skills, plugin agents, worktrees, and
-GitHub pull requests. Skills carry workflows; agents carry role-specific
+GitHub pull requests. Skills carry workflows; agent profiles carry specialist
 instructions.
 
 ## Recommended Use
@@ -37,8 +37,8 @@ Review PR #42 and address comments.
 Document architecture gaps before implementation.
 ```
 
-Claude Code plugin agents should be available internally when the plugin is
-loaded:
+Claude Code plugin agent profiles should be available internally when the
+plugin is loaded:
 
 - `loop-orchestrator`
 - `loop-issue-triager`

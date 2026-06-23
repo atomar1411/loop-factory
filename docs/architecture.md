@@ -14,7 +14,7 @@ artifacts.
 5. Each task owns one branch and one worktree.
 6. Agents can continue without human input until a declared stop condition.
 7. Every claim of completion needs evidence.
-8. Reusable agent behavior belongs in skills, role docs, templates, and scripts.
+8. Reusable agent behavior belongs in skills, agent profiles, templates, and scripts.
 
 ## Components
 
@@ -24,23 +24,37 @@ Developer software request
   -> Requirement Intake Skill when durable task state is useful
   -> GitHub issue or local task packet
   -> Orchestrator Skill
-  -> Product, architecture, or triage role when needed
+  -> Product, architecture, or triage profile when needed
   -> Worktree manager
-  -> Implementer agent
-  -> Reviewer, architecture reviewer, or security reviewer
-  -> Verifier or tester
-  -> Gatekeeper
+  -> Implementer agent run
+  -> Reviewer, architecture reviewer, or security reviewer run
+  -> Verifier or tester run
+  -> Gatekeeper run
   -> PR evidence
   -> Merge/deploy gate
 ```
+
+## Agent Model
+
+Loop Factory does not treat roles and agents as separate operational entities.
+It uses agent profiles and agent runs:
+
+- **Agent profile:** a reusable specialist definition such as Implementer,
+  Tester, Reviewer, or Gatekeeper.
+- **Agent run:** one execution of a profile against one task packet in one repo
+  context.
+
+Default rule: one agent run uses one profile for one task slice. If a small task
+is handled in one conversation, the phases must still be reported separately and
+must not be described as independent review.
 
 ## Runtime Surfaces
 
 Loop Factory is intentionally surface-neutral:
 
 - Codex uses `.codex-plugin/plugin.json`, `skills/`, and repo `AGENTS.md`.
-- Claude Code uses `.claude-plugin/plugin.json`, `skills/`, `agents/`, and repo
-  `CLAUDE.md`.
+- Claude Code uses `.claude-plugin/plugin.json`, `skills/`, agent profiles in
+  `agents/`, and repo `CLAUDE.md`.
 - GitHub carries issues, PRs, labels, checks, and comments.
 - CI carries repeatable verification.
 - The target repo carries source truth under files such as `docs/truth/*`.
@@ -84,9 +98,9 @@ Risk domains include:
 When a task touches a risk domain, the loop pauses at the decision boundary and
 posts a decision request with options, recommendation, and risk if wrong.
 
-## Installation Model
+## Project Setup Model
 
-`loop-factory init` copies target-repo templates and creates or updates:
+`loop-factory setup` copies target-repo templates and creates or updates:
 
 - `AGENTS.md`,
 - `CLAUDE.md`,
