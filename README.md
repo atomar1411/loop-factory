@@ -285,8 +285,9 @@ See [Installation And Setup](docs/installation.md) for the full setup path.
 ## Repository Layout
 
 ```text
+.agents/                Codex local marketplace manifest
 .codex-plugin/          Codex plugin manifest
-.claude-plugin/         Claude Code plugin manifest
+.claude-plugin/         Claude Code plugin and marketplace manifests
 agents/                 Claude Code plugin agent profile instructions
 assets/                 README images and diagrams
 docs/                   Framework architecture and operating docs

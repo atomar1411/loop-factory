@@ -5,6 +5,7 @@ Loop Factory provides a Codex plugin with shared skills and templates.
 ## Plugin Layout
 
 ```text
+.agents/plugins/marketplace.json
 .codex-plugin/plugin.json
 skills/
 templates/

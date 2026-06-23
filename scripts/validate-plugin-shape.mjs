@@ -4,9 +4,10 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const requiredFiles = [
+  ".agents/plugins/marketplace.json",
   ".codex-plugin/plugin.json",
+  ".claude-plugin/marketplace.json",
   ".claude-plugin/plugin.json",
-  "marketplace.json",
   "agents/loop-architecture-reviewer.md",
   "agents/loop-docs-steward.md",
   "agents/loop-gatekeeper.md",
@@ -56,6 +57,7 @@ const stalePatterns = [
 ];
 
 const textRoots = [
+  ".agents",
   ".codex-plugin",
   ".claude-plugin",
   "agents",
@@ -69,7 +71,6 @@ const textFiles = [
   "CONTRIBUTING.md",
   "README.md",
   "SECURITY.md",
-  "marketplace.json",
   "package.json",
   "packages/cli/package.json",
 ];
@@ -116,15 +117,26 @@ for (const manifest of [".codex-plugin/plugin.json", ".claude-plugin/plugin.json
   }
 }
 
-const marketplace = JSON.parse(readFileSync(path.join(root, "marketplace.json"), "utf8"));
-if (marketplace.name !== "loop-factory-local") {
-  errors.push("marketplace.json must use name loop-factory-local");
+const codexMarketplace = JSON.parse(readFileSync(path.join(root, ".agents/plugins/marketplace.json"), "utf8"));
+if (codexMarketplace.name !== "loop-factory-local") {
+  errors.push(".agents/plugins/marketplace.json must use name loop-factory-local");
 }
-const loopFactoryEntry = marketplace.plugins?.find((plugin) => plugin.name === "loop-factory");
-if (!loopFactoryEntry) {
-  errors.push("marketplace.json must expose loop-factory");
-} else if (loopFactoryEntry.source?.path !== ".") {
-  errors.push('marketplace.json loop-factory source path must be "."');
+const codexLoopFactoryEntry = codexMarketplace.plugins?.find((plugin) => plugin.name === "loop-factory");
+if (!codexLoopFactoryEntry) {
+  errors.push(".agents/plugins/marketplace.json must expose loop-factory");
+} else if (codexLoopFactoryEntry.source?.path !== ".") {
+  errors.push('.agents/plugins/marketplace.json loop-factory source path must be "."');
+}
+
+const claudeMarketplace = JSON.parse(readFileSync(path.join(root, ".claude-plugin/marketplace.json"), "utf8"));
+if (claudeMarketplace.name !== "loop-factory-local") {
+  errors.push(".claude-plugin/marketplace.json must use name loop-factory-local");
+}
+const claudeLoopFactoryEntry = claudeMarketplace.plugins?.find((plugin) => plugin.name === "loop-factory");
+if (!claudeLoopFactoryEntry) {
+  errors.push(".claude-plugin/marketplace.json must expose loop-factory");
+} else if (claudeLoopFactoryEntry.source !== "./") {
+  errors.push('.claude-plugin/marketplace.json loop-factory source must be "./"');
 }
 
 if (errors.length) {

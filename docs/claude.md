@@ -5,6 +5,7 @@ Loop Factory provides a Claude Code plugin with skills and agent profiles.
 ## Plugin Layout
 
 ```text
+.claude-plugin/marketplace.json
 .claude-plugin/plugin.json
 skills/
 agents/

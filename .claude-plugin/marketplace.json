@@ -1,0 +1,31 @@
+{
+  "name": "loop-factory-local",
+  "owner": {
+    "name": "Loop Factory contributors"
+  },
+  "metadata": {
+    "description": "Local Loop Factory marketplace",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "loop-factory",
+      "source": "./",
+      "description": "Git-first agent factory for developers solving complex software work with coordinated agent profiles.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Loop Factory contributors"
+      },
+      "keywords": [
+        "agent",
+        "codex",
+        "claude-code",
+        "github",
+        "loop",
+        "worktrees"
+      ],
+      "category": "development",
+      "strict": false
+    }
+  ]
+}
