@@ -212,8 +212,18 @@ function installClaudePlugin(installDir) {
   printCommandResult("validate", runCommand("claude", ["plugin", "validate", installDir]));
   const marketplace = runCommand("claude", ["plugin", "marketplace", "add", installDir]);
   printCommandResult("marketplace", marketplace, { okPattern: /already|exists/i });
+  printCommandResult(
+    "marketplace update",
+    runCommand("claude", ["plugin", "marketplace", "update", "loop-factory-local"]),
+    { okPattern: /updated|success|validating/i },
+  );
   const plugin = runCommand("claude", ["plugin", "install", "loop-factory@loop-factory-local"]);
   printCommandResult("plugin", plugin, { okPattern: /already|installed|exists/i });
+  printCommandResult(
+    "plugin update",
+    runCommand("claude", ["plugin", "update", "loop-factory@loop-factory-local"]),
+    { okPattern: /updated|latest|restart|up to date/i },
+  );
   if (!plugin.ok) {
     console.log(`session ${shellCommand(["claude", "--plugin-dir", installDir])}`);
   }
