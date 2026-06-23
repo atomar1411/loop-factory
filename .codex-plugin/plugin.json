@@ -20,7 +20,7 @@
   "interface": {
     "displayName": "Loop Factory",
     "shortDescription": "Autonomous Git-first agent loops for developers",
-    "longDescription": "Loop Factory installs reusable docs, task packets, skills, and agent role playbooks so a developer can solve complex software work through coordinated issue-to-PR loops with worktrees, review agents, verifier gates, and durable GitHub evidence.",
+    "longDescription": "Loop Factory installs reusable docs, task packets, skills, and agent profiles so a developer can solve complex software work through coordinated issue-to-PR loops with worktrees, review passes, verifier gates, and durable GitHub evidence.",
     "developerName": "Loop Factory contributors",
     "category": "Developer Tools",
     "capabilities": [

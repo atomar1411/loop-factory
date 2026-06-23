@@ -4,9 +4,9 @@ Use this when installing Loop Factory into a target repository.
 
 ## Install Modes
 
-- `minimal`: only `AGENTS.md`, `CLAUDE.md`, and task templates.
-- `standard`: minimal plus `docs/agents/*`, `docs/truth/README.md`, issue and
-  PR templates.
+- `minimal`: `AGENTS.md`, `CLAUDE.md`, and `docs/agents/*`.
+- `standard`: minimal plus `docs/truth/README.md`, issue templates, and the PR
+  template.
 
 Default to `standard`.
 

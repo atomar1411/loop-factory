@@ -1,6 +1,6 @@
 {
   "name": "loop-factory",
-  "description": "Git-first agent factory for developers solving complex software work with coordinated roles.",
+  "description": "Git-first agent factory for developers solving complex software work with coordinated agent profiles.",
   "version": "0.1.0",
   "author": {
     "name": "Loop Factory contributors"

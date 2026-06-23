@@ -16,7 +16,7 @@ and survive plugin updates.
 
 ## Supported Claude Code Concepts
 
-Loop Factory aligns with Claude Code skills, plugin agents, worktrees, and
+Loop Factory aligns with Claude Code skills, agent profiles, worktrees, and
 GitHub pull requests. Skills carry workflows; agent profiles carry specialist
 instructions.
 

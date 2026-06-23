@@ -1,4 +1,4 @@
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -35,6 +35,59 @@ const errors = [];
 for (const file of requiredFiles) {
   if (!existsSync(path.join(root, file))) {
     errors.push(`Missing ${file}`);
+  }
+}
+
+const stalePatterns = [
+  { pattern: /\bAgent Role\b/, message: "Use Agent Profile instead of Agent Role" },
+  { pattern: /\bagent roles\b/i, message: "Use agent profiles instead of agent roles" },
+  { pattern: /\bLoop Factory roles\b/i, message: "Use Loop Factory profiles instead of Loop Factory roles" },
+  { pattern: /\bcoordinated roles\b/i, message: "Use coordinated agent profiles instead of coordinated roles" },
+  { pattern: /\brole playbooks\b/i, message: "Use agent profiles instead of role playbooks" },
+  { pattern: /\bplugin agents\b/i, message: "Use agent profiles instead of plugin agents" },
+  { pattern: /\bagent-roster\b/i, message: "Use agent-profiles instead of agent-roster" },
+  { pattern: /\bnatural language\b/i, message: "Do not market natural language as a feature" },
+  { pattern: /\binit --target\b/, message: "Public docs should use setup from the target repo" },
+  { pattern: /\bdoctor --target\b/, message: "Public docs should use doctor from the target repo" },
+  { pattern: /\bsetup --target \./, message: "Public docs should use setup from the target repo" },
+  { pattern: /\bdoctor --agent\b/, message: "Doctor auto-detects installed agent CLIs" },
+  { pattern: /--install-dir\b/, message: "Install uses the machine default ~/.loop-factory" },
+  { pattern: /\binstall --agent\b/, message: "Install auto-detects agent CLIs" },
+];
+
+const textRoots = [
+  ".codex-plugin",
+  ".claude-plugin",
+  "agents",
+  "assets",
+  "docs",
+  "examples",
+  "skills",
+  "templates",
+];
+const textFiles = [
+  "CONTRIBUTING.md",
+  "README.md",
+  "SECURITY.md",
+  "marketplace.json",
+  "package.json",
+  "packages/cli/package.json",
+];
+
+for (const rootName of textRoots) {
+  textFiles.push(...listTextFiles(path.join(root, rootName)).map((file) => path.relative(root, file)));
+}
+
+for (const file of textFiles) {
+  const fullPath = path.join(root, file);
+  if (!existsSync(fullPath)) {
+    continue;
+  }
+  const body = readFileSync(fullPath, "utf8");
+  for (const { pattern, message } of stalePatterns) {
+    if (pattern.test(body)) {
+      errors.push(`${file}: ${message}`);
+    }
   }
 }
 
@@ -83,3 +136,20 @@ if (errors.length) {
 }
 
 console.log("Loop Factory shape validation passed.");
+
+function listTextFiles(directory) {
+  if (!existsSync(directory)) {
+    return [];
+  }
+  const output = [];
+  for (const entry of readdirSync(directory)) {
+    const fullPath = path.join(directory, entry);
+    const stat = statSync(fullPath);
+    if (stat.isDirectory()) {
+      output.push(...listTextFiles(fullPath));
+    } else if (/\.(json|md|svg|yml|yaml)$/.test(entry)) {
+      output.push(fullPath);
+    }
+  }
+  return output;
+}

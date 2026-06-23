@@ -6,9 +6,9 @@
 - Core loop docs.
 - Target-repo templates.
 - Core skills.
-- Claude Code plugin agents.
+- Claude Code agent profiles.
 - Conversation-first activation contract.
-- CLI `init`, `doctor`, and optional automation commands.
+- CLI `install`, `setup`, `doctor`, and optional automation commands.
 
 ## V0.2 - GitHub Loop Automation
 

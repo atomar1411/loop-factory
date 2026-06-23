@@ -94,7 +94,7 @@ Expected plugin skills:
 Loop Factory includes a Claude Code plugin manifest:
 
 ```bash
-claude plugin validate /path/to/loop-factory
+claude plugin validate ~/.loop-factory
 ```
 
 Until a public marketplace install is available, Claude Code can load the
@@ -126,13 +126,8 @@ loop-gatekeeper
 loop-release-manager
 ```
 
-After marketplace publication, install through the configured Claude Code
-marketplace:
-
-```bash
-claude plugin marketplace add <marketplace-source>
-claude plugin install loop-factory@<marketplace-name>
-```
+Marketplace install commands will be documented after a public marketplace
+release exists.
 
 ## Verify The Installed Target Repo
 
