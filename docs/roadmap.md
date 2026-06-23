@@ -11,7 +11,7 @@
 
 ## V0.2 - GitHub Loop Automation
 
-- `loop-factory issue create`.
+- Richer `loop-factory issue create`.
 - `loop-factory pr validate`.
 - Label bootstrap.
 - Task packet validation.
@@ -38,4 +38,3 @@
 - Marketplace docs.
 - Cross-surface examples.
 - Backward-compatible template upgrade path.
-

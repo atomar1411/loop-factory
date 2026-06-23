@@ -53,6 +53,34 @@ Codex, Claude Code, GitHub, tests, and the target repo.
 See [Installation And Setup](docs/installation.md) for Codex plugin install,
 Claude Code plugin install, target-repo bootstrap, and smoke checks.
 
+## Human Quickstart
+
+```bash
+git clone https://github.com/loop-factory/loop-factory.git
+cd loop-factory
+npm run check
+
+# Install in Codex.
+codex plugin marketplace add "$(pwd)"
+codex plugin add loop-factory@loop-factory-local
+
+# Bootstrap an existing project.
+node packages/cli/bin/loop-factory.js setup --target /path/to/project
+
+# Verify GitHub issue/PR access.
+node packages/cli/bin/loop-factory.js doctor --target /path/to/project
+
+# Turn a requirement prompt into a GitHub issue.
+node packages/cli/bin/loop-factory.js intake "Fix checkout retry behavior" \
+  --target /path/to/project \
+  --create-issue
+
+# Print the agent command for the autonomous loop.
+node packages/cli/bin/loop-factory.js run --target /path/to/project --issue 123 --agent codex
+```
+
+See [Human Workflow](docs/human-workflow.md) for the full step-by-step flow.
+
 ## Repository Layout
 
 ```text

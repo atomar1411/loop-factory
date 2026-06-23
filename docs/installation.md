@@ -29,6 +29,12 @@ npx loop-factory init --target /path/to/project
 npx loop-factory doctor --target /path/to/project
 ```
 
+For the full human setup flow:
+
+```bash
+loop-factory setup --target /path/to/project
+```
+
 `init` installs:
 
 - `AGENTS.md`
@@ -61,6 +67,7 @@ Useful checks:
 ```bash
 codex plugin marketplace list
 codex plugin list
+loop-factory doctor --target /path/to/project --agent codex
 ```
 
 Expected plugin skills:
@@ -130,6 +137,10 @@ For local checkout use:
 node /path/to/loop-factory/packages/cli/bin/loop-factory.js doctor --target .
 ```
 
+This verifies required Loop Factory files, Git repo status, GitHub `origin`,
+`gh` CLI auth, and `gh repo view` access. Use `--agent codex`, `--agent claude`,
+or `--agent both` to include plugin/tooling checks.
+
 ## First Use
 
 Turn a rough requirement into an agent-ready issue body:
@@ -138,9 +149,23 @@ Turn a rough requirement into an agent-ready issue body:
 loop-factory intake "Add retry-safe payment watcher handling"
 ```
 
+Create a GitHub issue directly:
+
+```bash
+loop-factory intake "Add retry-safe payment watcher handling" \
+  --target /path/to/project \
+  --create-issue
+```
+
 Then let the agent run the autonomous loop:
 
 ```text
 Use Loop Factory to run this issue through the autonomous PR loop.
 ```
 
+Or print the exact command:
+
+```bash
+loop-factory run --target /path/to/project --issue 123 --agent codex
+loop-factory run --target /path/to/project --issue 123 --agent claude
+```
