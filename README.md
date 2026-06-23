@@ -16,31 +16,25 @@ No dashboards. No hidden state. No special command to start normal work.
 
 ## Quickstart
 
-Clone and validate Loop Factory:
+From the project you want to enable:
 
 ```bash
-git clone https://github.com/atomar1411/loop-factory.git
-cd loop-factory
-npm run check
+npx --yes github:atomar1411/loop-factory setup --target .
 ```
 
-Install it in Codex:
+After npm publication this becomes:
 
 ```bash
-codex plugin marketplace add "$(pwd)"
+npx loop-factory setup --target .
+```
+
+For local plugin use before marketplace release, keep a stable checkout:
+
+```bash
+git clone https://github.com/atomar1411/loop-factory.git ~/.loop-factory
+codex plugin marketplace add ~/.loop-factory
 codex plugin add loop-factory@loop-factory-local
-```
-
-Load it in Claude Code:
-
-```bash
-claude --plugin-dir "$(pwd)"
-```
-
-Bootstrap a project:
-
-```bash
-node packages/cli/bin/loop-factory.js setup --target /path/to/project
+claude --plugin-dir ~/.loop-factory
 ```
 
 Then open Codex or Claude Code in that project and speak normally:
@@ -194,7 +188,7 @@ not replace them.
 Verify a bootstrapped project:
 
 ```bash
-node packages/cli/bin/loop-factory.js doctor --target /path/to/project --agent both
+npx --yes github:atomar1411/loop-factory doctor --target /path/to/project --agent both
 ```
 
 After npm publication:

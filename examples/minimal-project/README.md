@@ -21,8 +21,8 @@ docs/
 Run from the Loop Factory repo:
 
 ```bash
-node packages/cli/bin/loop-factory.js init --target /tmp/my-project
-node packages/cli/bin/loop-factory.js doctor --target /tmp/my-project
+npx --yes github:atomar1411/loop-factory init --target /tmp/my-project
+npx --yes github:atomar1411/loop-factory doctor --target /tmp/my-project
 ```
 
 `doctor` expects a Git repo with a GitHub `origin` remote when you want issue and

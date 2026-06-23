@@ -93,10 +93,18 @@ function setup(options) {
   } else {
     console.log("1. Review generated AGENTS.md, CLAUDE.md, docs/agents, docs/truth, and GitHub templates.");
   }
-  console.log("2. Install the Loop Factory plugin in Codex or Claude Code:");
-  console.log(`   codex plugin marketplace add ${quote(repoRoot)}`);
-  console.log("   codex plugin add loop-factory@loop-factory-local");
-  console.log(`   claude --plugin-dir ${quote(repoRoot)}`);
+  console.log("2. Install the Loop Factory plugin in Codex or Claude Code when you need agent skills loaded:");
+  if (isNpxCachePath(repoRoot)) {
+    console.log("   Use a stable checkout until npm/plugin marketplace release:");
+    console.log("   git clone https://github.com/atomar1411/loop-factory.git ~/.loop-factory");
+    console.log("   codex plugin marketplace add ~/.loop-factory");
+    console.log("   codex plugin add loop-factory@loop-factory-local");
+    console.log("   claude --plugin-dir ~/.loop-factory");
+  } else {
+    console.log(`   codex plugin marketplace add ${quote(repoRoot)}`);
+    console.log("   codex plugin add loop-factory@loop-factory-local");
+    console.log(`   claude --plugin-dir ${quote(repoRoot)}`);
+  }
   console.log("3. Open Codex or Claude Code in the target repo and speak normally:");
   console.log('   "Fix checkout retry behavior and run it through Loop Factory."');
   console.log('   "Create PRDs for onboarding before implementation."');
@@ -482,8 +490,15 @@ function shellCommand(parts) {
 }
 
 function cliName() {
+  if (isNpxCachePath(repoRoot)) {
+    return "npx --yes github:atomar1411/loop-factory";
+  }
   if (commandExists("loop-factory")) {
     return "loop-factory";
   }
   return shellCommand(["node", path.join(repoRoot, "packages/cli/bin/loop-factory.js")]);
+}
+
+function isNpxCachePath(value) {
+  return value.includes(`${path.sep}.npm${path.sep}_npx${path.sep}`);
 }

@@ -4,12 +4,16 @@ This is the normal Loop Factory path for a human developer or architect.
 
 ## 1. Install Loop Factory
 
-Clone the framework:
+Bootstrap the project you want agents to work in:
 
 ```bash
-git clone https://github.com/atomar1411/loop-factory.git
-cd loop-factory
-npm run check
+npx --yes github:atomar1411/loop-factory setup --target /path/to/project
+```
+
+For local plugin use before marketplace publication, keep a stable checkout:
+
+```bash
+git clone https://github.com/atomar1411/loop-factory.git ~/.loop-factory
 ```
 
 Install the plugin in the agent surface you use.
@@ -17,26 +21,26 @@ Install the plugin in the agent surface you use.
 Codex:
 
 ```bash
-codex plugin marketplace add /path/to/loop-factory
+codex plugin marketplace add ~/.loop-factory
 codex plugin add loop-factory@loop-factory-local
 ```
 
 Claude Code, local session:
 
 ```bash
-claude --plugin-dir /path/to/loop-factory
+claude --plugin-dir ~/.loop-factory
 ```
 
 ## 2. Bootstrap Your Project
 
 ```bash
-loop-factory setup --target /path/to/project
+npx --yes github:atomar1411/loop-factory setup --target /path/to/project
 ```
 
-For local checkout before npm publication:
+After npm publication:
 
 ```bash
-node /path/to/loop-factory/packages/cli/bin/loop-factory.js setup --target /path/to/project
+npx loop-factory setup --target /path/to/project
 ```
 
 This installs the repo-local operating files:
@@ -49,10 +53,10 @@ This installs the repo-local operating files:
 
 ## 3. Verify GitHub Connectivity
 
-Inside the target repo or with `--target`:
+After the target repo has a GitHub `origin` remote, verify connectivity:
 
 ```bash
-loop-factory doctor --target /path/to/project
+npx --yes github:atomar1411/loop-factory doctor --target /path/to/project
 ```
 
 This checks:
@@ -68,9 +72,9 @@ This checks:
 To also check agent plugin availability:
 
 ```bash
-loop-factory doctor --target /path/to/project --agent codex
-loop-factory doctor --target /path/to/project --agent claude
-loop-factory doctor --target /path/to/project --agent both
+npx --yes github:atomar1411/loop-factory doctor --target /path/to/project --agent codex
+npx --yes github:atomar1411/loop-factory doctor --target /path/to/project --agent claude
+npx --yes github:atomar1411/loop-factory doctor --target /path/to/project --agent both
 ```
 
 ## 4. Give A Requirement As A Prompt

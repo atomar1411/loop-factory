@@ -5,34 +5,36 @@ Loop Factory has two installation layers:
 1. Install the plugin into an agent surface: Codex or Claude Code.
 2. Bootstrap a target repository with Loop Factory docs, templates, and checks.
 
-## Local Checkout
+## Fast Path
 
 ```bash
-git clone https://github.com/atomar1411/loop-factory.git
-cd loop-factory
-npm run check
-```
-
-## Bootstrap A Target Repository
-
-From this repository:
-
-```bash
-node packages/cli/bin/loop-factory.js init --target /path/to/project
-node packages/cli/bin/loop-factory.js doctor --target /path/to/project
+npx --yes github:atomar1411/loop-factory setup --target /path/to/project
 ```
 
 After npm publication:
 
 ```bash
-npx loop-factory init --target /path/to/project
-npx loop-factory doctor --target /path/to/project
+npx loop-factory setup --target /path/to/project
 ```
 
-For the full human setup flow:
+When the target project has a GitHub remote and you want to verify issue/PR
+access:
 
 ```bash
-loop-factory setup --target /path/to/project
+npx --yes github:atomar1411/loop-factory doctor --target /path/to/project
+```
+
+## Local Checkout
+
+Use a checkout when developing Loop Factory itself or when installing the local
+plugin before marketplace publication:
+
+```bash
+git clone https://github.com/atomar1411/loop-factory.git ~/.loop-factory
+cd ~/.loop-factory
+npm run check
+node packages/cli/bin/loop-factory.js init --target /path/to/project
+node packages/cli/bin/loop-factory.js doctor --target /path/to/project
 ```
 
 `init` installs:
@@ -55,7 +57,7 @@ For local development, add this checkout as a Codex marketplace and install the
 plugin from it:
 
 ```bash
-codex plugin marketplace add /path/to/loop-factory
+codex plugin marketplace add ~/.loop-factory
 codex plugin add loop-factory@loop-factory-local
 ```
 
@@ -66,7 +68,7 @@ Useful checks:
 ```bash
 codex plugin marketplace list
 codex plugin list
-loop-factory doctor --target /path/to/project --agent codex
+npx --yes github:atomar1411/loop-factory doctor --target /path/to/project --agent codex
 ```
 
 Expected plugin skills:
@@ -88,7 +90,7 @@ claude plugin validate /path/to/loop-factory
 For local development or review, load it for one session:
 
 ```bash
-claude --plugin-dir /path/to/loop-factory
+claude --plugin-dir ~/.loop-factory
 ```
 
 In that session, speak normally in the target repo. The plugin skills and
