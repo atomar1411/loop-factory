@@ -9,7 +9,8 @@
 - Claude Code agent profiles.
 - One public Loop Factory surface per agent runtime for repo enablement and
   doctor checks.
-- CLI `install`, `setup`, `doctor`, and optional automation commands.
+- CLI `install`, `setup`, `doctor`, soft readiness checks, and optional
+  automation commands.
 
 ## V0.2 - GitHub Loop Automation
 

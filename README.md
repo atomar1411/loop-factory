@@ -136,14 +136,11 @@ Create PRDs for onboarding before code changes.
 Review PR #42, address comments, and verify the branch.
 ```
 
-The public command is for enabling and checking a repo. Normal feature, bug,
-review, product, architecture, and cleanup work should flow from the request
-itself. Internal workflows such as intake, review, and verification should not
-appear as separate commands.
-
-Loop Factory intentionally keeps the plugin name and public skill name the same.
-That keeps the human interface simple across Codex and Claude Code:
-`/loop-factory`.
+The public commands are small: `/loop-factory-init` for first-run setup and
+readiness, `/loop-factory` for normal operation, and `/loop-factory doctor` for
+strict verification. Normal feature, bug, review, product, architecture, and
+cleanup work should flow from the request itself. Internal workflows such as
+intake, review, and verification should not appear as separate commands.
 
 ## Why This Exists
 
@@ -239,6 +236,11 @@ docs/truth/README.md
 
 These files tell agents how to load context, when to create issues, how to use
 worktrees, what evidence to report, and when to stop.
+
+For a new project, run `/loop-factory-init`. It installs these files, checks
+GitHub issue/PR access, and checks Docker readiness for integration testing.
+GitHub and Docker improve the loop, but missing optional tools do not block
+setup.
 
 ## How The Developer Stays In Control
 

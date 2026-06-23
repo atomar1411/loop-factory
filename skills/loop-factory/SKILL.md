@@ -6,12 +6,14 @@ argument-hint: "[doctor|help|request]"
 
 # Loop Factory
 
-Turn complex software work into a Git-backed loop. This is the only public
-Loop Factory command; internal profile names are not user commands.
+Turn complex software work into a Git-backed loop. Use `/loop-factory-init` for
+first-run setup; internal profile names are not user commands.
 
 ## Public Interface
 
 - `/loop-factory` enables Loop Factory in the current repo.
+- `/loop-factory-init` initializes repo files and reports soft GitHub/Docker
+  readiness.
 - `/loop-factory doctor` verifies repo setup, GitHub connectivity, and plugin
   visibility.
 - Extra text after the command is routed by task size and risk.
@@ -94,11 +96,11 @@ CLI backstop:
 
 ```bash
 node ~/.loop-factory/packages/cli/bin/loop-factory.js setup
-node ~/.loop-factory/packages/cli/bin/loop-factory.js doctor
+node ~/.loop-factory/packages/cli/bin/loop-factory.js doctor --soft
 ```
 
 Without a machine install, use the GitHub package directly:
 
 ```bash
-npx --yes github:atomar1411/loop-factory doctor
+npx --yes github:atomar1411/loop-factory doctor --soft
 ```

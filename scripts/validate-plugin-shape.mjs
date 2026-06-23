@@ -18,6 +18,7 @@ const requiredFiles = [
   "docs/automatic-workflow-activation.md",
   "docs/developer-workflow.md",
   "skills/loop-factory/SKILL.md",
+  "skills/loop-factory-init/SKILL.md",
   "skills/loop-factory/references/requirement-intake.md",
   "skills/loop-factory/references/autonomous-pr-loop.md",
   "skills/loop-factory/references/specialist-profiles.md",
@@ -152,6 +153,21 @@ const requiredSnippets = [
     file: "templates/AGENTS.md",
     snippet: "Source-truth docs (`docs/truth/`)",
     message: "AGENTS template must use docs/truth as the only source-truth path",
+  },
+  {
+    file: "skills/loop-factory-init/SKILL.md",
+    snippet: "doctor --soft",
+    message: "Init skill must run soft readiness checks",
+  },
+  {
+    file: "skills/loop-factory-init/SKILL.md",
+    snippet: "Docker is recommended for integration tests",
+    message: "Init skill must explain Docker as recommended, not required",
+  },
+  {
+    file: "docs/installation.md",
+    snippet: "/loop-factory-init",
+    message: "Installation docs must expose the init command",
   },
 ];
 

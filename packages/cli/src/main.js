@@ -55,6 +55,7 @@ function parseArgs(args) {
     force: false,
     labels: "",
     mode: "standard",
+    soft: false,
     target: process.cwd(),
   };
   for (let index = 0; index < rest.length; index += 1) {
@@ -77,6 +78,8 @@ function parseArgs(args) {
     } else if (arg === "--mode") {
       options.mode = rest[index + 1] ?? options.mode;
       index += 1;
+    } else if (arg === "--soft") {
+      options.soft = true;
     } else if (arg === "--target") {
       options.target = path.resolve(rest[index + 1] ?? "");
       index += 1;
@@ -106,7 +109,7 @@ function install(options) {
   console.log("Next:");
   console.log("1. Open Codex or Claude Code in the project you want to enable.");
   console.log("2. Run:");
-  console.log("   /loop-factory");
+  console.log("   /loop-factory-init");
   console.log("3. Verify when needed:");
   console.log("   /loop-factory doctor");
 }
@@ -252,12 +255,17 @@ function doctor(options) {
   for (const file of required) {
     addCheck(checks, file, existsSync(path.join(target, file)));
   }
-  addCheck(checks, "docs/truth source truth", existsDirectory(path.join(target, "docs/truth")), "expected docs/truth/");
+  addCheck(
+    checks,
+    "docs/truth source truth",
+    existsDirectory(path.join(target, "docs/truth")),
+    existsDirectory(path.join(target, "docs/truth")) ? "" : "expected docs/truth/",
+  );
   addCheck(
     checks,
     "no root truth folder",
     !existsDirectory(path.join(target, "truth")),
-    "migrate root truth/ into docs/truth/",
+    existsDirectory(path.join(target, "truth")) ? "migrate root truth/ into docs/truth/" : "",
   );
 
   const gitInside = git(target, ["rev-parse", "--is-inside-work-tree"]).ok;
@@ -280,6 +288,33 @@ function doctor(options) {
     }
   }
 
+  const dockerAvailable = commandExists("docker");
+  addCheck(
+    checks,
+    "docker CLI installed",
+    dockerAvailable,
+    dockerAvailable ? "" : "recommended for integration tests and manual feature-flow testing",
+    { required: false },
+  );
+  if (dockerAvailable) {
+    const dockerInfo = runCommand("docker", ["info"], { cwd: target });
+    addCheck(
+      checks,
+      "docker daemon running",
+      dockerInfo.ok,
+      dockerInfo.ok ? "" : "start Docker Desktop or your Docker daemon for containerized tests",
+      { required: false },
+    );
+    const compose = runCommand("docker", ["compose", "version"], { cwd: target });
+    addCheck(
+      checks,
+      "docker compose available",
+      compose.ok,
+      compose.ok ? firstUsefulLine(compose.stdout) : "recommended for multi-service integration tests",
+      { required: false },
+    );
+  }
+
   const codexAvailable = commandExists("codex");
   const claudeAvailable = commandExists("claude");
   const checkCodex = options.agent === "codex" || options.agent === "both" || (options.agent === "auto" && codexAvailable);
@@ -295,7 +330,11 @@ function doctor(options) {
         checks,
         "codex loop-factory plugin visible",
         plugins.ok && plugins.stdout.includes("loop-factory"),
-        plugins.ok ? "run `codex plugin add loop-factory@loop-factory-local` if missing" : firstUsefulLine(plugins.stderr),
+        plugins.ok && plugins.stdout.includes("loop-factory")
+          ? ""
+          : plugins.ok
+            ? "run `codex plugin add loop-factory@loop-factory-local` if missing"
+            : firstUsefulLine(plugins.stderr),
       );
     }
   }
@@ -309,7 +348,7 @@ function doctor(options) {
   }
 
   printChecks(checks);
-  if (checks.some((check) => !check.ok)) {
+  if (!options.soft && checks.some((check) => !check.ok && check.required !== false)) {
     process.exitCode = 1;
   }
 }
@@ -469,6 +508,7 @@ Machine install:
 
 Normal developer UX:
   Open Codex or Claude Code in the target repo, then run:
+  /loop-factory-init
   /loop-factory
   /loop-factory doctor
 
@@ -479,9 +519,10 @@ After setup:
 Automation commands:
   node ~/.loop-factory/packages/cli/bin/loop-factory.js setup
   node ~/.loop-factory/packages/cli/bin/loop-factory.js doctor
+  node ~/.loop-factory/packages/cli/bin/loop-factory.js doctor --soft
   loop-factory setup [--target <repo>] [--mode minimal|standard] [--force]
   loop-factory init [--target <repo>] [--mode minimal|standard] [--force]
-  loop-factory doctor [--target <repo>] [--agent codex|claude|both]
+  loop-factory doctor [--target <repo>] [--agent codex|claude|both] [--soft]
   loop-factory intake "requirement" [--target <repo>] [--create-issue] [--labels "lf:intake"]
   loop-factory run --issue <number-or-url> [--target <repo>] [--agent codex|claude] [--execute]
 `);
@@ -587,13 +628,13 @@ function printCommandResult(label, result, options = {}) {
   console.log(`${status} ${label}${detail ? ` - ${detail}` : ""}`);
 }
 
-function addCheck(checks, name, ok, detail = "") {
-  checks.push({ name, ok, detail });
+function addCheck(checks, name, ok, detail = "", options = {}) {
+  checks.push({ name, ok, detail, required: options.required !== false });
 }
 
 function printChecks(checks) {
   for (const check of checks) {
-    const status = check.ok ? "ok" : "fail";
+    const status = check.ok ? "ok" : check.required === false ? "warn" : "fail";
     const detail = check.detail ? ` - ${check.detail}` : "";
     console.log(`${status} ${check.name}${detail}`);
   }
@@ -604,8 +645,12 @@ function parseGitHubRepo(remote) {
   if (httpsMatch) {
     return httpsMatch[1];
   }
-  const sshMatch = remote.match(/^git@github\.com:([^/]+\/[^/.]+)(?:\.git)?$/);
-  return sshMatch?.[1];
+  const sshMatch = remote.match(/^git@([^:]+):([^/]+\/[^/.]+)(?:\.git)?$/);
+  if (!sshMatch) {
+    return undefined;
+  }
+  const [, host, repo] = sshMatch;
+  return host === "github.com" || host.startsWith("github-") ? repo : undefined;
 }
 
 function firstUsefulLine(text) {

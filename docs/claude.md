@@ -34,14 +34,15 @@ product/PRD task, architecture/design task, or implementation request.
 From the target repo, run:
 
 ```text
+/loop-factory-init
 /loop-factory
 /loop-factory doctor
 ```
 
-Claude Code skills create `/name` shortcuts. Loop Factory keeps the plugin name
-and public skill name the same so the human-facing command stays
-`/loop-factory`. Internal workflows such as requirement intake, review, and
-verification should not appear as separate commands.
+Claude Code skills create `/name` shortcuts. Loop Factory exposes
+`/loop-factory-init` for first-run setup and `/loop-factory` for normal work.
+Internal workflows such as requirement intake, review, and verification should
+not appear as separate commands.
 
 ```text
 Fix checkout retry behavior.

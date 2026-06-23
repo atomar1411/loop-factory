@@ -97,11 +97,11 @@ posts a decision request with options, recommendation, and risk if wrong.
 
 ## Project Setup Model
 
-The public Loop Factory command enables a target repo. Codex and Claude Code
-both expose it as `/loop-factory`; the plugin name and public skill name are
-kept aligned so developers do not need separate commands per runtime.
-Internally, the setup command copies target-repo
-templates and creates or updates:
+The public Loop Factory commands are `/loop-factory-init` for first-run setup,
+`/loop-factory` for normal operation, and `/loop-factory doctor` for strict
+verification. Codex and Claude Code expose the same command names so developers
+do not need separate commands per runtime. Internally, the setup command copies
+target-repo templates and creates or updates:
 
 - `AGENTS.md`,
 - `CLAUDE.md`,

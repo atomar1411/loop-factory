@@ -12,16 +12,18 @@ templates/
 scripts/
 ```
 
-Codex discovers the public `/loop-factory` skill from the plugin manifest. Each
-target repository still gets its own `AGENTS.md` and `docs/agents/*` files so
-the project rules are visible in Git review.
+Codex discovers the public `/loop-factory-init` and `/loop-factory` skills from
+the plugin manifest. Each target repository still gets its own `AGENTS.md` and
+`docs/agents/*` files so the project rules are visible in Git review.
 
 ## Recommended Use
 
 1. Install or load the Loop Factory plugin.
 2. Start a Codex thread in the target repo.
-3. Run `/loop-factory` once to enable the repo.
-4. Use `/loop-factory doctor` when you want setup and GitHub connectivity proof.
+3. Run `/loop-factory-init` once to enable the repo and check GitHub/Docker
+   readiness.
+4. Use `/loop-factory doctor` when you want strict setup and GitHub
+   connectivity proof.
 5. Describe the software work. When the request looks like a requirement, bug,
    cleanup, review, product/PRD, architecture/design, or implementation task,
    Codex should load the Loop Factory skills automatically.

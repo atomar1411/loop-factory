@@ -17,7 +17,7 @@ npx --yes github:atomar1411/loop-factory install
 Then open the project you want to enable in Codex or Claude Code and run:
 
 ```text
-/loop-factory
+/loop-factory-init
 ```
 
 When the target project has a GitHub remote and you want to verify setup and
@@ -72,11 +72,13 @@ codex plugin marketplace list
 codex plugin list
 ```
 
-From a project thread, use `/loop-factory` to enable the repo and
-`/loop-factory doctor` to verify it.
+From a project thread, use `/loop-factory-init` for first-run setup plus soft
+GitHub/Docker readiness. Use `/loop-factory` for normal work and
+`/loop-factory doctor` for strict verification.
 
 Expected Codex public surface:
 
+- `/loop-factory-init`
 - `/loop-factory`
 - `/loop-factory doctor`
 
@@ -98,12 +100,12 @@ machine checkout for a session:
 claude --plugin-dir ~/.loop-factory
 ```
 
-In that session, open the target repo and run `/loop-factory` to enable it. Use
-`/loop-factory doctor` to verify setup. Loop Factory keeps its plugin name and
-public skill name aligned so the public shortcut remains `/loop-factory` instead
-of exposing internal component names. The plugin skills and agent profiles are
-then used internally when the request looks like a requirement, bug, review,
-product/PRD task,
+In that session, open the target repo and run `/loop-factory-init` to enable it
+and check GitHub/Docker readiness. Use `/loop-factory doctor` to verify setup
+strictly. Loop Factory exposes only setup/readiness and operating commands
+instead of exposing internal component names. The plugin skills and agent
+profiles are then used internally when the request looks like a requirement,
+bug, review, product/PRD task,
 architecture/design task, cleanup, or implementation request.
 
 Claude Code active agent profiles should also be available to the runtime:
@@ -146,8 +148,10 @@ node /path/to/loop-factory/packages/cli/bin/loop-factory.js doctor
 ```
 
 This verifies required Loop Factory files, Git repo status, GitHub `origin`,
-`gh` CLI auth, `gh repo view` access, and installed Codex or Claude Code
-tooling when those CLIs are available.
+`gh` CLI auth, `gh repo view` access, Docker readiness, and installed Codex or
+Claude Code tooling when those CLIs are available. Docker is advisory: it makes
+integration and manual flow testing much stronger, but missing Docker should not
+block setup.
 
 ## First Use
 

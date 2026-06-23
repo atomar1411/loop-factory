@@ -15,7 +15,7 @@ npx --yes github:atomar1411/loop-factory install
 Open the project in your agent surface and run:
 
 ```text
-/loop-factory
+/loop-factory-init
 ```
 
 This installs the repo-local operating files:
@@ -34,7 +34,8 @@ node ~/.loop-factory/packages/cli/bin/loop-factory.js setup
 
 ## 3. Verify GitHub Connectivity
 
-After the target repo has a GitHub `origin` remote, verify connectivity:
+After the target repo has a GitHub `origin` remote, verify connectivity strictly
+when needed:
 
 ```text
 /loop-factory doctor
@@ -49,6 +50,7 @@ This checks:
 - `gh` CLI installation,
 - `gh auth status`,
 - `gh repo view` access,
+- Docker CLI, daemon, and Compose availability as advisory checks,
 - Codex or Claude Code plugin visibility when those CLIs are installed.
 
 ## 4. Give The Software Work
