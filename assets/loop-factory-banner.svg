@@ -6,7 +6,7 @@
   <circle cx="1010" cy="96" r="132" fill="#1D4ED8" opacity="0.18"/>
   <circle cx="169" cy="426" r="120" fill="#14B8A6" opacity="0.14"/>
   <path d="M112 120C112 98.46 129.46 81 151 81H478C499.54 81 517 98.46 517 120V277C517 298.54 499.54 316 478 316H151C129.46 316 112 298.54 112 277V120Z" fill="#F8FAFC"/>
-  <text x="148" y="143" fill="#0F172A" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="24" font-weight="700">Human request</text>
+  <text x="148" y="143" fill="#0F172A" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="24" font-weight="700">Developer request</text>
   <text x="148" y="187" fill="#334155" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="28" font-weight="700">"Fix checkout retry</text>
   <text x="148" y="225" fill="#334155" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="28" font-weight="700">behavior."</text>
   <rect x="148" y="252" width="216" height="34" rx="17" fill="#DBEAFE"/>
@@ -34,5 +34,5 @@
   <text x="1008" y="303" fill="#FFFBEB" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15" font-weight="700">OK</text>
 
   <text x="113" y="391" fill="#F8FAFC" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="54" font-weight="850">Ship with agents.</text>
-  <text x="113" y="438" fill="#CBD5E1" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="26" font-weight="500">Keep the work in GitHub. Keep humans in control.</text>
+  <text x="113" y="438" fill="#CBD5E1" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="26" font-weight="500">Keep the work in GitHub. Keep the developer in control.</text>
 </svg>

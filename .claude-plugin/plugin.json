@@ -1,6 +1,6 @@
 {
   "name": "loop-factory",
-  "description": "Autonomous Git-first software delivery loops for Claude Code and multi-agent teams.",
+  "description": "Autonomous Git-first software delivery loops for developers orchestrating agent roles.",
   "version": "0.1.0",
   "author": {
     "name": "Loop Factory contributors"

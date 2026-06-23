@@ -6,13 +6,13 @@
 
 ![Loop Factory banner](assets/loop-factory-banner.svg)
 
-Agent delivery loops for real software teams.
+An agent factory for developers moving real work from prompt to PR.
 
-Loop Factory turns natural-language coding requests into scoped issues,
+Loop Factory turns a developer's natural-language coding request into scoped issues,
 isolated branches, reviewed diffs, verification evidence, and pull requests.
 
-It is not a dashboard. It is not a chat ritual. It is a small operating model
-for making agent work visible in GitHub.
+It is not a team dashboard. It is not a chat ritual. It is a small operating
+model for commanding many agent roles while keeping the work visible in GitHub.
 
 ## The Core Idea
 
@@ -34,7 +34,7 @@ request
   -> review
   -> verification
   -> pull request
-  -> human decision
+  -> developer decision
 ```
 
 That is the loop.
@@ -47,9 +47,9 @@ money, security, deployment, or architecture, it stops and asks.
 
 A factory is a set of roles and handoffs.
 
-One agent can write code. A software team needs more than that. It needs someone
-to shape requirements, protect architecture, review diffs, run tests, enforce
-risk gates, and prepare releases.
+One agent can write code. A developer shipping real software needs more than
+that. They need help shaping requirements, protecting architecture, reviewing
+diffs, running tests, enforcing risk gates, and preparing releases.
 
 Loop Factory gives agents those roles:
 
@@ -75,7 +75,7 @@ The loop gives agents feedback.
 
 The factory gives agents coordination.
 
-GitHub gives humans an audit trail.
+GitHub gives the developer an audit trail.
 
 Together, they turn "please fix this" into a piece of software work you can
 inspect, review, and trust.
@@ -144,11 +144,11 @@ splits it.
 ### #2: The Work Vanished Into Chat
 
 **The problem.** The requirement, plan, review, and test output live inside one
-conversation. Another agent cannot see it. A human has to copy everything
+conversation. Another agent cannot see it. The developer has to copy everything
 around.
 
-**The fix.** Loop Factory moves durable state into places software teams already
-use:
+**The fix.** Loop Factory moves durable state into places software work already
+lives:
 
 - GitHub issues,
 - branches and worktrees,
@@ -159,13 +159,14 @@ use:
 
 Private model memory can help an agent think. It is not project truth.
 
-### #3: The Human Became The Project Manager
+### #3: The Developer Became The Project Manager
 
-**The problem.** The human has to ask what happened, which tests ran, who touched
-which files, whether review happened, and whether the branch is safe to merge.
+**The problem.** The developer has to ask what happened, which tests ran, who
+touched which files, whether review happened, and whether the branch is safe to
+merge.
 
-**The fix.** The factory gives those jobs to roles. The human stays focused on
-the decisions that actually need judgment:
+**The fix.** The factory gives those jobs to agent roles. The developer stays
+focused on the decisions that actually need judgment:
 
 - product meaning,
 - risk,
@@ -173,7 +174,7 @@ the decisions that actually need judgment:
 - merge,
 - deployment.
 
-The human is not removed. The human stops being the message bus.
+The developer is not removed. The developer stops being the message bus.
 
 ### #4: "Done" Had No Evidence
 
@@ -195,8 +196,8 @@ If evidence is missing, the task is not done.
 
 ## What Gets Installed
 
-Loop Factory bootstraps a target repo with files agents can read and humans can
-review:
+Loop Factory bootstraps a target repo with files agents can read and the
+developer can review:
 
 ```text
 AGENTS.md
@@ -210,7 +211,7 @@ docs/truth/README.md
 These files tell agents how to load context, when to create issues, how to use
 worktrees, what evidence to report, and when to stop.
 
-## How Humans Stay In Control
+## How The Developer Stays In Control
 
 Agents can continue through routine implementation, review, and verification.
 
@@ -226,8 +227,8 @@ They stop before changing:
 - irreversible operations,
 - merge or deploy state.
 
-The goal is not to make humans approve every small step. The goal is to make
-agents stop at the places where being wrong is expensive.
+The goal is not to make the developer approve every small step. The goal is to
+make agents stop at the places where being wrong is expensive.
 
 ## Tracking Work
 
@@ -278,7 +279,7 @@ examples/               Minimal target repo examples
 ## Reference
 
 - [Natural Language Activation](docs/natural-language-activation.md)
-- [Human Workflow](docs/human-workflow.md)
+- [Developer Workflow](docs/human-workflow.md)
 - [Installation And Setup](docs/installation.md)
 - [Autonomous Loop Model](docs/loop-model.md)
 - [Agent Roster](docs/agent-roster.md)
@@ -290,4 +291,4 @@ Loop Factory is early. The current release is the foundation: plugin manifests,
 skills, agent roles, repo templates, and a bootstrap CLI.
 
 The promise is intentionally small: keep agent work in Git, keep evidence close
-to the pull request, and keep humans in control of important decisions.
+to the pull request, and keep the developer in control of important decisions.

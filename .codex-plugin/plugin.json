@@ -19,8 +19,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Loop Factory",
-    "shortDescription": "Autonomous Git-first agent loops for software teams",
-    "longDescription": "Loop Factory installs reusable docs, task packets, skills, and agent role playbooks so Codex and Claude Code can run issue-to-PR loops with worktrees, review agents, verifier gates, and durable GitHub evidence.",
+    "shortDescription": "Autonomous Git-first agent loops for developers",
+    "longDescription": "Loop Factory installs reusable docs, task packets, skills, and agent role playbooks so a developer can ask Codex or Claude Code for a requirement and get an issue-to-PR loop with worktrees, review agents, verifier gates, and durable GitHub evidence.",
     "developerName": "Loop Factory contributors",
     "category": "Developer Tools",
     "capabilities": [
