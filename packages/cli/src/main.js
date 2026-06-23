@@ -95,10 +95,12 @@ function setup(options) {
   console.log(`   codex plugin marketplace add ${quote(repoRoot)}`);
   console.log("   codex plugin add loop-factory@loop-factory-local");
   console.log(`   claude --plugin-dir ${quote(repoRoot)}`);
-  console.log("3. Create a requirement issue:");
-  console.log(`   ${cliName()} intake "Your requirement" --target ${quote(path.resolve(options.target))} --create-issue`);
-  console.log("4. Run the created issue through the autonomous loop:");
-  console.log(`   ${cliName()} run --target ${quote(path.resolve(options.target))} --issue <number> --agent codex`);
+  console.log("3. Open Codex or Claude Code in the target repo and speak normally:");
+  console.log('   "Fix checkout retry behavior and run it through Loop Factory."');
+  console.log('   "Create PRDs for onboarding before implementation."');
+  console.log('   "Review PR #42, address comments, and verify the branch."');
+  console.log("4. Optional automation/CI check:");
+  console.log(`   ${cliName()} doctor --target ${quote(path.resolve(options.target))} --agent both`);
 }
 
 function init(options) {
@@ -347,6 +349,12 @@ Usage:
   loop-factory setup [--target <repo>] [--mode minimal|standard|strict] [--force]
   loop-factory init [--target <repo>] [--mode minimal|standard|strict] [--force]
   loop-factory doctor [--target <repo>] [--agent none|codex|claude|both]
+
+Daily human UX:
+  Open Codex or Claude Code in the target repo and speak normally.
+  Example: "Fix checkout retry behavior and run it through Loop Factory."
+
+Automation commands:
   loop-factory intake "requirement" [--target <repo>] [--create-issue] [--labels "lf:intake"]
   loop-factory run --issue <number-or-url> [--target <repo>] [--agent codex|claude] [--execute]
 `);

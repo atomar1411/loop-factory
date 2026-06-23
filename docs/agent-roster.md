@@ -53,6 +53,5 @@ packet, owned files, forbidden scope, verification gates, and stop conditions.
 
 ## Claude Code Usage
 
-Claude Code plugin agents live in `agents/` and appear in `/agents` when the
-plugin is loaded.
-
+Claude Code plugin agents live in `agents/` and should be available internally
+when the plugin is loaded.

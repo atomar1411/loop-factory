@@ -75,43 +75,53 @@ loop-factory doctor --target /path/to/project --agent both
 
 ## 4. Give A Requirement As A Prompt
 
-Use rough language:
+Open Codex or Claude Code in the target repo and use rough language. Do not
+invoke a slash command or remember a skill name.
 
-```bash
-loop-factory intake "Make wallet payment watcher retry-safe and prevent duplicate confirmed entries after worker restart" --target /path/to/project
+```text
+Make wallet payment watcher retry-safe and prevent duplicate confirmed entries after worker restart.
+Create PRDs for the new onboarding experience before code changes.
+Review PR #123, address the comments, and verify the branch.
+Clean up stale docs and create tasks for architecture gaps you find.
 ```
 
-This prints an agent-ready issue body.
-
-To create a real GitHub issue:
-
-```bash
-loop-factory intake "Make wallet payment watcher retry-safe and prevent duplicate confirmed entries after worker restart" \
-  --target /path/to/project \
-  --create-issue
-```
+The agent decides whether this is requirement intake, PRD/product work,
+architecture/design work, implementation, review, verification, or cleanup.
+When durable state is useful, it creates or updates GitHub issues, task packets,
+branches, draft PRs, and evidence.
 
 ## 5. Run The Agent Loop
 
-After issue creation:
+The human does not run the loop manually. The agent should:
+
+- read `AGENTS.md`, `CLAUDE.md`, `docs/agents/*`, and source truth,
+- split broad requests into agent-sized work,
+- create one branch/worktree per task when implementation starts,
+- run product, architecture, coding, review, tester, verifier, and gatekeeper
+  roles as needed,
+- post issue/PR evidence,
+- stop only at declared stop conditions.
+
+The human can steer in normal language:
+
+```text
+This is approved, continue to implementation.
+Pause here; I want to review the PRD first.
+Create separate issues for those gaps.
+Do not change code yet, only document findings.
+```
+
+## 6. Automation Commands
+
+For CI, scripting, or agent-internal automation, the CLI still exposes
+`intake` and `run`. These are not the normal human UX.
 
 ```bash
+loop-factory intake "Make wallet payment watcher retry-safe" --target /path/to/project --create-issue
 loop-factory run --target /path/to/project --issue 123 --agent codex
 ```
 
-This prints the exact agent command. To execute it directly:
-
-```bash
-loop-factory run --target /path/to/project --issue 123 --agent codex --execute
-```
-
-For Claude Code:
-
-```bash
-loop-factory run --target /path/to/project --issue 123 --agent claude
-```
-
-## 6. Human Role
+## 7. Human Role
 
 The human does not manually coordinate every step. The human reviews only:
 
@@ -120,4 +130,3 @@ The human does not manually coordinate every step. The human reviews only:
 - merge/deploy authority,
 - high-risk behavior,
 - final PR when project policy requires it.
-

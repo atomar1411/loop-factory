@@ -2,6 +2,10 @@
 
 This repo uses a Git-first autonomous loop.
 
+Loop Factory is conversation-first. Humans can speak normally; agents infer when
+a prompt is a new requirement, bug, cleanup, review, design, product, or
+implementation task.
+
 ## Source Of Truth
 
 - Product and architecture truth: `docs/truth/*`
@@ -23,6 +27,14 @@ requirement
   -> PR
   -> merge or escalation
 ```
+
+## Activation
+
+Start the workflow automatically when the prompt implies tracked software work.
+Do not require CLI commands, slash commands, or explicit skill names.
+
+Do not activate for simple questions, explanations, or prompts that explicitly
+ask for discussion only.
 
 ## Autonomy Levels
 
@@ -47,4 +59,3 @@ Every task report must include:
 - skipped gates,
 - residual risk,
 - human or maintainer decisions needed.
-

@@ -16,6 +16,11 @@ Every agent starts here, then reads only the docs needed for the assigned task:
 
 This repo uses Loop Factory for agentic work.
 
+Humans do not need to invoke Loop Factory explicitly. If a prompt looks like a
+new requirement, bug, cleanup request, review request, architecture/design task,
+product/PRD task, or implementation request, the agent should start the Loop
+Factory workflow automatically.
+
 Project truth lives in:
 
 - source code,
@@ -39,6 +44,19 @@ requirement
   -> PR evidence
   -> merge or escalation
 ```
+
+## Natural Language Activation
+
+Activate the workflow for normal prompts such as:
+
+- "Fix checkout retry behavior."
+- "Create PRDs for onboarding."
+- "Review this PR and address comments."
+- "Clean up dead docs and branches."
+- "Start agents on this issue."
+
+Do not activate the full workflow for simple questions, explanations, or prompts
+that explicitly say not to create tasks or change code.
 
 ## Agent Rules
 
@@ -78,4 +96,3 @@ Files or systems affected:
 Do not merge, deploy, delete branches, delete worktrees, alter production
 configuration, or run destructive commands unless the task packet or maintainer
 explicitly allows it.
-

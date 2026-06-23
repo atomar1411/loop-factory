@@ -14,6 +14,10 @@ Agents must start from explicit repo context.
 git status --short --branch
 ```
 
+If the human prompt is the only input, infer whether it is a requirement,
+review, bug, cleanup, design, product, or implementation task. Create durable
+issue/task state when useful and safe.
+
 ## Context Inputs
 
 Task packets should identify:
@@ -31,4 +35,3 @@ Task packets should identify:
 Private memory and previous chat context may orient an agent, but cannot justify
 code changes. If memory conflicts with Git, Git wins unless a maintainer says
 otherwise.
-

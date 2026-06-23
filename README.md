@@ -39,19 +39,20 @@ Loop Factory ships three layers:
   review, security, gatekeeping, testing, and release roles.
 - Repo templates for `AGENTS.md`, `CLAUDE.md`, `docs/agents/*`, issue forms,
   PR templates, and truth docs.
-- A small CLI for bootstrapping and checking a target repository.
+- A small CLI for bootstrapping, checking, CI, and optional automation.
 
 ```bash
 npx loop-factory init
 npx loop-factory doctor
-npx loop-factory intake "Add retry-safe payment watcher handling"
 ```
 
-The CLI is intentionally thin. The primary runtime is still your agent surface:
-Codex, Claude Code, GitHub, tests, and the target repo.
+The CLI is intentionally thin. The primary runtime is conversation inside your
+agent surface: Codex or Claude Code, GitHub, tests, and the target repo.
 
 See [Installation And Setup](docs/installation.md) for Codex plugin install,
-Claude Code plugin install, target-repo bootstrap, and smoke checks.
+Claude Code plugin install, target-repo bootstrap, and smoke checks. See
+[Natural Language Activation](docs/natural-language-activation.md) for the
+conversation-first trigger contract.
 
 ## Human Quickstart
 
@@ -69,15 +70,20 @@ node packages/cli/bin/loop-factory.js setup --target /path/to/project
 
 # Verify GitHub issue/PR access.
 node packages/cli/bin/loop-factory.js doctor --target /path/to/project
-
-# Turn a requirement prompt into a GitHub issue.
-node packages/cli/bin/loop-factory.js intake "Fix checkout retry behavior" \
-  --target /path/to/project \
-  --create-issue
-
-# Print the agent command for the autonomous loop.
-node packages/cli/bin/loop-factory.js run --target /path/to/project --issue 123 --agent codex
 ```
+
+Then open Codex or Claude Code in the target repo and speak normally:
+
+```text
+Fix checkout retry behavior and run it through Loop Factory.
+Create PRDs for onboarding before code changes.
+Review PR #42, address comments, and verify the branch.
+Clean up stale docs and create tasks for any architecture gaps.
+```
+
+The agent should infer when a prompt is a new requirement, load the Loop Factory
+workflow, create durable issue/PR state when useful, and ask only at stop
+conditions.
 
 See [Human Workflow](docs/human-workflow.md) for the full step-by-step flow.
 

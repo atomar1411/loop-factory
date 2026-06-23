@@ -18,13 +18,24 @@ are visible in Git review.
 ## Recommended Use
 
 1. Install or load the Loop Factory plugin.
-2. Run the `loop-factory` skill to inspect the repo and select an install mode.
-3. Run `loop-factory init` in the target repo.
-4. Use the `requirement-intake` skill for new human requirements.
-5. Use the `autonomous-pr-loop` skill to run an issue to PR.
+2. Bootstrap the target repo with Loop Factory files.
+3. Start a Codex thread in the target repo.
+4. Speak in natural language. When the prompt looks like a requirement, bug,
+   cleanup, review, product/PRD, architecture/design, or implementation task,
+   Codex should load the Loop Factory skills automatically.
+5. Let Codex create issues, branches, draft PRs, review passes, verification
+   evidence, and stop-condition questions as needed.
+
+Examples:
+
+```text
+Fix checkout retry behavior.
+Create PRDs for the new onboarding experience.
+Review PR #42 and address comments.
+Document architecture gaps before implementation.
+```
 
 ## Codex Rule
 
 Do not rely on hidden memory for project truth. The installed repo files and
 GitHub artifacts are the contract.
-

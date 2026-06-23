@@ -5,16 +5,14 @@ This repo uses Loop Factory.
 Read `AGENTS.md` first, then read the relevant files under `docs/agents/` and
 `docs/truth/`.
 
-## Loop Factory Skills
+## Natural Language Activation
 
-When available, use:
+Humans do not need slash commands. If the user gives a natural-language feature
+request, bug report, cleanup request, PR review request, architecture/design ask,
+product/PRD ask, or implementation task, use Loop Factory automatically.
 
-- `/loop-factory:requirement-intake` to convert rough requirements into issues.
-- `/loop-factory:autonomous-pr-loop` to run an approved issue through branch,
-  implementation, review, verification, and PR evidence.
-- `/loop-factory:reviewer-loop` to review a diff against the issue and project
-  truth.
-- `/loop-factory:verifier-loop` to run and report verification gates.
+Use plugin skills and agents internally when available; do not ask the human to
+remember skill names.
 
 ## Claude Code Agents
 
@@ -30,4 +28,3 @@ When Loop Factory plugin agents are available, use:
 
 Stop and ask before product, money, legal, safety, deployment, service-boundary,
 or irreversible changes.
-

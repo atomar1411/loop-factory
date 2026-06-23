@@ -19,8 +19,9 @@ artifacts.
 ## Components
 
 ```text
-Human requirement
-  -> Requirement Intake Skill
+Human natural-language request
+  -> activation classifier
+  -> Requirement Intake Skill when durable task state is useful
   -> GitHub issue or local task packet
   -> Orchestrator Skill
   -> Product, architecture, or triage role when needed

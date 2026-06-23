@@ -22,6 +22,7 @@ const requiredFiles = [
   "agents/loop-tester.md",
   "agents/loop-verifier.md",
   "docs/agent-roster.md",
+  "docs/natural-language-activation.md",
   "skills/loop-factory/SKILL.md",
   "skills/requirement-intake/SKILL.md",
   "skills/autonomous-pr-loop/SKILL.md",

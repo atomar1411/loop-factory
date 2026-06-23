@@ -7,7 +7,8 @@
 - Target-repo templates.
 - Core skills.
 - Claude Code plugin agents.
-- CLI `init`, `doctor`, and `intake`.
+- Conversation-first activation contract.
+- CLI `init`, `doctor`, and optional automation commands.
 
 ## V0.2 - GitHub Loop Automation
 

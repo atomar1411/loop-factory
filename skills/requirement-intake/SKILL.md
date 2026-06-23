@@ -1,11 +1,12 @@
 ---
 name: requirement-intake
-description: Convert rough human product or engineering requirements into Loop Factory issues and task packets. Use when a user gives a feature request, bug report, cleanup request, architecture ask, or vague goal that should become agent-ready work.
+description: Convert rough human product or engineering requirements into Loop Factory issues and task packets. Use automatically when a natural-language user message appears to be a new feature request, bug report, cleanup request, architecture/design ask, product/PRD ask, review request, or vague goal that should become agent-ready work, even if the user does not name this skill or Loop Factory.
 ---
 
 # Requirement Intake
 
-Turn human intent into agent-ready work.
+Turn human intent into agent-ready work. The human can speak normally; do not
+require a command, slash command, or template.
 
 ## Input
 
@@ -45,6 +46,6 @@ Produce:
 - verification gates,
 - stop conditions.
 
-When GitHub CLI is available and the user asked to create tasks, create the
-issues and report links.
-
+When GitHub CLI is available and durable task state is useful, create issues
+after confirming the task scope is safe or after the user has asked to create
+tasks. Report links and next loop state.

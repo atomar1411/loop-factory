@@ -1,11 +1,16 @@
 ---
 name: loop-factory
-description: Set up or operate a Git-first autonomous software agent loop. Use when the user wants to install Loop Factory in a repo, create or run AI engineering teams, convert requirements into issue-to-PR loops, define agent roles, add task packet templates, or bootstrap Codex/Claude Code factory docs.
+description: Set up or operate a Git-first autonomous software agent loop. Use automatically in a repo when the user gives a natural-language feature request, bug report, cleanup request, PR/review request, architecture/design task, product/PRD request, or asks to create/run AI engineering teams; also use when the user explicitly mentions Loop Factory, autonomous loops, issue-to-PR loops, agent roles, task packets, or Codex/Claude Code factory setup.
 ---
 
 # Loop Factory
 
-Use Loop Factory to turn requirements into durable Git loops.
+Use Loop Factory to turn natural-language requirements into durable Git loops.
+
+Humans should not need to type CLI commands, slash commands, or skill names
+during normal work. If the conversation looks like a new requirement, bug,
+cleanup, review, design, product, or implementation task in a repo, start the
+Loop Factory workflow automatically.
 
 ## First Moves
 
@@ -33,10 +38,15 @@ Use Loop Factory to turn requirements into durable Git loops.
 - Stop for product, money, legal, safety, deployment, service-boundary, or
   irreversible decisions.
 - Report evidence before claiming completion.
+- Do not ask the human to invoke Loop Factory again when intent is already
+  clear.
+- Use CLI commands as internal automation only when useful; do not make them the
+  normal human interface.
 
-## Setup Command
+## Internal Automation
 
-Prefer the CLI when available:
+Use the CLI for setup checks, CI, scripting, and durable issue creation when
+appropriate:
 
 ```bash
 npx loop-factory init
@@ -49,4 +59,3 @@ If the package is checked out locally:
 node packages/cli/bin/loop-factory.js init --target /path/to/repo
 node packages/cli/bin/loop-factory.js doctor --target /path/to/repo
 ```
-

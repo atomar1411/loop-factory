@@ -11,10 +11,9 @@ agents/
 hooks/
 ```
 
-Claude Code plugin skills are namespaced as `/loop-factory:<skill-name>`.
-Project installation still writes `CLAUDE.md` and `.claude`-compatible repo
-assets where appropriate, because repo-local instructions are visible to the
-team and survive plugin updates.
+Project installation writes `CLAUDE.md` and `.claude`-compatible repo assets
+where appropriate, because repo-local instructions are visible to the team and
+survive plugin updates.
 
 ## Supported Claude Code Concepts
 
@@ -29,16 +28,19 @@ better than model judgment.
 claude --plugin-dir ./loop-factory
 ```
 
-Then invoke:
+Then work in the target repo using normal language. Claude Code should use Loop
+Factory when a prompt looks like a requirement, bug, cleanup, PR review,
+product/PRD task, architecture/design task, or implementation request.
 
 ```text
-/loop-factory:requirement-intake
-/loop-factory:autonomous-pr-loop
-/loop-factory:reviewer-loop
-/loop-factory:verifier-loop
+Fix checkout retry behavior.
+Create PRDs for the new onboarding experience.
+Review PR #42 and address comments.
+Document architecture gaps before implementation.
 ```
 
-Claude Code plugin agents should appear in `/agents` when the plugin is loaded:
+Claude Code plugin agents should be available internally when the plugin is
+loaded:
 
 - `loop-orchestrator`
 - `loop-issue-triager`

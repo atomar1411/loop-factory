@@ -92,16 +92,12 @@ For local development or review, load it for one session:
 claude --plugin-dir /path/to/loop-factory
 ```
 
-In that session, invoke namespaced skills:
+In that session, speak normally in the target repo. The plugin skills and
+agents are used internally when the prompt looks like a requirement, bug,
+review, product/PRD task, architecture/design task, cleanup, or implementation
+request.
 
-```text
-/loop-factory:requirement-intake
-/loop-factory:autonomous-pr-loop
-/loop-factory:reviewer-loop
-/loop-factory:verifier-loop
-```
-
-Claude Code plugin agents should also be available through `/agents`:
+Claude Code plugin agents should also be available to the runtime:
 
 ```text
 loop-orchestrator
@@ -143,29 +139,23 @@ or `--agent both` to include plugin/tooling checks.
 
 ## First Use
 
-Turn a rough requirement into an agent-ready issue body:
-
-```bash
-loop-factory intake "Add retry-safe payment watcher handling"
-```
-
-Create a GitHub issue directly:
-
-```bash
-loop-factory intake "Add retry-safe payment watcher handling" \
-  --target /path/to/project \
-  --create-issue
-```
-
-Then let the agent run the autonomous loop:
+After the plugin is installed and the target repo is bootstrapped, open Codex or
+Claude Code in the target repo and speak normally:
 
 ```text
-Use Loop Factory to run this issue through the autonomous PR loop.
+Add retry-safe payment watcher handling.
+Create PRDs for onboarding before implementation.
+Review PR #123, address comments, and verify the branch.
+Clean up stale docs and create tasks for architecture gaps.
 ```
 
-Or print the exact command:
+The agent should infer the workflow, create durable issue/PR state when useful,
+run the required Loop Factory roles, and stop only at risk gates.
+
+For automation, CI, or debugging the framework itself, the CLI can still create
+issues or run a prepared issue:
 
 ```bash
+loop-factory intake "Add retry-safe payment watcher handling" --target /path/to/project --create-issue
 loop-factory run --target /path/to/project --issue 123 --agent codex
-loop-factory run --target /path/to/project --issue 123 --agent claude
 ```
