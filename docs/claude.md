@@ -34,9 +34,14 @@ product/PRD task, architecture/design task, or implementation request.
 From the target repo, run:
 
 ```text
-/loop-factory
-/loop-factory doctor
+/loop-factory:loop-factory
+/loop-factory:loop-factory doctor
 ```
+
+Claude Code plugin skills are namespaced as `/plugin-name:skill-name`. That is
+why the plugin command includes `loop-factory:`. Internal workflows such as
+requirement intake, review, and verification should not appear as separate
+commands.
 
 ```text
 Fix checkout retry behavior.

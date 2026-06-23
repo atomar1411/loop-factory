@@ -18,10 +18,11 @@ npx loop-factory install
 
 ## 2. Enable Your Project
 
-Open Codex or Claude Code in the project and run:
+Open the project in your agent surface and run:
 
 ```text
-/loop-factory
+Codex: /loop-factory
+Claude Code plugin: /loop-factory:loop-factory
 ```
 
 This installs the repo-local operating files:
@@ -43,7 +44,8 @@ npx loop-factory setup
 After the target repo has a GitHub `origin` remote, verify connectivity:
 
 ```text
-/loop-factory doctor
+Codex: /loop-factory doctor
+Claude Code plugin: /loop-factory:loop-factory doctor
 ```
 
 This checks:

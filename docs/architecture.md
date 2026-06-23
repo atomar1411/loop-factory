@@ -102,8 +102,10 @@ posts a decision request with options, recommendation, and risk if wrong.
 
 ## Project Setup Model
 
-The `/loop-factory` slash command enables a target repo. Internally, the setup
-command copies target-repo templates and creates or updates:
+The public Loop Factory command enables a target repo. In Codex this is
+`/loop-factory`; in Claude Code plugin installs this is
+`/loop-factory:loop-factory`. Internally, the setup command copies target-repo
+templates and creates or updates:
 
 - `AGENTS.md`,
 - `CLAUDE.md`,

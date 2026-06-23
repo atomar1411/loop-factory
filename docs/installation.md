@@ -3,8 +3,8 @@
 Loop Factory has two installation layers:
 
 1. Install the plugin into an agent surface: Codex or Claude Code.
-2. Use `/loop-factory` from a target repository to install the repo-local docs,
-   templates, and checks.
+2. Use the public Loop Factory command from a target repository to install the
+   repo-local docs, templates, and checks.
 
 ## Fast Path
 
@@ -14,10 +14,11 @@ Install Loop Factory once on your machine:
 npx --yes github:atomar1411/loop-factory install
 ```
 
-Then open Codex or Claude Code in the project you want to enable and run:
+Then open the project you want to enable and run the matching public command:
 
 ```text
-/loop-factory
+Codex: /loop-factory
+Claude Code plugin: /loop-factory:loop-factory
 ```
 
 After npm publication:
@@ -30,7 +31,8 @@ When the target project has a GitHub remote and you want to verify setup and
 issue/PR access:
 
 ```text
-/loop-factory doctor
+Codex: /loop-factory doctor
+Claude Code plugin: /loop-factory:loop-factory doctor
 ```
 
 ## Machine Install
@@ -45,7 +47,7 @@ npx --yes github:atomar1411/loop-factory install
 
 ## Project Setup
 
-`/loop-factory` installs repo-local operating files:
+The public Loop Factory command installs repo-local operating files:
 
 - `AGENTS.md`
 - `CLAUDE.md`
@@ -81,7 +83,7 @@ codex plugin list
 From a project thread, use `/loop-factory` to enable the repo and
 `/loop-factory doctor` to verify it.
 
-Expected public surface:
+Expected Codex public surface:
 
 - `/loop-factory`
 - `/loop-factory doctor`
@@ -104,10 +106,12 @@ machine checkout for a session:
 claude --plugin-dir ~/.loop-factory
 ```
 
-In that session, open the target repo and run `/loop-factory` to enable it. The
-plugin skills and agent profiles are then used internally when the request looks
-like a requirement, bug, review, product/PRD task, architecture/design task,
-cleanup, or implementation request.
+In that session, open the target repo and run `/loop-factory:loop-factory` to
+enable it. Use `/loop-factory:loop-factory doctor` to verify setup. Claude Code
+plugin skills are namespaced by plugin, so this is the standard plugin command
+shape. The plugin skills and agent profiles are then used internally when the
+request looks like a requirement, bug, review, product/PRD task,
+architecture/design task, cleanup, or implementation request.
 
 Claude Code agent profiles should also be available to the runtime:
 
@@ -134,7 +138,8 @@ release exists.
 Inside a target repository, use:
 
 ```text
-/loop-factory doctor
+Codex: /loop-factory doctor
+Claude Code plugin: /loop-factory:loop-factory doctor
 ```
 
 For CI, scripting, or framework debugging, the CLI backstop is:

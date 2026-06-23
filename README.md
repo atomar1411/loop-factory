@@ -111,10 +111,11 @@ Install Loop Factory once on your machine:
 npx --yes github:atomar1411/loop-factory install
 ```
 
-Then open Codex or Claude Code in the project you want to enable and run:
+Then open the project you want to enable and run the matching public command:
 
 ```text
-/loop-factory
+Codex: /loop-factory
+Claude Code plugin: /loop-factory:loop-factory
 ```
 
 After npm publication:
@@ -126,7 +127,8 @@ npx loop-factory install
 Verify a project when needed:
 
 ```text
-/loop-factory doctor
+Codex: /loop-factory doctor
+Claude Code plugin: /loop-factory:loop-factory doctor
 ```
 
 After that, give Codex or Claude Code real software work:
@@ -137,9 +139,10 @@ Create PRDs for onboarding before code changes.
 Review PR #42, address comments, and verify the branch.
 ```
 
-The slash command is for enabling and checking a repo. Normal feature, bug,
+The public command is for enabling and checking a repo. Normal feature, bug,
 review, product, architecture, and cleanup work should flow from the request
-itself.
+itself. Internal workflows such as intake, review, and verification should not
+appear as separate commands.
 
 ## Why This Exists
 
