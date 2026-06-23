@@ -165,6 +165,26 @@ tests, browser/manual feature-flow checks, and container log inspection during
 tester or verifier passes. If it is missing, Docker-based verification is marked
 unavailable and the agent uses the best non-Docker checks it can run.
 
+## Cost Control
+
+Loop Factory is not meant to turn every edit into a five-agent ceremony. The
+full loop spends more tokens because agents re-read context, review each other,
+and collect evidence. That cost is worth it when a wrong answer is expensive:
+money movement, production behavior, security, architecture, multi-service
+changes, simulator semantics, or strategy/evaluation decisions.
+
+For everything else, use the smallest route that proves the work:
+
+- **Answer:** explain or inspect without starting a task.
+- **Fast Path:** one agent edits and verifies a small low-risk change.
+- **Review Path:** one focused review or verifier pass when extra eyes matter.
+- **Factory DAG:** split complex work into implementer nodes, then join,
+  review, verify, and publish evidence.
+- **Critical Loop:** add tester, security, or gatekeeper passes for high-blast
+  radius work.
+
+The default should be cheap. The full factory should be deliberate.
+
 ## Why This Exists
 
 Coding agents are fast. Software engineering still needs discipline.
