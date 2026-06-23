@@ -1,0 +1,51 @@
+{
+  "name": "loop-factory",
+  "version": "0.1.0",
+  "description": "Open agent loop factory for Codex, Claude Code, and Git-first software teams.",
+  "type": "module",
+  "license": "MIT",
+  "private": false,
+  "bin": {
+    "loop-factory": "./packages/cli/bin/loop-factory.js"
+  },
+  "files": [
+    "README.md",
+    "LICENSE",
+    ".codex-plugin",
+    ".claude-plugin",
+    "agents",
+    "docs",
+    "hooks",
+    "packages",
+    "scripts",
+    "skills",
+    "templates"
+  ],
+  "scripts": {
+    "check": "node --check packages/cli/bin/loop-factory.js && node --check packages/cli/src/*.js && node scripts/validate-plugin-shape.mjs",
+    "doctor": "node packages/cli/bin/loop-factory.js doctor"
+  },
+  "keywords": [
+    "agent",
+    "agents",
+    "ai",
+    "claude-code",
+    "codex",
+    "git",
+    "loop",
+    "skills",
+    "software-factory",
+    "worktrees"
+  ],
+  "author": {
+    "name": "Loop Factory contributors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/loop-factory/loop-factory.git"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
+

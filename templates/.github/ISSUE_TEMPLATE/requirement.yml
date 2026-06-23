@@ -1,0 +1,62 @@
+name: Loop Factory Requirement
+description: Turn a human requirement into an agent-ready loop task.
+title: "[Requirement] "
+labels:
+  - lf:intake
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What should change or be built?
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What pain, bug, user need, or business need does this solve?
+  - type: textarea
+    id: must-do
+    attributes:
+      label: Must Do
+      description: What must agents include?
+  - type: textarea
+    id: must-not-touch
+    attributes:
+      label: Must Not Touch
+      description: What is out of scope?
+  - type: textarea
+    id: done-means
+    attributes:
+      label: Done Means
+      description: How will we know this is correct?
+  - type: dropdown
+    id: risk
+    attributes:
+      label: Risk
+      multiple: true
+      options:
+        - product
+        - money
+        - legal
+        - security
+        - safety
+        - deployment
+        - service-boundary
+        - irreversible
+        - low-risk
+  - type: dropdown
+    id: autonomy
+    attributes:
+      label: Autonomy Level
+      options:
+        - A0 Advisory
+        - A1 Local Patch
+        - A2 Draft PR
+        - A3 Ready PR
+        - A4 Auto-Merge
+        - A5 Deploy Loop
+    validations:
+      required: true
+

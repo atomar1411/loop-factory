@@ -1,0 +1,81 @@
+# Agent Entry Point
+
+This file is the shared onboarding contract for AI agents working in this repo.
+
+## Read Order
+
+Every agent starts here, then reads only the docs needed for the assigned task:
+
+1. `docs/truth/README.md`
+2. `docs/agents/context-loading.md`
+3. `docs/agents/loop-factory.md`
+4. The assigned issue, PR, task packet, or human prompt
+5. Any local `AGENTS.md` in the target subdirectory
+
+## Loop Factory Mode
+
+This repo uses Loop Factory for agentic work.
+
+Project truth lives in:
+
+- source code,
+- service or package README files,
+- `docs/truth/*`,
+- `AGENTS.md`, `CLAUDE.md`, and `docs/agents/*` for agent operating rules,
+- GitHub issues and PRs for task state,
+- explicit maintainer decisions in the current task.
+
+Private memory, scratch notes, and local command output are not project truth.
+
+## Default Loop
+
+```text
+requirement
+  -> issue and task packet
+  -> fresh branch/worktree
+  -> implementation
+  -> review
+  -> verification
+  -> PR evidence
+  -> merge or escalation
+```
+
+## Agent Rules
+
+- Use one task per branch/worktree.
+- Avoid overlapping owned files across parallel agents.
+- Read the task packet and required truth docs before editing.
+- Write or update tests when behavior changes.
+- Run verification before claiming completion.
+- Post evidence to the issue or PR.
+- Stop and ask when a stop condition is reached.
+
+## Stop Conditions
+
+Stop before changing:
+
+- product semantics,
+- money movement,
+- legal/compliance behavior,
+- safety or data-loss behavior,
+- production deployment or secrets,
+- service boundaries,
+- irreversible operations.
+
+Use this format:
+
+```text
+Decision needed:
+Why it matters:
+Options:
+Recommendation:
+Risk if wrong:
+Files or systems affected:
+```
+
+## Git Safety
+
+Do not merge, deploy, delete branches, delete worktrees, alter production
+configuration, or run destructive commands unless the task packet or maintainer
+explicitly allows it.
+

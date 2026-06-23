@@ -1,0 +1,41 @@
+{
+  "name": "loop-factory",
+  "version": "0.1.0",
+  "description": "Git-first autonomous loop factory for issue intake, worktree execution, agent review, verification, and PR evidence.",
+  "author": {
+    "name": "Loop Factory contributors"
+  },
+  "homepage": "https://github.com/loop-factory/loop-factory",
+  "repository": "https://github.com/loop-factory/loop-factory",
+  "license": "MIT",
+  "keywords": [
+    "agent-loop",
+    "codex",
+    "claude-code",
+    "worktrees",
+    "github",
+    "skills"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Loop Factory",
+    "shortDescription": "Autonomous Git-first agent loops for software teams",
+    "longDescription": "Loop Factory installs reusable docs, task packets, skills, and agent role playbooks so Codex and Claude Code can run issue-to-PR loops with worktrees, review agents, verifier gates, and durable GitHub evidence.",
+    "developerName": "Loop Factory contributors",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Set up Loop Factory in this repo.",
+      "Turn this requirement into an autonomous issue-to-PR loop."
+    ],
+    "websiteURL": "https://github.com/loop-factory/loop-factory",
+    "privacyPolicyURL": "https://github.com/loop-factory/loop-factory",
+    "termsOfServiceURL": "https://github.com/loop-factory/loop-factory",
+    "brandColor": "#2563EB"
+  }
+}
+

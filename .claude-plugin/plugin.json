@@ -1,0 +1,12 @@
+{
+  "name": "loop-factory",
+  "description": "Autonomous Git-first software delivery loops for Claude Code and multi-agent teams.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Loop Factory contributors"
+  },
+  "homepage": "https://github.com/loop-factory/loop-factory",
+  "repository": "https://github.com/loop-factory/loop-factory",
+  "license": "MIT"
+}
+
