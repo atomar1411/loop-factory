@@ -1,7 +1,5 @@
 # Context Loading
 
-Agents must start from explicit repo context.
-
 ## Required Startup
 
 1. Read `AGENTS.md`.
@@ -14,10 +12,9 @@ Agents must start from explicit repo context.
 git status --short --branch
 ```
 
-If the developer request is the only input, infer whether it is a requirement,
-review, bug, cleanup, design, product, or implementation task. For tracked
-software work, create or identify durable issue/task state before edits unless
-GitHub is unavailable or explicitly disabled.
+If the developer request is the only input, classify it. For tracked work,
+create or identify issue/task state before edits unless GitHub is unavailable
+or disabled.
 
 ## Context Inputs
 
@@ -33,6 +30,5 @@ Task packets should identify:
 
 ## Memory Rule
 
-Private memory and previous chat context may orient an agent, but cannot justify
-code changes. If memory conflicts with Git, Git wins unless a maintainer says
-otherwise.
+Memory can orient but cannot justify code changes. If memory conflicts with
+Git, Git wins unless a maintainer says otherwise.

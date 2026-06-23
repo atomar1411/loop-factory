@@ -2,39 +2,28 @@
 
 This repo uses Loop Factory.
 
-Read `AGENTS.md` first, then read the relevant files under `docs/agents/` and
-`docs/truth/`.
+Read `AGENTS.md`, then only the needed `docs/agents/*`, `docs/truth/*`, issue,
+PR, and source files.
 
-## Automatic Workflow Activation
+## Loop Factory Contract
 
-Developers do not need slash commands. If the user gives a feature request, bug
-report, cleanup request, PR review request, architecture/design ask,
-product/PRD ask, or implementation task, use Loop Factory automatically and
-follow the mandatory loop contract.
+For feature, bug, cleanup, PR review, PRD, architecture/design, implementation,
+or verification work:
 
-Use plugin skills and agent profiles internally when available; do not ask the
-human to remember skill names.
+1. Create or identify GitHub issue/task state before edits.
+2. If GitHub is unavailable or disabled, create a local task packet and say why.
+3. Use Loop Factory profiles when available; otherwise run phases sequentially
+   and state that no independent agents were spawned.
+4. Use one branch/worktree per implementation task.
+5. Report task state, branch/worktree, profiles or fallback, review,
+   verification, skipped gates, risk, and next decision.
 
-For tracked software work, do not run inline and call it Loop Factory. First
-create or identify a GitHub issue. If GitHub access is unavailable, create a
-local task packet and state why an issue was not created.
-
-Use Claude Code's agent/subagent mechanism with the Loop Factory profiles when
-available. If the profiles are unavailable, say so and run the same phases
-sequentially; do not claim that independent agents reviewed or verified the
-work.
+Do not run tracked work inline and call it Loop Factory.
 
 ## Claude Code Agent Profiles
 
-When Loop Factory plugin agent profiles are available, use:
-
-- `loop-orchestrator` for broad work, task decomposition, and routing.
-- `loop-issue-triager` before implementation when no issue exists.
-- `loop-implementer` for scoped changes.
-- `loop-reviewer` for review.
-- `loop-verifier` for command evidence.
-- `loop-tester` for outside-in product verification.
-- `loop-gatekeeper` before ready PR, merge, deploy, or completion claims.
+Use `loop-orchestrator` for broad work, `loop-issue-triager` when no issue
+exists, then the needed implementer/reviewer/verifier/tester/gatekeeper profile.
 
 ## Stop Conditions
 

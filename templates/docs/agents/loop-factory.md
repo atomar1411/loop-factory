@@ -2,8 +2,7 @@
 
 This repo uses a Git-first autonomous loop.
 
-Loop Factory is work-first. Agents infer when a developer request is a new
-requirement, bug, cleanup, review, design, product, or implementation task.
+Loop Factory is work-first. Agents infer tracked software work from the request.
 
 ## Source Of Truth
 
@@ -13,7 +12,7 @@ requirement, bug, cleanup, review, design, product, or implementation task.
 - Proof: CI, local command output summarized in PRs, committed tests
 - Memory: hint only
 
-## Workflow
+## Loop
 
 ```text
 requirement
@@ -29,16 +28,10 @@ requirement
 
 ## Activation
 
-Start the workflow automatically when the request implies tracked software work.
-Do not require CLI commands, slash commands, or explicit skill names.
-
-Do not activate for simple questions, explanations, or requests that explicitly
-ask for discussion only.
+Start automatically for tracked software work. Do not require commands or skill
+names. Do not activate for simple questions or explicit discussion-only asks.
 
 ## Mandatory Preflight
-
-For tracked software work, the agent must not proceed as a normal inline coding
-session.
 
 Before implementation:
 
@@ -51,7 +44,7 @@ Before implementation:
    phases sequentially.
 6. Create or enter the branch/worktree for the task.
 
-Skipping any preflight step requires a stated reason in the final report.
+State any skipped preflight step and reason.
 
 ## Autonomy Levels
 
@@ -66,14 +59,5 @@ Default: `A2 Draft PR`.
 
 ## Required Evidence
 
-Every task report must include:
-
-- issue or task packet,
-- branch/worktree,
-- selected profiles or fallback reason,
-- changed files,
-- review result,
-- verification result,
-- skipped gates,
-- residual risk,
-- developer or maintainer decisions needed.
+Every task report needs: issue/task packet, branch/worktree, profiles or
+fallback, changed files, review, verification, skipped gates, risk, decisions.

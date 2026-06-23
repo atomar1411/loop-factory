@@ -1,10 +1,6 @@
 # Agent Entry Point
 
-This file is the shared onboarding contract for AI agents working in this repo.
-
-## Read Order
-
-Every agent starts here, then reads only the docs needed for the assigned task:
+Shared onboarding contract for AI agents.
 
 1. `docs/truth/README.md`
 2. `docs/agents/context-loading.md`
@@ -14,12 +10,8 @@ Every agent starts here, then reads only the docs needed for the assigned task:
 
 ## Loop Factory Mode
 
-This repo uses Loop Factory for agentic work.
-
-Developers do not need to invoke Loop Factory explicitly. If a request looks
-like a new requirement, bug, cleanup request, review request,
-architecture/design task, product/PRD task, or implementation request, the agent
-must start the Loop Factory workflow automatically.
+For requirement, bug, cleanup, review, architecture/design, product/PRD,
+implementation, or verification work, start Loop Factory automatically.
 
 Project truth lives in:
 
@@ -30,11 +22,9 @@ Project truth lives in:
 - GitHub issues and PRs for task state,
 - explicit maintainer decisions in the current task.
 
-Private memory, scratch notes, and local command output are not project truth.
+Private memory, scratch notes, and raw local output are not project truth.
 
 ## Mandatory Loop Contract
-
-For tracked software work, do not work inline without durable state.
 
 Before edits or completion claims:
 
@@ -45,8 +35,8 @@ Before edits or completion claims:
 4. Use runtime agent/subagent support when available. If unavailable, run the
    same phases sequentially and state that no independent agents were spawned.
 5. Create or enter one branch/worktree per implementation task.
-6. Report issue/task packet, branch/worktree, selected profiles, review,
-   verification, skipped gates, residual risk, and next decision.
+6. Report task state, branch/worktree, profiles or fallback, review,
+   verification, skipped gates, risk, and next decision.
 
 ## Default Loop
 
@@ -62,14 +52,6 @@ requirement
 ```
 
 ## Automatic Workflow Activation
-
-Activate the workflow for software requests such as:
-
-- "Fix checkout retry behavior."
-- "Create PRDs for onboarding."
-- "Review this PR and address comments."
-- "Clean up dead docs and branches."
-- "Start agents on this issue."
 
 Do not activate the full workflow for simple questions, explanations, or
 requests that explicitly say not to create tasks or change code.
@@ -97,7 +79,7 @@ Stop before changing:
 - service boundaries,
 - irreversible operations.
 
-Use this format:
+Decision request format:
 
 ```text
 Decision needed:
