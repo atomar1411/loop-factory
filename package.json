@@ -1,6 +1,6 @@
 {
   "name": "loop-factory",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Open agent factory for developers solving complex software work with Git-first loops.",
   "type": "module",
   "license": "MIT",

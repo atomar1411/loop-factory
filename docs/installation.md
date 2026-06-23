@@ -112,22 +112,20 @@ then used internally when the request looks like a requirement, bug, review,
 product/PRD task,
 architecture/design task, cleanup, or implementation request.
 
-Claude Code agent profiles should also be available to the runtime:
+Claude Code active agent profiles should also be available to the runtime:
 
 ```text
 loop-orchestrator
-loop-issue-triager
-loop-product-prd
-loop-architecture-reviewer
-loop-docs-steward
 loop-implementer
 loop-reviewer
-loop-security-reviewer
 loop-verifier
 loop-tester
 loop-gatekeeper
-loop-release-manager
 ```
+
+Issue triage, Product PRD, architecture review, docs stewardship, security
+review, and release management are lazy specialist modes inside those active
+profiles.
 
 Marketplace install commands will be documented after a public marketplace
 release exists.

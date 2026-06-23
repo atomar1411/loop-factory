@@ -32,6 +32,7 @@ activate this skill when intent is clear.
    - review: `references/reviewer-loop.md`
    - verification: `references/verifier-loop.md`
    - risk gates: `references/risk-gates.md`
+   - specialist modes: `references/specialist-profiles.md`
 
 ## Mandatory Loop Contract
 
@@ -43,7 +44,7 @@ Before edits or progress claims:
 1. Create or identify task state: GitHub issue if available, local task packet
    only when GitHub is unavailable or explicitly disabled.
 2. Select profile sequence. Use `loop-orchestrator` for broad work and
-   `loop-issue-triager` when no issue exists.
+   orchestrator-led issue triage when no issue exists.
 3. Spawn named profiles when the runtime supports it. If not, state the
    fallback and run phases sequentially.
 4. Use one branch/worktree per implementation task.

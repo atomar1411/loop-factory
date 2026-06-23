@@ -56,18 +56,18 @@ One agent can write code. A developer shipping real software needs more than
 that. They need help shaping requirements, protecting architecture, reviewing
 diffs, running tests, enforcing risk gates, and preparing releases.
 
-Loop Factory gives agents those profiles:
+Loop Factory keeps a small active runtime set:
 
 - **Orchestrator** splits work and prevents overlap.
-- **Issue Triager** turns rough requests into workable tasks.
-- **Product PRD Agent** writes requirements and acceptance criteria.
-- **Architecture Reviewer** protects boundaries and source truth.
 - **Implementer** changes scoped files.
 - **Reviewer** checks the diff against the task.
 - **Verifier** runs command gates.
 - **Tester** checks the product from the outside in.
 - **Gatekeeper** enforces risk, evidence, merge, and deploy rules.
-- **Release Manager** handles readiness and cleanup.
+
+Specialties such as issue triage, Product PRD, architecture review, security
+review, docs stewardship, and release management are lazy modes inside those
+core agents. They are not loaded as separate always-on agents by default.
 
 That is the factory.
 

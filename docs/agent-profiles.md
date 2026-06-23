@@ -1,71 +1,45 @@
 # Agent Profiles
 
-Loop Factory ships reusable agent profiles. A profile is a specialist worker
-definition: what the agent should own, what it should avoid, and what evidence
-it must return.
+Loop Factory keeps the default runtime lean. Active agents are always available;
+specialist modes are loaded only when the task needs them.
 
-When work starts, the orchestrator creates an agent run from one profile and
-one task packet.
+## Active Runtime Agents
 
-```text
-agent profile + task packet + repo context = agent run
-```
-
-Default rule: one agent run uses one profile for one task slice. Small tasks may
-run several phases in one conversation, but the report must label each phase and
-must not claim independent review.
-
-For tracked software work, the orchestrator must create or identify task state
-before implementation. If the runtime cannot spawn named agent profiles, the
-main agent must state that fallback and run the same profile phases
-sequentially.
-
-## Coordination Profiles
-
-| Profile | Purpose |
+| Agent | Purpose |
 | --- | --- |
-| Orchestrator | Owns the loop, splits work, starts task packets, prevents overlap, and escalates stop conditions. |
-| Issue Triager | Converts rough requirements, bugs, and review comments into agent-ready issues. |
-| Gatekeeper | Enforces autonomy level, evidence, risk, merge, and deploy gates. |
-| Release Manager | Coordinates merge order, release readiness, deploy approval, rollback notes, and cleanup. |
-
-## Product And Design Profiles
-
-| Profile | Purpose |
-| --- | --- |
-| Product PRD Agent | Writes PRDs, acceptance criteria, product non-goals, and issue slices. |
-| Architecture Reviewer | Reviews service boundaries, contracts, source truth, diagrams, and design consistency. |
-| Docs Steward | Maintains source-truth docs and removes stale or duplicated documentation. |
-
-## Engineering Profiles
-
-| Profile | Purpose |
-| --- | --- |
+| Orchestrator | Owns the loop, issue/task state, routing, branch/worktree ownership, and stop conditions. |
 | Implementer | Makes scoped source or doc changes for one task packet. |
-| Reviewer | Reviews diffs against task packets, source truth, and evidence. |
-| Security Reviewer | Reviews auth, secrets, dependency advisories, permissions, and destructive operations. |
-
-## Verification Profiles
-
-| Profile | Purpose |
-| --- | --- |
+| Reviewer | Reviews diffs against the task, source truth, risk gates, and evidence. |
 | Verifier | Runs command gates and reports exact evidence. |
-| Tester | Performs outside-in product verification for app, Docker, DB, browser, WSS, and smoke checks. |
+| Tester | Runs outside-in app, Docker, browser, DB, queue, WSS, or smoke checks. |
+| Gatekeeper | Enforces autonomy, evidence, risk, merge, and deploy gates. |
+
+## Lazy Specialist Modes
+
+These modes run inside the active agents instead of loading as always-on agents:
+
+- Issue triage
+- Product PRD
+- Architecture review
+- Docs stewardship
+- Security review
+- Release management
+
+Use `skills/loop-factory/references/specialist-profiles.md` when a task needs a
+specialist mode.
 
 ## Routing Defaults
 
-- New requirement: Issue Triager, then Product PRD Agent when product behavior is unclear.
-- Architecture/design task: Architecture Reviewer plus Docs Steward.
+- New requirement: Orchestrator with issue-triage mode.
+- Product behavior unclear: Orchestrator with Product PRD mode.
+- Architecture/design task: Reviewer with architecture-review mode.
+- Source-truth cleanup: Reviewer with docs-stewardship mode.
 - Normal code task: Implementer, Reviewer, Verifier.
 - Product flow task: Implementer, Reviewer, Tester, Gatekeeper.
-- Security or dependency task: Implementer, Security Reviewer, Verifier, Gatekeeper.
-- Release/deploy task: Gatekeeper, Release Manager, Tester.
+- Security/dependency task: Implementer, Reviewer in security mode, Verifier,
+  Gatekeeper.
+- Release/deploy task: Gatekeeper in release mode, Tester.
 
-## Runtime Use
-
-Codex and Claude Code may run these profiles directly when the runtime supports
-specialist agents. Otherwise the main agent can run phases sequentially inside
-one conversation, while keeping the responsibilities and evidence separate.
-
-Do not let one agent run implement risky work and approve it as independently
-reviewed.
+If the runtime cannot spawn named agents, the main agent must state that
+fallback and run the same phases sequentially. Do not claim independent review
+unless an independent profile actually reviewed the work.

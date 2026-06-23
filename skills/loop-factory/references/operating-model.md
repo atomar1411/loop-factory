@@ -14,20 +14,19 @@ requirement
   -> merge or escalation
 ```
 
-## Profile Routing
+## Active Runtime Profiles
 
 - Orchestrator: split and route work.
-- Issue Triager: turn rough input into agent-ready issues.
-- Product PRD Agent: write PRDs and acceptance criteria.
-- Architecture Reviewer: review boundaries, contracts, and source truth.
-- Docs Steward: keep durable docs clean and non-duplicative.
 - Implementer: edit scoped code/docs files.
 - Reviewer: find correctness and spec gaps.
-- Security Reviewer: check auth, secrets, dependency, and permission risk.
 - Verifier: run command gates.
 - Tester: run outside-in app, Docker, DB, browser, or production-like checks.
 - Gatekeeper: enforce autonomy and evidence gates.
-- Release Manager: coordinate merge, deploy readiness, rollback notes, and cleanup.
+
+## Lazy Specialist Modes
+
+Load `specialist-profiles.md` only when needed for issue triage, Product PRD,
+architecture review, docs stewardship, security review, or release management.
 
 Each routed item creates an agent run from one profile and one task packet.
 Small tasks may run multiple phases in one conversation, but the phases must be

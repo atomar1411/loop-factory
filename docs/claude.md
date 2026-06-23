@@ -50,20 +50,17 @@ Review PR #42 and address comments.
 Document architecture gaps before implementation.
 ```
 
-Claude Code plugin agent profiles should be available internally when the
+Claude Code active agent profiles should be available internally when the
 plugin is loaded:
 
 - `loop-orchestrator`
-- `loop-issue-triager`
-- `loop-product-prd`
-- `loop-architecture-reviewer`
-- `loop-docs-steward`
 - `loop-implementer`
 - `loop-reviewer`
-- `loop-security-reviewer`
 - `loop-verifier`
 - `loop-tester`
 - `loop-gatekeeper`
-- `loop-release-manager`
+
+Issue triage, Product PRD, architecture, docs, security, and release management
+run as lazy specialist modes inside the active profiles.
 
 For shared use, publish through a Claude Code plugin marketplace.

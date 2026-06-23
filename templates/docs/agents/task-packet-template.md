@@ -14,10 +14,10 @@ A2 Draft PR
 
 Loop Implementer
 
-Allowed values: `Loop Orchestrator`, `Loop Issue Triager`,
-`Loop Product PRD`, `Loop Architecture Reviewer`, `Loop Docs Steward`,
-`Loop Implementer`, `Loop Reviewer`, `Loop Security Reviewer`,
-`Loop Verifier`, `Loop Tester`, `Loop Gatekeeper`, `Loop Release Manager`.
+Allowed values: `Loop Orchestrator`, `Loop Implementer`, `Loop Reviewer`,
+`Loop Verifier`, `Loop Tester`, `Loop Gatekeeper`. Specialist mode may be:
+`issue triage`, `product PRD`, `architecture review`, `docs stewardship`,
+`security review`, or `release management`.
 
 ## Context Inputs
 

@@ -22,8 +22,9 @@ Do not run tracked work inline and call it Loop Factory.
 
 ## Claude Code Agent Profiles
 
-Use `loop-orchestrator` for broad work, `loop-issue-triager` when no issue
-exists, then the needed implementer/reviewer/verifier/tester/gatekeeper profile.
+Use `loop-orchestrator` for broad work and issue triage, then the needed
+implementer/reviewer/verifier/tester/gatekeeper profile. Product, architecture,
+security, docs, and release work are specialist modes inside those profiles.
 
 ## Stop Conditions
 
